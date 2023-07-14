@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/frag_dashboard"
+    android:id="@+id/nav_graph">
+    <fragment
+        android:id="@+id/frag_dashboard"
+        android:name="com.tsfapps.myapplication.fragments.DashBoardFragment"
+        android:label="Bottom Nav"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_first"
+            app:destination="@id/frag_first_form"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_first_form"
+        android:name="com.tsfapps.myapplication.fragments.FirstFormFragment"
+        android:label="DrawerFragment"
+        tools:layout="@layout/fragment_first_form" >
+        <action
+            android:id="@+id/action_first_to_second"
+            app:destination="@id/frag_second_form"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_second_form"
+        android:name="com.tsfapps.myapplication.fragments.SecondFormFragment"
+        android:label="View Pager"
+        tools:layout="@layout/fragment_second_form" >
+        <action
+            android:id="@+id/action_second_to_third"
+            app:destination="@id/frag_third_form"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_third_form"
+        android:name="com.tsfapps.myapplication.fragments.ThirdFormFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_third_form" >
+        <action
+            android:id="@+id/action_third_to_fourth"
+            app:destination="@id/frag_fourth_form"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_fourth_form"
+        android:name="com.tsfapps.myapplication.fragments.FourthFormFragment"
+        android:label="Welcome"
+        tools:layout="@layout/fragment_fourth_form" >
+        <action
+            android:id="@+id/action_fourth_to_fifth"
+            app:destination="@id/frag_fourth_form"/>
+    </fragment>
+    <fragment
+        android:id="@+id/frag_fifth_form"
+        android:name="com.tsfapps.myapplication.fragments.FifthFormFragment"
+        android:label="Welcome"
+        tools:layout="@layout/fragment_fifth_form" />
+
+</navigation>

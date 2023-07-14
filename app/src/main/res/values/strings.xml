@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="next">Next</string>
+    <string name="dashboard_fragment">Dashboard Fragment</string>
+    <string name="first_fragment">First Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
+    <string name="third_fragment">Third Fragment</string>
+    <string name="fourth_fragment">Fourth Fragment</string>
+    <string name="fragment_fifth">Fifth Fragment</string>
+    <string name="submit">Submit</string>
+
+</resources>
