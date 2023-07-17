@@ -1,0 +1,19 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Line when pressed -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#FF0000" /> <!-- Replace with your desired color -->
+            <size android:height="1px" />
+        </shape>
+    </item>
+
+    <!-- Line when not pressed -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#808080" /> <!-- Replace with your desired color -->
+            <size android:height="1px" />
+        </shape>
+    </item>
+
+</selector>

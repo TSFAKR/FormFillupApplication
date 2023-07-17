@@ -1,28 +1,697 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frag_third_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_main"
     tools:context=".fragments.FirstFormFragment">
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFragmentThird"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="@string/use_supplementary_sheet_for_any_of_the_dps_under_question_27"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/third_fragment"
-        android:textStyle="bold"/>
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btnNextThird"
+        app:layout_constraintTop_toBottomOf="@id/tvFragmentThird">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDetailsOfHouseHold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="16dp"
+                android:text="@string/_4_details_of_affected_household"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSocialCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_22_social_category_of_ap" />
+
+            <RadioGroup
+                android:id="@+id/other_structure_radio_group"
+                style="@style/RadioGroupStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdSc"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/a_sc" />
+
+                    <RadioButton
+                        android:id="@+id/rdSt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/b_st" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdObc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/c_obc" />
+
+                    <RadioButton
+                        android:id="@+id/rdOtherStructure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/d_other" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/etOtherStructure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:hint="@string/specify_other"
+                        android:paddingStart="10dp" />
+
+                </LinearLayout>
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+
+            <TextView
+                android:id="@+id/tvReligiousCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                style="@style/TextViewNormal"
+                android:text="23. Religious Category" />
+
+            <RadioGroup
+                android:id="@+id/religious_category_radio_group"
+                style="@style/RadioGroupStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdHindu"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/hindu" />
+
+                    <RadioButton
+                        android:id="@+id/rdMuslim"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/muslim" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdChristian"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/christian" />
+
+                    <RadioButton
+                        android:id="@+id/rdBuddhist"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/buddhist" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdJain"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/jain" />
+
+                    <RadioButton
+                        android:id="@+id/rdOtherReligious"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/other1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/etOtherReligious"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:hint="@string/specify_other"
+                        android:paddingStart="10dp" />
+
+                </LinearLayout>
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvFamilyMembersCriteria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_24_number_of_family_members_with_the_following_criteria" />
+
+            <EditText
+                android:id="@+id/etUnmarriedSonBrother"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/unmarried_son_brother_18_years"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/etUnmarriedDaughterSister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/unmarried_daughter_sister_18_years"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/etDivorceeWidow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/divorcee_widow"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/etMinorOrphan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/minor_orphan"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvVulnerabilityStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_25_vulnerability_status_of_the_household" />
+
+            <RadioGroup
+                android:id="@+id/vulnerability_status_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <RadioButton
+                    android:id="@+id/rdWomanHeadedHousehold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Woman headed household" />
+
+                <RadioButton
+                    android:id="@+id/rdElderlyDisabledHeadedHousehold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. Headed by elderly / physically disabled person?" />
+
+                <RadioButton
+                    android:id="@+id/rdBelowPovertyLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. Below Poverty Line (BPL)" />
+
+                <RadioButton
+                    android:id="@+id/rdOtherVulnerabilityStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4. Other:" />
+
+                <EditText
+                    android:id="@+id/etOtherVulnerabilityStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Specify other vulnerability status"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvAnnualIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_26_annual_income_of_the_family_rs" />
+
+            <EditText
+                android:id="@+id/etAnnualIncome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                style="@style/CustomEditTextStyle"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/enter_annual_income" />
+
+            <View style="@style/DividerStyle" />
+
+
+            <TextView
+                android:id="@+id/tvAdditionalLand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_27_if_displaced_do_you_have_additional_land_to_shift" />
+
+            <RadioGroup
+                android:id="@+id/additional_land_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/rdAdditionalLandYes"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdAdditionalLandNo"
+                    android:layout_width="150dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no" />
+
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+
+            <TextView
+                android:id="@+id/tvRelocationOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_28_resettlement_relocation_option" />
+
+            <RadioGroup
+                android:id="@+id/relocation_option_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/rdSelfRelocation"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/self_relocation" />
+
+                <RadioButton
+                    android:id="@+id/rdProjectAssistedRelocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2. Project Assisted Relocation" />
+
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvLandCompensationOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_29_compensation_option_for_land_loser" />
+
+            <RadioGroup
+                android:id="@+id/land_compensation_option_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+
+
+                <RadioButton
+                    android:id="@+id/rdLandForLandLoss"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/land_for_land_loss" />
+
+                <RadioButton
+                    android:id="@+id/rdCashForLandLoss"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cash_for_land_loss" />
+
+
+            </RadioGroup>
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvStructureCompensationOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_30_compensation_options_for_structure_loser" />
+
+            <RadioGroup
+                android:id="@+id/structure_compensation_option_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/rdStructureForStructureLoss"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/structure_for_structure_loss" />
+
+                <RadioButton
+                    android:id="@+id/rdCashForStructureLoss"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cash_for_structure_loss" />
+
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvIncomeRestorationAssistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="20dp"
+                android:text="@string/_31_income_restoration_assistance" />
+
+            <RadioGroup
+                android:id="@+id/income_restoration_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rdEmploymentOpportunities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Employment Opportunities in Construction work" />
+
+                <RadioButton
+                    android:id="@+id/rdAssistanceLoan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. Assistance/ Loan from other ongoing development scheme" />
+
+                <RadioButton
+                    android:id="@+id/rdVocationalTraining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. Vocational Training" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdOthers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4. Others" />
+
+                    <EditText
+                        android:id="@+id/etOthers"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:hint="Specify" />
+
+                </LinearLayout>
+            </RadioGroup>
+
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvWomenAbove18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="20dp"
+                android:text="@string/_32_total_number_of_women_above_18_years_of_age_in_the_family" />
+
+            <EditText
+                android:id="@+id/etWomenAbove18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="15dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:inputType="number"
+                android:hint="Enter number" />
+
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvFinancialDecisionMaking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="20dp"
+                android:text="@string/_33_are_women_in_the_family_included_in_financial_decision_making" />
+
+            <RadioGroup
+                android:id="@+id/financial_decision_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rdFinancialDecisionYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdFinancialDecisionNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvSocialDecisionMaking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/_34_are_women_in_the_family_included_in_social_decision_making" />
+
+            <RadioGroup
+                android:id="@+id/social_decision_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/rdSocialDecisionYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdSocialDecisionNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+
+            </RadioGroup>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNextThird"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="@string/next"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_buttom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/next"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
