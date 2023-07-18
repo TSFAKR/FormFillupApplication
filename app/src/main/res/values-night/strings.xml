@@ -8,5 +8,8 @@
     <string name="third_fragment">Third Fragment</string>
     <string name="fourth_fragment">Fourth Fragment</string>
     <string name="fragment_fifth">Fifth Fragment</string>
+    <string name="family_member_fragment">Family Member Fragment</string>
     <string name="submit">Submit</string>
+    <string name="add_family_details">Add Family Details</string>
+    <string name="delete_family_details">Delete Family Details</string>
 </resources>

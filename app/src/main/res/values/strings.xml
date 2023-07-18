@@ -2,6 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="next">Next</string>
     <string name="dashboard_fragment">Dashboard Fragment</string>
+    <string name="family_member_fragment">Family Member Fragment</string>
     <string name="first_fragment">First Fragment</string>
     <string name="second_fragment">Second Fragment</string>
     <string name="third_fragment">Third Fragment</string>
@@ -9,8 +10,12 @@
     <string name="fragment_fifth">Fifth Fragment</string>
     <string name="submit">Submit</string>
     <string name="create_new">Create New</string>
-    <string name="census_questionnaire_for_paps">Census Questionnaire for PAPs</string>
-    <string name="general">1. General</string>
+    <string name="census_questionnaire_for_paps">
+<u>Census Questionnaire for PAPs</u>
+</string>
+    <string name="general">
+<u>1. General</u>
+</string>
     <string name="questionnaire_no">A. Questionnaire No:</string>
     <string name="village_name">B. Village Name:</string>
     <string name="name_of_block">C. Name of Block:</string>
@@ -18,7 +23,9 @@
     <string name="thana_no">E. Thana No:</string>
     <string name="plot_no">F. Plot No:</string>
     <string name="please_specify">Please Specify</string>
-    <string name="ownership_of_affected_land">2. Ownership of Affected Land</string>
+    <string name="ownership_of_affected_land">
+<u>2. Ownership of Affected Land</u>
+</string>
     <string name="ownership_of_the_land">1. Ownership of the Land</string>
     <string name="_private">1. Private</string>
     <string name="government">2. Government</string>
@@ -43,13 +50,21 @@
     <string name="commercial_use">5. Commercial Use</string>
     <string name="use_of_land">3. Use of Land</string>
     <string name="_6_others">6. Others:</string>
-    <string name="_3_details_of_affected_non_land_assets">3. Details of Affected Non-land Assets</string>
+    <string name="_3_details_of_affected_non_land_assets">
+<u>3. Details of Affected Non-land Assets</u>
+</string>
     <string name="use_supplementary_sheet_for_any_additional_dps_under_question_12">(Use supplementary sheet for any additional DPs under Question-12)</string>
     <string name="_13_any_structure_in_the_affected_land">13. Any structure in the Affected Land</string>
     <string name="_14_scale_of_impact_on_structure">14. Scale of Impact on Structure</string>
-    <string name="_25_and_50"><![CDATA[> 25% and < 50%]]></string>
-    <string name="_50_and_75"><![CDATA[> 50% and < 75%]]></string>
-    <string name="_75"><![CDATA[> 75%]]></string>
+    <string name="_25_and_50">
+<![CDATA[ > 25% and < 50% ]]>
+</string>
+    <string name="_50_and_75">
+<![CDATA[ > 50% and < 75% ]]>
+</string>
+    <string name="_75">
+<![CDATA[ > 75% ]]>
+</string>
     <string name="up_to_25">Up to 25%</string>
     <string name="a_temporary_buildings_with_mud_brick_wood_made_walls_thatched_tin_roof">a. Temporary (buildings with mud/brick/wood made walls, thatched/tin roof)</string>
     <string name="b_semi_permanent_buildings_with_tiled_roof_and_normal_cement_floor">b. Semi-Permanent (buildings, with tiled roof and normal cement floor</string>
@@ -84,7 +99,9 @@
     <string name="b_employee_wage_earner_in_commercial_structure">b. Employee/ wage earner in commercial structure</string>
     <string name="c_employee_wage_earner_in_residential_structure">c. Employee/ wage earner in residential structure</string>
     <string name="use_supplementary_sheet_for_any_of_the_dps_under_question_27">(Use supplementary sheet for any of the DPs under Question-27)</string>
-    <string name="_4_details_of_affected_household">4. Details of Affected Household</string>
+    <string name="_4_details_of_affected_household">
+<u>4. Details of Affected Household</u>
+</string>
     <string name="_22_social_category_of_ap">22. Social Category of AP</string>
     <string name="a_sc">a. SC</string>
     <string name="b_st">b. ST</string>
@@ -96,8 +113,12 @@
     <string name="muslim">Muslim</string>
     <string name="hindu">Hindu</string>
     <string name="_24_number_of_family_members_with_the_following_criteria">24. Number of family members with the following criteria</string>
-    <string name="unmarried_son_brother_18_years"><![CDATA[Unmarried Son/brother >18 years]]></string>
-    <string name="unmarried_daughter_sister_18_years"><![CDATA[Unmarried Daughter/Sister > 18 years]]></string>
+    <string name="unmarried_son_brother_18_years">
+<![CDATA[ Unmarried Son/brother >18 years ]]>
+</string>
+    <string name="unmarried_daughter_sister_18_years">
+<![CDATA[ Unmarried Daughter/Sister > 18 years ]]>
+</string>
     <string name="divorcee_widow">Divorcee/Widow</string>
     <string name="minor_orphan">Minor Orphan</string>
     <string name="_25_vulnerability_status_of_the_household">25. Vulnerability Status of the Household:</string>
@@ -119,5 +140,17 @@
     <string name="_33_are_women_in_the_family_included_in_financial_decision_making">33. Are women in the family included in financial decision-making</string>
     <string name="_32_total_number_of_women_above_18_years_of_age_in_the_family">32. Total number of women above 18 years of age in the family</string>
     <string name="_31_income_restoration_assistance">31. Income Restoration Assistance</string>
-
+    <string name="_35_do_women_exclusively_own_any_of_the_following_assets">35. Do women exclusively own any of the following assets?</string>
+    <string name="_23_religious_category">23. Religious Category</string>
+    <string name="a_land_homestead_or_farm_land">a. Land (Homestead or Farm Land)</string>
+    <string name="_39_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes">39. Do any women members in your family have received any benefit from Government Schemes?</string>
+    <string name="name_of_scheme">Name of Scheme</string>
+    <string name="training">Training</string>
+    <string name="house">House</string>
+    <string name="_40_details_of_family_members_fill_appropriate_code">40. Details of Family Members: (fill appropriate code)</string>
+    <string name="family_member_form">
+<u>Family Member Form</u>
+</string>
+    <string name="add_family_details">Add Family Details</string>
+    <string name="delete_family_details">Delete Family Details</string>
 </resources>

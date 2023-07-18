@@ -40,19 +40,19 @@
 
             <TextView
                 android:id="@+id/tvDetailsOfHouseHold"
+                style="@style/TextViewHeadings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:padding="16dp"
                 android:text="@string/_4_details_of_affected_household"
-                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvSocialCategory"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_22_social_category_of_ap" />
 
@@ -133,11 +133,11 @@
 
             <TextView
                 android:id="@+id/tvReligiousCategory"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                style="@style/TextViewNormal"
-                android:text="23. Religious Category" />
+                android:text="@string/_23_religious_category" />
 
             <RadioGroup
                 android:id="@+id/religious_category_radio_group"
@@ -240,9 +240,9 @@
 
             <TextView
                 android:id="@+id/tvFamilyMembersCriteria"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_24_number_of_family_members_with_the_following_criteria" />
 
@@ -306,9 +306,9 @@
 
             <TextView
                 android:id="@+id/tvVulnerabilityStatus"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_25_vulnerability_status_of_the_household" />
 
@@ -361,21 +361,21 @@
 
             <TextView
                 android:id="@+id/tvAnnualIncome"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_26_annual_income_of_the_family_rs" />
 
             <EditText
                 android:id="@+id/etAnnualIncome"
+                style="@style/CustomEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="5dp"
-                style="@style/CustomEditTextStyle"
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/enter_annual_income" />
 
@@ -384,9 +384,9 @@
 
             <TextView
                 android:id="@+id/tvAdditionalLand"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_27_if_displaced_do_you_have_additional_land_to_shift" />
 
@@ -395,8 +395,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
                 <RadioButton
@@ -409,8 +409,8 @@
                 <RadioButton
                     android:id="@+id/rdAdditionalLandNo"
                     android:layout_width="150dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
 
@@ -421,9 +421,9 @@
 
             <TextView
                 android:id="@+id/tvRelocationOption"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_28_resettlement_relocation_option" />
 
@@ -431,9 +431,9 @@
                 android:id="@+id/relocation_option_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
                 android:layout_marginStart="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
                 <RadioButton
@@ -457,9 +457,9 @@
 
             <TextView
                 android:id="@+id/tvLandCompensationOption"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_29_compensation_option_for_land_loser" />
 
@@ -468,9 +468,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:weightSum="2"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
                 <RadioButton
@@ -489,13 +488,14 @@
 
 
             </RadioGroup>
+
             <View style="@style/DividerStyle" />
 
             <TextView
                 android:id="@+id/tvStructureCompensationOption"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="15dp"
                 android:text="@string/_30_compensation_options_for_structure_loser" />
 
@@ -503,9 +503,9 @@
                 android:id="@+id/structure_compensation_option_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
                 android:layout_marginStart="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
                 <RadioButton
@@ -529,9 +529,9 @@
 
             <TextView
                 android:id="@+id/tvIncomeRestorationAssistance"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="20dp"
                 android:text="@string/_31_income_restoration_assistance" />
 
@@ -574,12 +574,13 @@
                         android:id="@+id/etOthers"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginStart="10dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
                         android:background="@drawable/custom_edittext"
-                        android:hint="Specify" />
+                        android:hint="Specify"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp" />
 
                 </LinearLayout>
             </RadioGroup>
@@ -589,9 +590,9 @@
 
             <TextView
                 android:id="@+id/tvWomenAbove18"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="20dp"
                 android:text="@string/_32_total_number_of_women_above_18_years_of_age_in_the_family" />
 
@@ -601,20 +602,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="15dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
                 android:background="@drawable/custom_edittext"
+                android:hint="Enter number"
                 android:inputType="number"
-                android:hint="Enter number" />
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
 
 
             <View style="@style/DividerStyle" />
 
             <TextView
                 android:id="@+id/tvFinancialDecisionMaking"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
                 android:paddingStart="20dp"
                 android:text="@string/_33_are_women_in_the_family_included_in_financial_decision_making" />
 
@@ -623,8 +624,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RadioButton
                     android:id="@+id/rdFinancialDecisionYes"
@@ -646,6 +647,7 @@
 
             <TextView
                 android:id="@+id/tvSocialDecisionMaking"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
@@ -656,8 +658,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
                 <RadioButton
@@ -674,24 +676,690 @@
                     android:layout_weight="1"
                     android:text="@string/no" />
 
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvWomenAsset"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/_35_do_women_exclusively_own_any_of_the_following_assets" />
+
+
+            <TextView
+                android:id="@+id/tvLandLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/a_land_homestead_or_farm_land" />
+
+
+            <RadioGroup
+                android:id="@+id/rgHomesteadOrFarmLand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdHomesteadOrFarmLandYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdHomesteadOrFarmLandNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
 
             </RadioGroup>
 
+            <TextView
+                android:id="@+id/tvHouseLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="b. House" />
 
+            <RadioGroup
+                android:id="@+id/rgHouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdHouseYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdHouseNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvFourWheelerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="c. Four Wheeler (Car/tractor etc.)" />
+
+            <RadioGroup
+                android:id="@+id/rgFourWheeler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdFourWheelerYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdFourWheelerNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvTwoWheelerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="d. Two Wheeler (Scooter/Cycle etc.)" />
+
+            <RadioGroup
+                android:id="@+id/rgTwoWheeler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdTwoWheelerYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdTwoWheelerNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvCellPhoneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="e. Cell Phone" />
+
+            <RadioGroup
+                android:id="@+id/rgCellPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdCellPhoneYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdCellPhoneNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvPersonalComputerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="f. Personal Computer" />
+
+            <RadioGroup
+                android:id="@+id/rgPersonalComputer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdPersonalComputerYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdPersonalComputerNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvAnyOtherLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="g. Any Other" />
+
+            <RadioGroup
+                android:id="@+id/rgAnyOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdAnyOtherYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdAnyOtherNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etAnyOtherDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Please specify"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvBankAccount"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="36. Are the women in the family have a separate bank account?" />
+
+            <RadioGroup
+                android:id="@+id/rgBankAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdBankAccountYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdBankAccountNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvSHGMember"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="37. Any women of your family are members in SHGs?" />
+
+            <RadioGroup
+                android:id="@+id/rgSHGMember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdSHGMemberYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdSHGMemberNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvRelocationAffect"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="38. If yes, will the relocation affect their work?" />
+
+            <RadioGroup
+                android:id="@+id/rgRelocationAffect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdRelocationAffectYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdRelocationAffectNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvRelocationAffectExplanation"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="If yes in Question 38, Please explain" />
+
+            <EditText
+                android:id="@+id/etRelocationAffectExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Explanation"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvGovernmentSchemesBenefit"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/_39_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes" />
+
+            <TextView
+                android:id="@+id/tvLoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Loan" />
+
+            <RadioGroup
+                android:id="@+id/rgLoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdLoanYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdLoanNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etLoanExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/name_of_scheme"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/tvHouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/house" />
+
+            <RadioGroup
+                android:id="@+id/rgHouseForLoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdHouseYesForLoan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdHouseNoForLoan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etHouseExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Name of Scheme"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:id="@+id/tvEmployment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Employment" />
+
+            <RadioGroup
+                android:id="@+id/rgEmployment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdEmploymentYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdEmploymentNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etEmploymentExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/name_of_scheme"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+            <!-- Training -->
+            <TextView
+                android:id="@+id/tvTraining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/training" />
+
+            <RadioGroup
+                android:id="@+id/rgTraining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdTrainingYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdTrainingNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etTrainingExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/name_of_scheme"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+            <!-- Any Other -->
+            <TextView
+                android:id="@+id/tvAnyOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Any Other" />
+
+            <RadioGroup
+                android:id="@+id/rgAnyOtherForScheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/rdAnyOtherYesForScheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdAnyOtherNoForScheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etAnyOtherExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/name_of_scheme"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvFamilyMembersDetails"
+                style="@style/TextViewNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/_40_details_of_family_members_fill_appropriate_code" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFamilyDetailAdd"
+                    android:layout_width="120sp"
+                    android:layout_height="30sp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/add_family_details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFamilyDetailDelete"
+                    android:layout_width="120sp"
+                    android:layout_height="30sp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/delete_family_details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBackThird"
+        android:layout_width="120sp"
+        android:layout_height="30sp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/custom_button"
+        android:text="BACK"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnNextThird"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNextThird"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_width="120sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/custom_button"
         android:text="@string/next"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/custom_buttom"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/btnBackThird" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

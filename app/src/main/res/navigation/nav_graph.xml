@@ -47,7 +47,6 @@
     <fragment
         android:id="@+id/frag_fourth_form"
         android:name="com.tsfapps.myapplication.fragments.FourthFormFragment"
-        android:label="Welcome"
         tools:layout="@layout/fragment_fourth_form" >
         <action
             android:id="@+id/action_fourth_to_fifth"
@@ -56,7 +55,10 @@
     <fragment
         android:id="@+id/frag_fifth_form"
         android:name="com.tsfapps.myapplication.fragments.FifthFormFragment"
-        android:label="Welcome"
         tools:layout="@layout/fragment_fifth_form" />
+    <fragment
+        android:id="@+id/frag_family_member_form"
+        android:name="com.tsfapps.myapplication.fragments.FamilyMemberFragment"
+        tools:layout="@layout/fragment_family_member" />
 
 </navigation>

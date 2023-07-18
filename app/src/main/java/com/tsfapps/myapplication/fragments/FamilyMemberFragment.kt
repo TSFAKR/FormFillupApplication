@@ -7,28 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.R
-import com.tsfapps.myapplication.databinding.FragmentThirdFormBinding
+import com.tsfapps.myapplication.databinding.FragmentDashboardBinding
 
 
-class ThirdFormFragment : Fragment() {
+class FamilyMemberFragment : Fragment() {
 
-    private var _binding: FragmentThirdFormBinding? = null
+    private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentThirdFormBinding.inflate(inflater, container, false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
+
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnNextThird.setOnClickListener {
-            findNavController().navigate(R.id.frag_fourth_form)
-        }
-        binding.btnFamilyDetailAdd.setOnClickListener {
-            findNavController().navigate(R.id.frag_family_member_form)
+        binding.btnNextDashboard.setOnClickListener {
+            findNavController().navigate(R.id.frag_first_form)
         }
 
     }
