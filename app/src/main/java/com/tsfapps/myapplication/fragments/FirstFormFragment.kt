@@ -1,12 +1,19 @@
 package com.tsfapps.myapplication.fragments
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import androidx.core.view.get
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,8 +25,13 @@ import com.tsfapps.myapplication.db.database.AppDatabase
 import com.tsfapps.myapplication.db.entity.GeneralEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
+import java.util.*
 
 class FirstFormFragment : Fragment() {
+
+    val REQUEST_PERMISSION = 1001
+
     private var _binding: FragmentFirstFormBinding? = null
     private val binding get() = _binding!!
 
@@ -64,7 +76,9 @@ class FirstFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.btnUploadPhoto.setOnClickListener {
+            captureImage()
+        }
 
         binding.btnNextFirst.setOnClickListener {
             val selectedId: Int? = binding.rgOwnerShip.selectedRadioButtonId
@@ -171,6 +185,56 @@ class FirstFormFragment : Fragment() {
 
             }
         }
+    }
+    private fun checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+            != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(),
+                arrayOf(Manifest.permission.CAMERA),
+                REQUEST_PERMISSION)
+        }
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    private fun captureImage() {
+
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                0
+            )
+        } else {
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            // Start the activity with camera_intent, and request pic id
+            startActivityForResult(cameraIntent, pic_id)
+        }
+
+    }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        // Match the request 'pic id with requestCode
+        if (requestCode == pic_id) {
+            // BitMap is data structure of image file which store the image in memory
+            val photo = data!!.extras!!["data"] as Bitmap?
+            // Set the image in imageview for display
+            binding.imageViewSelectedPhoto.setImageBitmap(photo)
+        }
+    }
+
+    companion object {
+        // Define the pic id
+        private const val pic_id = 123
+    }    override fun onResume() {
+        super.onResume()
+        checkCameraPermission()
     }
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,6 +1,5 @@
 package com.tsfapps.myapplication.customviews
 
-
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -27,8 +26,6 @@ class GridRadioGroup @JvmOverloads constructor(
     }
 
     override fun onClick(view: View) {
-        // While this looks inefficient, it does fix a bug (2 RadioButtons could be selected at the
-        // same time) when navigating back by popping-up a fragment from the backstack.
         for (index in 0 until childCount) {
             val radioButton = getChildAt(index) as RadioButton
             radioButton.isChecked = false
