@@ -12,18 +12,617 @@
         android:id="@+id/tvFragmentFourth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:text="@string/supplementary_sheet_for_occupiers_tenant"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/fourth_fragment"
-        android:textStyle="bold"/>
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btnNextFourth"
+        app:layout_constraintTop_toBottomOf="@id/tvFragmentFourth">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_background"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvCensusQuestionnaire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormalForSuppliment"
+                android:text="@string/_1_census_questionnaire_survey_no" />
+
+            <EditText
+                android:id="@+id/edCensusQuestionnaire"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                style="@style/CustomEditTextStyleForSuppliment"
+                android:inputType="numberDecimal"
+                android:hint="@string/enter_questionnaire_survey_no" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvOwnerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormalForSuppliment"
+                android:text="@string/_2_name_of_the_owner" />
+
+            <EditText
+                android:id="@+id/edOwnerName"
+                style="@style/CustomEditTextStyleForSuppliment"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:hint="@string/enter_owner_name"
+                android:inputType="text" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvOccupierName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormalForSuppliment"
+                android:text="@string/_3_name_of_the_occupier" />
+
+            <EditText
+                android:id="@+id/edOccupierName"
+                style="@style/CustomEditTextStyleForSuppliment"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:hint="@string/enter_occupier_name"
+                android:inputType="text" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvOccupierFatherName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormalForSuppliment"
+                android:text="4. Father’s Name of Occupier" />
+
+            <EditText
+                android:id="@+id/edOccupierFatherName"
+                style="@style/CustomEditTextStyleForSuppliment"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:hint="Enter Father’s Name of Occupier"
+                android:inputType="text" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvStatusOfOccupier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormalForSuppliment"
+                android:text="5. Status of Occupier" />
+
+            <Spinner
+                android:id="@+id/spinnerStatusOfOccupier"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="15sp"
+                android:layout_marginEnd="15sp"
+                android:background="@drawable/custom_spinner"
+                android:paddingStart="20sp"
+                android:spinnerMode="dropdown" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvSocialCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_6_social_category_of_ap" />
+
+            <RadioGroup
+                android:id="@+id/other_structure_radio_group"
+                style="@style/RadioGroupStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdSc"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sc" />
+
+                    <RadioButton
+                        android:id="@+id/rdSt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/st" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdObc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/obc" />
+
+                    <RadioButton
+                        android:id="@+id/rdOtherStructure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/etOtherStructure"
+                        android:layout_width="0dp"
+                        android:layout_height="40sp"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:hint="@string/specify_other"
+                        android:paddingStart="10dp" />
+
+                </LinearLayout>
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvReligiousCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                style="@style/TextViewNormal"
+                android:text="@string/_7_religious_category" />
+
+            <RadioGroup
+                android:id="@+id/religious_category_radio_group"
+                style="@style/RadioGroupStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdHindu"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/hindu" />
+
+                    <RadioButton
+                        android:id="@+id/rdMuslim"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/muslim" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdChristian"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/christian" />
+
+                    <RadioButton
+                        android:id="@+id/rdBuddhist"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/buddhist" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdJain"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/jain" />
+
+                    <RadioButton
+                        android:id="@+id/rdOtherReligious"
+                        style="@style/RadioButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/other" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/etOtherReligious"
+                        android:layout_width="0dp"
+                        android:layout_height="40sp"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:hint="@string/specify_other"
+                        android:paddingStart="10dp" />
+
+                </LinearLayout>
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvNumberOfFamilyMembers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormalForSuppliment"
+                android:text="8. Number of family members" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <!-- Row for Male -->
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <!-- TextView for Male -->
+                    <TextView
+                        android:id="@+id/tvMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextViewNormalForSuppliment"
+                        android:text="Male:-" />
+
+                    <!-- EditText for entering the number of Male family members -->
+                    <EditText
+                        android:id="@+id/edMale"
+                        style="@style/CustomEditTextStyleForSuppliment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40sp"
+                        android:hint="Enter Male count"
+                        android:inputType="number" />
+
+                </TableRow>
+
+                <!-- Row for Female -->
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <!-- TextView for Female -->
+                    <TextView
+                        android:id="@+id/tvFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextViewNormalForSuppliment"
+                        android:text="Female:-" />
+
+                    <!-- EditText for entering the number of Female family members -->
+                    <EditText
+                        android:id="@+id/edFemale"
+                        style="@style/CustomEditTextStyleForSuppliment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40sp"
+                        android:hint="Enter Female count"
+                        android:inputType="number" />
+
+                </TableRow>
+
+                <!-- Row for Total -->
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <!-- TextView for Total -->
+                    <TextView
+                        android:id="@+id/tvTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextViewNormalForSuppliment"
+                        android:text="Total:-" />
+
+                    <!-- EditText for entering the total number of family members -->
+                    <EditText
+                        android:id="@+id/edTotal"
+                        style="@style/CustomEditTextStyleForSuppliment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40sp"
+                        android:hint="Enter Total count"
+                        android:inputType="number" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvVulnerabilityStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="@string/_9_vulnerability_status_of_the_household" />
+
+            <RadioGroup
+                android:id="@+id/vulnerability_status_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <RadioButton
+                    android:id="@+id/rdWomanHeadedHousehold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Woman headed household" />
+
+                <RadioButton
+                    android:id="@+id/rdElderlyDisabledHeadedHousehold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Headed by elderly / physically disabled person?" />
+
+                <RadioButton
+                    android:id="@+id/rdBelowPovertyLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Below Poverty Line (BPL)" />
+
+                <RadioButton
+                    android:id="@+id/rdOtherVulnerabilityStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other" />
+
+                <EditText
+                    android:id="@+id/etOtherVulnerabilityStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Specify other vulnerability status"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+            </RadioGroup>
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvAnnualIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="15dp"
+                android:text="10. Annual income of the family in Rupees" />
+
+            <EditText
+                android:id="@+id/etAnnualIncome"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:inputType="numberDecimal"
+                style="@style/CustomEditTextStyle"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/enter_annual_income" />
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvIncomeRestorationAssistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                style="@style/TextViewNormal"
+                android:text="11. Income Restoration Assistance" />
+
+            <RadioGroup
+                android:id="@+id/income_restoration_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rdEmploymentOpportunities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Employment Opportunities in Construction work" />
+
+                <RadioButton
+                    android:id="@+id/rdAssistanceLoan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assistance/ Loan from other ongoing development scheme" />
+
+                <RadioButton
+                    android:id="@+id/rdVocationalTraining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vocational Training" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdOthers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/other" />
+
+                    <EditText
+                        android:id="@+id/etOther"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:hint="Specify Other Assistance" />
+
+                </LinearLayout>
+            </RadioGroup>
+
+
+            <View style="@style/DividerStyle" />
+
+            <TextView
+                android:id="@+id/tvFamilyMembersDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:text="@string/_12_details_of_family_members"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25sp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFamilyDetailAdd"
+                    android:layout_width="120sp"
+                    android:layout_height="40sp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Add Details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFamilyDetailDelete"
+                    android:layout_width="120sp"
+                    android:layout_height="40sp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Delete Details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBackFourth"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:background="@drawable/custom_button"
+        android:text="BACK"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnNextFourth"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="10dp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNextFourth"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:background="@drawable/custom_button"
+        android:text="@string/next"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/next"/>
+        app:layout_constraintStart_toEndOf="@id/btnBackFourth"
+        android:layout_marginStart="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

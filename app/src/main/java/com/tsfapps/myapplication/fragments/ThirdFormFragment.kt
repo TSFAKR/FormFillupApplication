@@ -27,9 +27,13 @@ class ThirdFormFragment : Fragment() {
         binding.btnNextThird.setOnClickListener {
             findNavController().navigate(R.id.frag_fourth_form)
         }
+        binding.btnBackThird.setOnClickListener {
+            findNavController().navigateUp()
+        }
         binding.btnFamilyDetailAdd.setOnClickListener {
             findNavController().navigate(R.id.frag_family_member_form)
         }
+
 
     }
 

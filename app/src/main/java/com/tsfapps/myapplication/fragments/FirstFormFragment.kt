@@ -5,13 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import com.tsfapps.myapplication.databinding.FragmentFirstFormBinding
 import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.R
 
-
 class FirstFormFragment : Fragment() {
-
     private var _binding: FragmentFirstFormBinding? = null
     private val binding get() = _binding!!
 
@@ -25,9 +24,18 @@ class FirstFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         binding.btnNextFirst.setOnClickListener {
             findNavController().navigate(R.id.frag_second_form)
         }
+        binding.btnBackFirst.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

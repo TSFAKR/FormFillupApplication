@@ -27,6 +27,12 @@ class FourthFormFragment : Fragment() {
         binding.btnNextFourth.setOnClickListener {
             findNavController().navigate(R.id.frag_fifth_form)
         }
+        binding.btnBackFourth.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.btnFamilyDetailAdd.setOnClickListener {
+            findNavController().navigate(R.id.frag_family_member_form)
+        }
 
     }
 

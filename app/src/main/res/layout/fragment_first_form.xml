@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frag_first_form"
@@ -46,10 +44,14 @@
 
                 <!-- First GridLayout -->
                 <TextView
+                    android:id="@+id/tvGeneral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
                     android:layout_marginTop="10dp"
                     android:text="@string/general"
                     style="@style/TextViewHeadings"
-                    />
+                     />
 
                 <TextView
                     android:id="@+id/tvQuestionnaireNo"
@@ -61,7 +63,7 @@
                 <EditText
                     android:id="@+id/edtQuestionnaireNo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
@@ -78,7 +80,7 @@
                 <EditText
                     android:id="@+id/edtVillageName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
@@ -95,7 +97,7 @@
                 <EditText
                     android:id="@+id/edtBlockName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
@@ -112,7 +114,7 @@
                 <EditText
                     android:id="@+id/edtDistrictName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
@@ -129,9 +131,9 @@
                 <EditText
                     android:id="@+id/edtThanaNo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_columnWeight="1"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
                     tools:ignore="LabelFor" />
@@ -146,9 +148,9 @@
                 <EditText
                     android:id="@+id/edtPlotNo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_columnWeight="1"
-                    android:inputType="number"
+                    android:inputType="text"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
                     tools:ignore="LabelFor" />
@@ -159,19 +161,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
+                android:paddingStart="5dp"
                 android:background="@drawable/custom_background"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tvOwnershipOfAffectedLand"
-                    style="@style/TextViewHeadings"
-                    android:text="@string/ownership_of_affected_land"
-                    />
+            <TextView
+                android:id="@+id/tvOwnershipOfAffectedLand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                style="@style/TextViewHeadings"
+                android:text="@string/ownership_of_affected_land"
+                 />
 
                 <TextView
                     android:id="@+id/tvOwnershipOfLandOfLand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     style="@style/TextViewNormal"
+                    android:paddingStart="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
                     android:textSize="15sp"
                     android:text="@string/ownership_of_the_land" />
 
@@ -191,8 +201,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Private"
-                            android:clickable="true"
-                            android:checked="true" />
+                            />
 
                         <RadioButton
                             android:id="@+id/radio_government"
@@ -200,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Government"
-                            android:clickable="true" />
+                           />
 
                         <RadioButton
                             android:id="@+id/radio_religious"
@@ -208,44 +217,49 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Religious"
-                            android:clickable="true" />
+                            />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:weightSum="3">
 
                         <RadioButton
                             android:id="@+id/radio_community"
-                            android:layout_width="0dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Community"
-                            android:clickable="true" />
+                             />
 
                         <RadioButton
                             android:id="@+id/radio_others"
-                            android:layout_width="0dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Others:"
-                            android:clickable="true" />
+                            android:text="Other"
+                             />
 
                         <EditText
                             android:id="@+id/others_specify"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
                             android:layout_weight="1"
                             android:layout_marginEnd="10sp"
                             android:gravity="center"
+                            android:layout_gravity="end"
                             android:hint="@string/specify"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
                             android:background="@drawable/custom_edittext"
                             android:inputType="text" />
 
+
+
                     </LinearLayout>
+
 
                 </RadioGroup>
 
@@ -257,645 +271,778 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="#808080" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvTypeOfLand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:layout_gravity="top"
+                android:text="@string/type_of_land" />
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/tvTypeOfLand"
-                        android:layout_width="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/check_irrigated"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:layout_gravity="top"
-                        android:text="@string/type_of_land" />
-                    <RadioGroup
-                        android:id="@+id/type_of_land_radio_group"
-                        android:layout_width="match_parent"
+                        android:layout_marginStart="5sp"
+                        android:layout_weight="1"
+                        android:text="Irrigated" />
+
+                    <CheckBox
+                        android:id="@+id/check_non_irrigated"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rdIrrigated"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Irrigated" />
-
-                            <RadioButton
-                                android:id="@+id/rdNonIrrigated"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="4dp"
-                                android:text="Non-Irrigated" />
-
-                            <RadioButton
-                                android:id="@+id/rdBarren"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="Barren" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rdForest"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Forest" />
-
-                            <RadioButton
-                                android:id="@+id/rdResidential"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="Residential" />
-
-                            <RadioButton
-                                android:id="@+id/rdCommercial"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="Commercial" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rdPond"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Pond" />
-
-                            <RadioButton
-                                android:id="@+id/rdOthers"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="Others:" />
-
-                            <EditText
-                                android:id="@+id/edtSpecify"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginEnd="10sp"
-                                android:gravity="center"
-                                android:hint="@string/specify"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp"
-                                android:background="@drawable/custom_edittext"
-                                android:inputType="text" />
-
-                        </LinearLayout>
-
-                    </RadioGroup>
-
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:text="Non-Irrigated" />
                 </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/check_barren"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="10dp"
+                        style="@style/CheckBoxStyle"
+                        android:text="Barren" />
+
+                    <CheckBox
+                        android:id="@+id/check_forest"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/CheckBoxStyle"
+                        android:text="Forest" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/check_residential"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/CheckBoxStyle"
+                        android:text="Residential" />
+
+                    <CheckBox
+                        android:id="@+id/check_commercial"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/CheckBoxStyle"
+                        android:text="Commercial" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <CheckBox
+                    android:id="@+id/check_pond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CheckBoxStyle"
+                    android:text="Pond" />
+
+            </LinearLayout>
+
+
+            <!-- ImageView to display the selected photo -->
+            <ImageView
+                android:id="@+id/imageViewSelectedPhoto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/placeholder_image"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Button to select the photo from gallery or camera -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUploadPhoto"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="Upload Land Photo"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:background="@drawable/custom_button"
+                android:drawableStart="@drawable/baseline_add_a_photo"
+                android:layout_gravity="center"
+                android:paddingStart="5sp"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
                 <View
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="#808080" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvUseOfLand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="@string/use_of_land" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="3"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvUseOfLand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_gravity="top"
-                        android:text="@string/use_of_land" />
-
-                    <RadioGroup
-                        android:id="@+id/use_of_land_radio_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="3"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdCultivation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Cultivation" />
-
-                            <RadioButton
-                                android:id="@+id/rdOrchard"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="Orchard" />
-
-                            <RadioButton
-                                android:id="@+id/rdResidential1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="1"
-                                android:text="Residential" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="3"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdCommercial1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Commercial" />
-
-                            <RadioButton
-                                android:id="@+id/rdForestation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="Forestation" />
-
-                            <RadioButton
-                                android:id="@+id/rdNoUseBarren"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="5dp"
-                                android:text="No Use/Barren" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdOther1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Other:" />
-
-                            <EditText
-                                android:id="@+id/edtPleaseSpecify"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/specify"
-                                android:layout_marginStart="5dp"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp"
-                                android:background="@drawable/custom_edittext"
-                                android:inputType="text" />
-
-                        </LinearLayout>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-                <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#808080" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tvAffectedArea"
+                    <CheckBox
+                        android:id="@+id/checkCultivation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_gravity="top"
-                        android:text="4. Affected area of the Land/Plot:" />
+                        android:layout_weight="1"
+                        android:text="Cultivation" />
 
-                    <EditText
-                        android:id="@+id/edtAffectedLand"
+                    <CheckBox
+                        android:id="@+id/checkOrchard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter in acre"
+                        android:layout_weight="1"
+                        android:text="Orchard" />
+
+                    <CheckBox
+                        android:id="@+id/checkResidential1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal" />
+                        android:layout_weight="1"
+                        android:text="Residential" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:weightSum="3"
                     android:orientation="horizontal">
 
-
-                    <TextView
-                        android:id="@+id/tvAffectedArea1"
+                    <CheckBox
+                        android:id="@+id/checkCommercial1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_gravity="top"
-                        android:text="5. Total Area of the affected Land/Plot:" />
+                        android:layout_weight="1"
+                        android:text="Commercial" />
 
-                    <EditText
-                        android:id="@+id/edtTotalLand"
+                    <CheckBox
+                        android:id="@+id/checkForestation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Enter in acre"
+                        android:layout_weight="1"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal" />
+                        android:text="Forestation" />
 
-                </LinearLayout>
-                <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#808080" />
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:padding="@dimen/padding_grid"
-                    android:layout_marginTop="16dp">
-
-                    <!-- Previous GridLayout items... -->
-
-                    <TextView
-                        android:id="@+id/tvTotalLandHolding"
+                    <CheckBox
+                        android:id="@+id/checkNoUseBarren"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:paddingStart="5dp"
-                        android:layout_columnSpan="2"
-                        android:layout_marginTop="10dp"
-                        android:text="6. Total Land Holding of the Affected Person (in Acre)"
-                        android:textSize="15sp"
-                        />
-
-                    <TextView
-                        android:id="@+id/tvIrrigated"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="a. Irrigated:" />
-
-                    <EditText
-                        android:id="@+id/edtIrrigated"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal"
+                        android:layout_weight="1"
                         android:layout_marginStart="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
-
-                    <TextView
-                        android:id="@+id/tvNonIrrigated"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="b. Non-irrigated:" />
-
-                    <EditText
-                        android:id="@+id/edtNonIrrigated"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
-
-                    <TextView
-                        android:id="@+id/tvOtherLand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="c. Other:" />
-
-                    <EditText
-                        android:id="@+id/edtOtherLand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
-
-                    <TextView
-                        android:id="@+id/tvTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="d. Total:" />
-
-                    <EditText
-                        android:id="@+id/edtTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
-
-                </GridLayout>
-                <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#808080" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvOwnershipStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_gravity="top"
-                        android:text="7. Status of Ownership" />
-
-                    <RadioGroup
-                        android:id="@+id/ownership_status_radio_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdTitleholder"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Titleholder" />
-
-                            <RadioButton
-                                android:id="@+id/rdCustomaryRight"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Customary Right" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdLicense"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="License from Local Authority" />
-
-                            <RadioButton
-                                android:id="@+id/rdEncroacher"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Encroacher" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rdSquatter"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Squatter" />
-
-                            <RadioButton
-                                android:id="@+id/rdOther2"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Other:" />
-
-                            <EditText
-                                android:id="@+id/edtOwnershipSpecify"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:hint="@string/specify"
-                                android:layout_marginEnd="10dp"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp"
-                                android:background="@drawable/custom_edittext"
-                                android:inputType="text" />
-
-                        </LinearLayout>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-                <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#808080" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5sp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvPrivateOwnership"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextViewNormal"
-                        android:paddingStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_gravity="top"
-                        android:text="8. Type of Private Ownership" />
-
-                    <RadioGroup
-                        android:id="@+id/private_ownership_radio_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdIndividual"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Individual/Single" />
-
-                            <RadioButton
-                                android:id="@+id/rdJoint"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Joint/Shareholders"
-                                android:layout_marginStart="10dp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdOtherOwnership"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Other:" />
-
-                            <EditText
-                                android:id="@+id/edtPrivateOwnershipSpecify"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/specify"
-                                android:layout_marginStart="5dp"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp"
-                                android:background="@drawable/custom_edittext"
-                                android:inputType="text" />
-
-                        </LinearLayout>
-
-                    </RadioGroup>
+                        android:text="No Use/Barren" />
 
                 </LinearLayout>
 
+            </LinearLayout>
                 <View
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="#808080" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/tvOwnerName"
+                    android:id="@+id/tvAffectedArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     style="@style/TextViewNormal"
-                    android:text="9. Name of the Owner/Occupier(s):" />
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="4. Affected area of the Land/Plot" />
 
                 <EditText
-                    android:id="@+id/edtOwnerName"
+                    android:id="@+id/edtAffectedLand"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:hint="Enter in Hectare"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#808080" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvAffectedArea1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="5. Total Area of the affected Land/Plot" />
+
+                <EditText
+                    android:id="@+id/edtTotalLand"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:hint="Enter in Hectare"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#808080" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:padding="@dimen/padding_grid"
+                android:layout_marginTop="16dp">
+
+                <!-- Previous GridLayout items... -->
+
+                <TextView
+                    android:id="@+id/tvTotalLandHolding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                    android:paddingStart="5dp"
+                    android:layout_columnSpan="2"
+                    android:layout_marginTop="10dp"
+                    android:text="6. Total Land Holding of the Affected Person (in Hectare)"
+                    android:textSize="15sp"
+                     />
+
+                <TextView
+                    android:id="@+id/tvIrrigated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="a. Irrigated:" />
+
+                <EditText
+                    android:id="@+id/edtIrrigated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="0dp" />
+
+                <TextView
+                    android:id="@+id/tvNonIrrigated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="b. Non-irrigated:" />
+
+                <EditText
+                    android:id="@+id/edtNonIrrigated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="0dp" />
+
+                <TextView
+                    android:id="@+id/tvOtherLand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="c. Other:" />
+
+                <EditText
+                    android:id="@+id/edtOtherLand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="0dp" />
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="d. Total:" />
+
+                <EditText
+                    android:id="@+id/edtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="0dp" />
+
+            </GridLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#808080" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvOwnershipStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="7. Status of Ownership" />
+
+                <RadioGroup
+                    android:id="@+id/ownership_status_radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter name(s)"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rdTitleholder"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Titleholder" />
+
+                        <RadioButton
+                            android:id="@+id/rdCustomaryRight"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Customary Right" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rdLicense"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="License from Local Authority" />
+
+                        <RadioButton
+                            android:id="@+id/rdEncroacher"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Encroacher" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rdSquatter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Squatter" />
+
+                        <RadioButton
+                            android:id="@+id/rdOther2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Other" />
+
+                        <EditText
+                            android:id="@+id/edtOwnershipSpecify"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:hint="@string/specify"
+                            android:layout_marginEnd="10dp"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:background="@drawable/custom_edittext"
+                            android:inputType="text" />
+
+                    </LinearLayout>
+
+                </RadioGroup>
+
+            </LinearLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#808080" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPrivateOwnership"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="8. Type of Private Ownership" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:id="@+id/private_ownership_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                        <RadioButton
+                            android:id="@+id/rdIndividual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Individual/Single" />
+
+                        <RadioButton
+                            android:id="@+id/rdJoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Joint/Shareholders"
+                            android:layout_marginStart="10dp" />
+
+                </RadioGroup>
+
+                    </LinearLayout>
+
+
+
+            </LinearLayout>
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#808080" />
+            <TextView
+                android:id="@+id/tvOwnerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="top"
+                android:text="9. Name of the Owner/Occupier" />
+
+            <EditText
+                android:id="@+id/edtOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Enter Name of the Owner/Occupier "
+                android:paddingStart="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:inputType="text" />
+                <ImageView
+                    android:id="@+id/imageViewOwnerPhoto"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/placeholder_image"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUploadOwnerPhoto"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:text="Upload Occupier Photo"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:background="@drawable/custom_button"
+                    android:drawableStart="@drawable/baseline_add_a_photo"
+                    android:layout_gravity="center"
+                    android:paddingStart="5sp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/tvIdentityProof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="a. Proof of identity(Aadhaar/ PAN/ Voter-ID etc)" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupDocumentType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    >
+
+                    <!-- First row with two radio buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonAadhaar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Aadhaar" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonPan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Pan"
+                            android:layout_marginStart="20dp" />
+
+                    </LinearLayout>
+
+                    <!-- Second row with two radio buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonVoterID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Voter-ID" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Other"
+                            android:layout_marginStart="20dp" />
+
+                    </LinearLayout>
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/edtProofOfIdentity"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="Please Specify Document Name"
                     android:paddingStart="5dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/custom_edittext"
                     android:inputType="text" />
 
-                <!-- Section 10: Father's Name -->
+                <ImageView
+                    android:id="@+id/imageViewIdentityProof"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/placeholder_image"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUploadIdentityProof"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:text="Upload Identity Proof"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/custom_button"
+                    android:drawableStart="@drawable/baseline_add_a_photo"
+                    android:paddingStart="5sp"
+                    android:layout_marginTop="10dp" />
+
                 <TextView
-                    android:id="@+id/tvFatherName"
+                    android:id="@+id/tvBankAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     style="@style/TextViewNormal"
-                    android:text="10. Father's Name:" />
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="top"
+                    android:text="b. Bank Account Details" />
 
                 <EditText
-                    android:id="@+id/edtFatherName"
+                    android:id="@+id/edtNameOfBank"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter father's name"
+                    android:layout_height="40dp"
+                    android:hint="i. Name of the Bank"
                     android:paddingStart="5dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@drawable/custom_edittext"
                     android:inputType="text" />
+
+
+                <EditText
+                    android:id="@+id/edtAccountNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="ii. Account Number"
+                    android:paddingStart="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/edtIfscCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="iii. IFSC Code"
+                    android:paddingStart="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="text" />
+
+
+
 
                 <View
                     android:layout_marginTop="10dp"
@@ -904,54 +1051,94 @@
                     android:background="#808080" />
 
                 <TextView
-                    android:id="@+id/tvLandRate"
-                    style="@style/TextViewNormal"
-                    android:text="11. Rate of the Land (Per Acre)" />
-                <GridLayout
+                android:id="@+id/tvFatherName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:paddingStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="top"
+                android:text="10. Father's Name:" />
+
+            <EditText
+                android:id="@+id/edtFatherName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Enter father's name"
+                android:paddingStart="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/custom_edittext"
+                android:inputType="text" />
+
+
+                <View
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#808080" />
+
+                <TextView
+                android:id="@+id/tvLandRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                    style="@style/TextViewNormal"
+                android:paddingStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_gravity="top"
+                android:text="11. Rate of the Land (Per Hectare)" />
+
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:padding="@dimen/padding_grid"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:id="@+id/tvMarketRate"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:padding="@dimen/padding_grid"
-                    android:layout_marginTop="5dp">
+                    android:paddingStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:text="a. Market Rate:" />
 
+                <EditText
+                    android:id="@+id/edtMarketRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal" />
 
-                    <TextView
-                        android:id="@+id/tvMarketRate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:text="a. Market Rate:" />
+                <TextView
+                    android:id="@+id/tvRevenueRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="5dp"
+                    android:text="b. Revenue Rate:" />
 
-                    <EditText
-                        android:id="@+id/edtMarketRate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_columnWeight="1"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edtRevenueRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="numberDecimal" />
 
-                    <TextView
-                        android:id="@+id/tvRevenueRate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:text="b. Revenue Rate:" />
-
-                    <EditText
-                        android:id="@+id/edtRevenueRate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_columnWeight="1"
-                        android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal" />
-
-                </GridLayout>
+            </GridLayout>
                 <View
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
@@ -985,7 +1172,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="5dp"
                             android:layout_marginTop="15dp"
-                            android:text="A. Agricultural Laborer" />
+                            android:text="a. Agricultural Laborer" />
 
                         <RadioGroup
                             android:id="@+id/agricultural_laborer_radio_group"
@@ -993,14 +1180,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:weightSum="2"
-                            android:orientation="vertical">
-
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/rdAgriculturalLaborerYes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
                                 android:layout_weight="1"
                                 android:text="Yes" />
 
@@ -1012,42 +1197,42 @@
                                 android:text="No"
                                 android:layout_marginStart="10dp" />
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-
-                                <EditText
-                                    android:id="@+id/edtAgriculturalLaborerName1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Enter Name (i)"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginStart="5dp"
-                                    android:paddingStart="5dp"
-                                    android:paddingEnd="5dp"
-                                    android:background="@drawable/custom_edittext"
-                                    android:inputType="text" />
-
-
-                                <EditText
-                                    android:id="@+id/edtAgriculturalLaborerName2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Enter Name (ii)"
-                                    android:paddingStart="5dp"
-                                    android:paddingEnd="5dp"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/custom_edittext"
-                                    android:inputType="text" />
-
-                            </LinearLayout>
-
                         </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edtAgriculturalLaborerName1"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:hint="Enter Name (i)"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginStart="5dp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:background="@drawable/custom_edittext"
+                                android:inputType="text" />
+
+                            <EditText
+                                android:id="@+id/edtAgriculturalLaborerName2"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:hint="Enter Name (ii)"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:background="@drawable/custom_edittext"
+                                android:inputType="text" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -1062,7 +1247,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="5dp"
                             android:layout_marginTop="15dp"
-                            android:text="B. Tenant/Lessee" />
+                            android:text="b. Tenant/Lessee" />
 
                         <RadioGroup
                             android:id="@+id/tenant_lessee_radio_group"
@@ -1070,36 +1255,39 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:weightSum="2"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
 
-                            <RadioButton
-                                android:id="@+id/rdTenantLesseeYes"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="1"
-                                android:text="Yes" />
+                                <RadioButton
+                                    android:id="@+id/rdTenantLesseeYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_weight="1"
+                                    android:text="Yes" />
 
-                            <RadioButton
-                                android:id="@+id/rdTenantLesseeNo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="No"
-                                android:layout_marginStart="10dp" />
+                                <RadioButton
+                                    android:id="@+id/rdTenantLesseeNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="No"
+                                    android:layout_marginStart="10dp" />
+                        </RadioGroup>
 
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:weightSum="2"
                                 android:orientation="horizontal">
 
 
                                 <EditText
                                     android:id="@+id/edtTenantLesseeName1"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
                                     android:hint="Enter Name (i)"
                                     android:paddingStart="5dp"
                                     android:paddingEnd="5dp"
@@ -1112,18 +1300,20 @@
                                 <EditText
                                     android:id="@+id/edtTenantLesseeName2"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
                                     android:hint="Enter Name (ii)"
                                     android:paddingStart="5dp"
                                     android:paddingEnd="5dp"
                                     android:layout_marginStart="5dp"
                                     android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="15dp"
                                     android:background="@drawable/custom_edittext"
                                     android:inputType="text" />
 
                             </LinearLayout>
 
-                        </RadioGroup>
+
 
                     </LinearLayout>
 
@@ -1138,7 +1328,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="5dp"
                             android:layout_marginTop="15dp"
-                            android:text="C. Sharecropper" />
+                            android:text="c. Sharecropper" />
 
                         <RadioGroup
                             android:id="@+id/sharecropper_radio_group"
@@ -1146,37 +1336,40 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:weightSum="2"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
 
-                            <RadioButton
-                                android:id="@+id/rdSharecropperYes"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="1"
-                                android:text="Yes" />
+                                <RadioButton
+                                    android:id="@+id/rdSharecropperYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_weight="1"
+                                    android:text="Yes" />
 
-                            <RadioButton
-                                android:id="@+id/rdSharecropperNo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="No"
-                                android:layout_marginStart="10dp" />
+                                <RadioButton
+                                    android:id="@+id/rdSharecropperNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="No"
+                                    android:layout_marginStart="10dp" />
+                        </RadioGroup>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
+                                android:weightSum="2"
                                 android:layout_marginBottom="15dp">
 
 
                                 <EditText
                                     android:id="@+id/edtSharecropperName1"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="40dp"
                                     android:hint="Enter Name (i)"
+                                    android:layout_weight="1"
                                     android:paddingStart="5dp"
                                     android:paddingEnd="5dp"
                                     android:layout_marginStart="5dp"
@@ -1187,18 +1380,20 @@
                                 <EditText
                                     android:id="@+id/edtSharecropperName2"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="40dp"
                                     android:hint="Enter Name (ii)"
+                                    android:layout_weight="1"
                                     android:paddingStart="5dp"
                                     android:paddingEnd="5dp"
                                     android:layout_marginStart="5dp"
                                     android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="15dp"
                                     android:background="@drawable/custom_edittext"
                                     android:inputType="text" />
 
                             </LinearLayout>
 
-                        </RadioGroup>
+
 
                     </LinearLayout>
 
@@ -1211,16 +1406,31 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBackFirst"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:background="@drawable/custom_button"
+        android:text="BACK"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnNextFirst"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNextFirst"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:background="@drawable/custom_button"
         android:text="@string/next"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/custom_button"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/btnBackFirst"
+        android:layout_marginStart="10dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

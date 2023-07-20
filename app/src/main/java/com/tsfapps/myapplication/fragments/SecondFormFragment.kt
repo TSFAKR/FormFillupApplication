@@ -27,6 +27,9 @@ class SecondFormFragment : Fragment() {
         binding.btnNextSecond.setOnClickListener {
             findNavController().navigate(R.id.frag_third_form)
         }
+        binding.btnBackSecond.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
     }
 
