@@ -1,6 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frag_first_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -184,52 +185,52 @@
                     android:layout_gravity="top"
                     android:textSize="15sp"
                     android:text="@string/ownership_of_the_land" />
+                <com.tsfapps.myapplication.customviews.RadioGridGroup
+                    android:id="@+id/rgOwnerShip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3">
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio_private"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/_private"
+                        />
 
-                <com.tsfapps.myapplication.customviews.ToggleButtonGroupTableLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:id="@+id/radGroup1">
-                    <TableRow>
-                        <RadioButton
-                            android:id="@+id/radio_private"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Private"
-                            />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio_government"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/government"
+                        android:layout_columnWeight="1"
+                        />
 
-                        <RadioButton
-                            android:id="@+id/radio_government"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Government"
-                            />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio_religious"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/religious"
+                        android:layout_columnWeight="1"
+                        />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio_community"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/community"
+                        android:layout_columnWeight="1"
+                        />
 
-                        <RadioButton
-                            android:id="@+id/radio_religious"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Religious"
-                            />
-                    </TableRow>
-                    <TableRow>
-                        <RadioButton
-                            android:id="@+id/radio_community"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Community"
-                            />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/other"
+                        android:layout_columnWeight="1"
+                        />
+                </com.tsfapps.myapplication.customviews.RadioGridGroup>
 
-                        <RadioButton
-                            android:id="@+id/radio_others"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Other"
-                            />
-
-                    </TableRow>
-                </com.tsfapps.myapplication.customviews.ToggleButtonGroupTableLayout>
                 <EditText
                     android:id="@+id/others_specify"
                     android:layout_width="match_parent"
