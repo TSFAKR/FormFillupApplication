@@ -185,85 +185,64 @@
                     android:textSize="15sp"
                     android:text="@string/ownership_of_the_land" />
 
-                <RadioGroup
-                    android:id="@+id/ownership_radio_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
+                <com.tsfapps.myapplication.customviews.ToggleButtonGroupTableLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:id="@+id/radGroup1">
+                    <TableRow>
                         <RadioButton
                             android:id="@+id/radio_private"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="Private"
                             />
 
                         <RadioButton
                             android:id="@+id/radio_government"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="Government"
-                           />
+                            />
 
                         <RadioButton
                             android:id="@+id/radio_religious"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="Religious"
                             />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="3">
-
+                    </TableRow>
+                    <TableRow>
                         <RadioButton
                             android:id="@+id/radio_community"
-                            android:layout_width="70dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Community"
-                             />
+                            />
 
                         <RadioButton
                             android:id="@+id/radio_others"
-                            android:layout_width="70dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Other"
-                             />
+                            />
 
-                        <EditText
-                            android:id="@+id/others_specify"
-                            android:layout_width="70dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="10sp"
-                            android:gravity="center"
-                            android:layout_gravity="end"
-                            android:hint="@string/specify"
-                            android:paddingStart="5dp"
-                            android:paddingEnd="5dp"
-                            android:background="@drawable/custom_edittext"
-                            android:inputType="text" />
-
-
-
-                    </LinearLayout>
-
-
-                </RadioGroup>
-
-
+                    </TableRow>
+                </com.tsfapps.myapplication.customviews.ToggleButtonGroupTableLayout>
+                <EditText
+                    android:id="@+id/others_specify"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:minHeight="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10sp"
+                    android:layout_gravity="end"
+                    android:hint="@string/specify"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="text" />
 
 
                 <View
