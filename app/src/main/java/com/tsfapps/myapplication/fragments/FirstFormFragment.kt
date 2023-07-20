@@ -84,6 +84,9 @@ class FirstFormFragment : Fragment() {
                     findNavController().navigate(R.id.frag_second_form)
                 }
             }
+            else{
+                findNavController().navigate(R.id.frag_second_form)
+            }
             strAffectedLand = binding.edtAffectedLand.text.toString()
             strTotalLand = binding.edtTotalLand.text.toString()
             strIrrigated = binding.edtNonIrrigated.text.toString()
