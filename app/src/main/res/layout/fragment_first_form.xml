@@ -185,17 +185,18 @@
                     android:layout_gravity="top"
                     android:textSize="15sp"
                     android:text="@string/ownership_of_the_land" />
-                <com.tsfapps.myapplication.customviews.RadioGridGroup
+                <com.tsfapps.myapplication.customviews.GridRadioGroup
                     android:id="@+id/rgOwnerShip"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="3">
+                    app:columnCount="3">
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/radio_private"
                         android:checked="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1"
                         android:text="@string/_private"
                         />
 
@@ -204,7 +205,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/government"
-                        android:layout_columnWeight="1"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1"
                         />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
@@ -212,14 +214,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/religious"
-                        android:layout_columnWeight="1"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1"
                         />
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/radio_community"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/community"
-                        android:layout_columnWeight="1"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1"
                         />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
@@ -227,12 +231,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/other"
-                        android:layout_columnWeight="1"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1"
                         />
-                </com.tsfapps.myapplication.customviews.RadioGridGroup>
+                </com.tsfapps.myapplication.customviews.GridRadioGroup>
 
                 <EditText
-                    android:id="@+id/others_specify"
+                    android:id="@+id/etOtherSpecifyAffectedLand"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:minHeight="40dp"

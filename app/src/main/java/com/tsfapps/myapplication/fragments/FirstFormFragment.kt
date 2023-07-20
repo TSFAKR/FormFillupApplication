@@ -63,18 +63,27 @@ class FirstFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val selectedId: Int = binding.rgOwnerShip.getCheckedCheckableImageButtonId()
-        val radioButton =  view.findViewById<RadioButton>(selectedId)
+
+
 
         binding.btnNextFirst.setOnClickListener {
-
+            val selectedId: Int? = binding.rgOwnerShip.selectedRadioButtonId
+            val radioButton = selectedId?.let { view.findViewById<RadioButton>(it) }
             strQuestionnaireNo = binding.edtQuestionnaireNo.text.toString()
             strVillageName = binding.edtVillageName.text.toString()
             strBlockName = binding.edtBlockName.text.toString()
             strDistrictName = binding.edtDistrictName.text.toString()
             strThanaNo = binding.edtThanaNo.text.toString()
             strPlotNo = binding.edtPlotNo.text.toString()
-            strOwnerShipLand = radioButton.text.toString()
+            strOwnerShipLand = radioButton?.text.toString()
+            if (strOwnerShipLand == "Other"){
+                if (binding.etOtherSpecifyAffectedLand.text.isEmpty()){
+                    binding.etOtherSpecifyAffectedLand.error = "Please specify the Ownership"
+                }else{
+                    strOwnerShipLand = binding.etOtherSpecifyAffectedLand.text.toString()
+                    findNavController().navigate(R.id.frag_second_form)
+                }
+            }
             strAffectedLand = binding.edtAffectedLand.text.toString()
             strTotalLand = binding.edtTotalLand.text.toString()
             strIrrigated = binding.edtNonIrrigated.text.toString()
@@ -104,7 +113,7 @@ class FirstFormFragment : Fragment() {
                 strFatherName, strMarketRate, strRevenueRate, strAgriculturalLaborerName1,
                 strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2,
                 strSharecropperName1, strSharecropperName2)
-            findNavController().navigate(R.id.frag_second_form)
+
         }
         binding.btnBackFirst.setOnClickListener {
             findNavController().navigateUp()
