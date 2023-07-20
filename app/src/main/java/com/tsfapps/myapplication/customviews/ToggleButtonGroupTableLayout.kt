@@ -12,15 +12,7 @@ class ToggleButtonGroupTableLayout @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : TableLayout(context, attrs), View.OnClickListener {
 
-    companion object {
-        private const val TAG = "ToggleButtonGroupTableLayout"
-    }
-
     private var activeRadioButton: RadioButton? = null
-
-    init {
-        // Empty constructor body
-    }
 
     override fun onClick(v: View) {
         val rb = v as RadioButton

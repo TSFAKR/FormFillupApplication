@@ -8,9 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.tsfapps.myapplication.databinding.FragmentFirstFormBinding
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.tsfapps.myapplication.R
+import com.tsfapps.myapplication.db.dao.GeneralDao
+import com.tsfapps.myapplication.db.database.AppDatabase
+import com.tsfapps.myapplication.db.entity.GeneralEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FirstFormFragment : Fragment() {
     private var _binding: FragmentFirstFormBinding? = null
@@ -51,8 +58,10 @@ class FirstFormFragment : Fragment() {
         return binding.root
     }
 
+    private lateinit var generalDao: GeneralDao
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
 
         binding.btnNextFirst.setOnClickListener {
@@ -84,7 +93,8 @@ class FirstFormFragment : Fragment() {
             strSharecropperName1 = binding.edtSharecropperName1.text.toString()
             strSharecropperName2 = binding.edtSharecropperName2.text.toString()
 
-
+            generalDB(strQuestionnaireNo, strVillageName,
+                strBlockName, strDistrictName, strThanaNo, strPlotNo, strAffectedLand)
             Log.d("TSF_APPS", strQuestionnaireNo+" "+
                     strVillageName+" "+
                     strBlockName+" "+
@@ -118,8 +128,34 @@ class FirstFormFragment : Fragment() {
         binding.btnBackFirst.setOnClickListener {
             findNavController().navigateUp()
         }
-    }
 
+        val db = Room.databaseBuilder(
+            requireContext(),
+            AppDatabase::class.java, "form_database"
+        ).build()
+        generalDao = db.generalDao()
+
+    }
+    private fun generalDB(strQuestionnaireNo:String,
+                          strVillageName:String,
+                          strBlockName:String,
+                          strDistrictName:String,
+                          strThanaNo:String,
+                          strPlotNo:String,
+                          strAffectedLand:String
+    ){
+        lifecycleScope.launch(Dispatchers.IO) {
+            generalDao.insertGeneral(GeneralEntity(0, strQuestionnaireNo, strVillageName,
+                strBlockName, strDistrictName, strThanaNo, strPlotNo, strAffectedLand))
+
+            val generalAll = generalDao.getAll()
+            for (general in generalAll) {
+                Log.i("TSF_APPS","id: ${general.generalId} Questionnaire No: ${general.questionnaireNo}" +
+                        " Village Name: ${general.villageName}")
+
+            }
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
