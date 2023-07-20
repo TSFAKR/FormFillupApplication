@@ -144,6 +144,10 @@
     <string name="_7_religious_category">7. Religious Category</string>
     <string name="_9_vulnerability_status_of_the_household">9. Vulnerability Status of the Household</string>
     <string name="_12_details_of_family_members">12. Details of Family Members</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_username">Enter UserName</string>
+    <string name="please_login_in_to_continue">Please Login in to continue.</string>
+    <string name="login">Login</string>
 
 
 </resources>

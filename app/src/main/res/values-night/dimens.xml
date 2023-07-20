@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="padding_main">5dp</dimen>
-    <dimen name="padding_grid">5dp</dimen>
     <dimen name="padding_login">32dp</dimen>
 </resources>

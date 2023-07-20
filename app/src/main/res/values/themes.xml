@@ -92,6 +92,19 @@
 
     </style>
 
+    <style name="TlLoginStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">15dp</item>
+    </style>
+    <style name="EtLoginStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+       <item name="paddingStart">10dp</item>
+       <item name="paddingEnd">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 
 
