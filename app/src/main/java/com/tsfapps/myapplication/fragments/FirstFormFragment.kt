@@ -40,6 +40,8 @@ class FirstFormFragment : Fragment() {
     private val binding get() = _binding!!
     private var typeOfLand = arrayOf<CheckBox>()
     private var typeOfLandChecked = mutableListOf<String>()
+    private var useOfLand = arrayOf<CheckBox>()
+    private var useOfLandChecked = mutableListOf<String>()
 
     private var strQuestionnaireNo: String = ""
     private var strVillageName: String = ""
@@ -47,7 +49,10 @@ class FirstFormFragment : Fragment() {
     private var strDistrictName: String = ""
     private var strThanaNo: String = ""
     private var strPlotNo: String = ""
-    private var strOwnerShipLand: String = ""
+    private var strRbOwnerShipLand: String = ""
+    private var strRbDocumentType: String = ""
+    private var strRbOwnershipStatus: String = ""
+    private var strRbAgriculturalLaborer: String = ""
     private var strAffectedLand: String = ""
     private var strTotalLand: String = ""
     private var strIrrigated: String = ""
@@ -96,6 +101,18 @@ class FirstFormFragment : Fragment() {
             val selectedId: Int? = binding.rgOwnerShip.selectedRadioButtonId
             val radioButton = selectedId?.let { view.findViewById<RadioButton>(it) }
 
+            val radioGroupDocumentType: Int? = binding.radioGroupDocumentType.selectedRadioButtonId
+            val rbDocumentType = radioGroupDocumentType?.let { view.findViewById<RadioButton>(it) }
+
+            val rgOwnershipStatus: Int? = binding.rgOwnershipStatus.selectedRadioButtonId
+            val rbOwnershipStatus = rgOwnershipStatus?.let { view.findViewById<RadioButton>(it) }
+
+            val rgAgriculturalLaborer: Int = binding.rgAgriculturalLaborer.checkedRadioButtonId
+            val rbAgriculturalLaborer = rgAgriculturalLaborer.let { view.findViewById<RadioButton>(it) }
+
+            val rgTenantLessee: Int = binding.rgTenantLessee.checkedRadioButtonId
+            val rbTenantLessee = rgTenantLessee.let { view.findViewById<RadioButton>(it) }
+
             typeOfLand =
                 arrayOf(binding.checkIrrigated, binding.checkNonIrrigated, binding.checkBarren,
                     binding.checkForest, binding.checkResidential, binding.checkCommercial,
@@ -107,24 +124,90 @@ class FirstFormFragment : Fragment() {
                    typeOfLandChecked.add(typeOfLand[i].text.toString())
                 }
             }
-
-
            val arrTypeOfLand = fromCheckBoxList(typeOfLandChecked)
+
+            useOfLand =
+                arrayOf(binding.checkCultivation, binding.checkOrchard, binding.checkResidential1,
+                    binding.checkCommercial1, binding.checkForestation, binding.checkNoUseBarren)
+
+
+            for (i in useOfLand.indices) {
+                if (useOfLand[i].isChecked) {
+                   useOfLandChecked.add(useOfLand[i].text.toString())
+                }
+            }
+           val arrUseOfLand = fromCheckBoxList(useOfLandChecked)
+
             strQuestionnaireNo = binding.edtQuestionnaireNo.text.toString()
             strVillageName = binding.edtVillageName.text.toString()
             strBlockName = binding.edtBlockName.text.toString()
             strDistrictName = binding.edtDistrictName.text.toString()
             strThanaNo = binding.edtThanaNo.text.toString()
             strPlotNo = binding.edtPlotNo.text.toString()
-            strOwnerShipLand = radioButton?.text.toString()
-            if (strOwnerShipLand == "Other"){
+            strRbOwnerShipLand = radioButton?.text.toString()
+            if (strRbOwnerShipLand == "Other"){
                 if (binding.etOtherSpecifyAffectedLand.text.isEmpty()){
                     binding.etOtherSpecifyAffectedLand.error = "Please specify the Ownership"
                     isNavigate = false
                 }else{
-                    strOwnerShipLand = binding.etOtherSpecifyAffectedLand.text.toString()
+                    strRbOwnerShipLand = binding.etOtherSpecifyAffectedLand.text.toString()
                     isNavigate = true
 
+                }
+            }
+            else{
+               isNavigate = true
+            }
+            strRbDocumentType = rbDocumentType?.text.toString()
+            if (strRbDocumentType == "Other"){
+                if (binding.edtProofOfIdentity.text.isEmpty()){
+                    binding.edtProofOfIdentity.error = "Please specify the Proof of identity"
+                    isNavigate = false
+                }else{
+                    strRbDocumentType = binding.edtProofOfIdentity.text.toString()
+                    isNavigate = true
+
+                }
+            }
+            else{
+               isNavigate = true
+            }
+            strRbOwnershipStatus = rbOwnershipStatus?.text.toString()
+            if (strRbOwnershipStatus == "Other"){
+                if (binding.edtOwnershipSpecify.text.isEmpty()){
+                    binding.edtOwnershipSpecify.error = "Please specify the Ownership Status"
+                    isNavigate = false
+                }else{
+                    strRbOwnershipStatus = binding.edtOwnershipSpecify.text.toString()
+                    isNavigate = true
+
+                }
+            }
+            else{
+               isNavigate = true
+            }
+            //12 a
+            strRbAgriculturalLaborer = rbAgriculturalLaborer?.text.toString()
+            if (strRbOwnershipStatus == "Yes"){
+                if (binding.edtAgriculturalLaborerName1.text.isEmpty()){
+                    binding.edtAgriculturalLaborerName1.error = "Please enter the Name"
+                    isNavigate = false
+                }else{
+                    isNavigate = true
+                }
+            }
+            else{
+               isNavigate = true
+            }
+
+            //12 b
+           strRbAgriculturalLaborer = rbTenantLessee?.text.toString()
+            if (strRbOwnershipStatus == "Yes"){
+                if (binding.edtTenantLesseeName1.text.isEmpty()){
+                    binding.edtTenantLesseeName1.error = "Please enter the Name"
+                    isNavigate = false
+                }else{
+                    isNavigate = true
                 }
             }
             else{
@@ -153,8 +236,8 @@ class FirstFormFragment : Fragment() {
             strSharecropperName2 = binding.edtSharecropperName2.text.toString()
 
             generalDB(strQuestionnaireNo, strVillageName,
-                strBlockName, strDistrictName, strThanaNo, strPlotNo, strOwnerShipLand, strAffectedLand,
-                arrTypeOfLand, strTotalLand, strIrrigated, strNonIrrigated, strOtherLand, strTotal,
+                strBlockName, strDistrictName, strThanaNo, strPlotNo, strRbOwnerShipLand, strAffectedLand,
+                arrTypeOfLand, arrUseOfLand, strTotalLand, strIrrigated, strNonIrrigated, strOtherLand, strTotal,
                 strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo,
                 strIfscCode, strFatherName, strMarketRate, strRevenueRate, strAgriculturalLaborerName1,
                 strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2,
@@ -181,9 +264,10 @@ class FirstFormFragment : Fragment() {
                           strDistrictName:String,
                           strThanaNo:String,
                           strPlotNo:String,
-                          strOwnerShipLand:String,
+                          strRbOwnerShipLand:String,
                           strAffectedLand:String,
                           arrTypeOfLand:String,
+                          arrUseOfLand:String,
                           strTotalLand:String,
                           strIrrigated:String,
                           strNonIrrigated:String,
@@ -207,14 +291,14 @@ class FirstFormFragment : Fragment() {
     ){
         lifecycleScope.launch(Dispatchers.IO) {
             generalDao.insertGeneral(GeneralEntity(0, strQuestionnaireNo, strVillageName,
-                strBlockName, strDistrictName, strThanaNo, strPlotNo, strOwnerShipLand, arrTypeOfLand, strAffectedLand, strTotalLand, strIrrigated, strNonIrrigated,
+                strBlockName, strDistrictName, strThanaNo, strPlotNo, strRbOwnerShipLand, arrTypeOfLand, arrUseOfLand, strAffectedLand, strTotalLand, strIrrigated, strNonIrrigated,
             strOtherLand, strTotal, strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo, strIfscCode, strFatherName, strMarketRate,
             strRevenueRate, strAgriculturalLaborerName1, strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2, strSharecropperName1, strSharecropperName2))
 
             val generalAll = generalDao.getAll()
             for (general in generalAll) {
                 Log.i("TSF_APPS","id: ${general.generalId} Questionnaire No: ${general.questionnaireNo}" +
-                        " Village Name: ${general.villageName} Ownership Land: ${general.strOwnerShipLand} Types of Land: ${general.arrTypeOfLand}")
+                        " Village Name: ${general.villageName} Ownership Land: ${general.strRbOwnerShipLand} Types of Land: ${general.arrTypeOfLand}")
 
             }
         }

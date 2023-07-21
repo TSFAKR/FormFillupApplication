@@ -3,4 +3,6 @@
     <dimen name="padding_main">5dp</dimen>
     <dimen name="padding_grid">5dp</dimen>
     <dimen name="padding_login">32dp</dimen>
+    <dimen name="_15dp">15dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
 </resources>

@@ -36,24 +36,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <GridLayout
+            <androidx.gridlayout.widget.GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2"
                 android:padding="@dimen/padding_grid"
                 android:background="@drawable/custom_background"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                app:columnCount="2">
 
                 <!-- First GridLayout -->
                 <TextView
                     android:id="@+id/tvGeneral"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_marginTop="10dp"
                     android:text="@string/general"
                     style="@style/TextViewHeadings"
-                    />
+                    app:layout_columnSpan="2" />
 
                 <TextView
                     android:id="@+id/tvQuestionnaireNo"
@@ -66,11 +65,11 @@
                     android:id="@+id/edtQuestionnaireNo"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor"
+                    app:layout_columnWeight="1" />
 
                 <TextView
                     android:id="@+id/tvVillageName"
@@ -83,11 +82,11 @@
                     android:id="@+id/edtVillageName"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor"
+                    app:layout_columnWeight="1" />
 
                 <TextView
                     android:id="@+id/tvBlockName"
@@ -100,11 +99,11 @@
                     android:id="@+id/edtBlockName"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor"
+                    app:layout_columnWeight="1" />
 
                 <TextView
                     android:id="@+id/tvDistrictName"
@@ -117,11 +116,11 @@
                     android:id="@+id/edtDistrictName"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor"
+                    app:layout_columnWeight="1" />
 
                 <TextView
                     android:id="@+id/tvThanaNo"
@@ -134,11 +133,11 @@
                     android:id="@+id/edtThanaNo"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_columnWeight="1"
                     android:inputType="numberDecimal"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor"
+                    app:layout_columnWeight="1" />
 
                 <TextView
                     android:id="@+id/tvPlotNo"
@@ -151,12 +150,12 @@
                     android:id="@+id/edtPlotNo"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_columnWeight="1"
                     android:inputType="text"
                     style="@style/EditTextForGeneral"
                     android:autofillHints=""
-                    tools:ignore="LabelFor" />
-            </GridLayout>
+                    tools:ignore="LabelFor"
+                    app:layout_columnWeight="1" />
+            </androidx.gridlayout.widget.GridLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -549,12 +548,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="#808080" />
-                <GridLayout
+                <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
                     android:padding="@dimen/padding_grid"
-                    android:layout_marginTop="16dp">
+                    android:layout_marginTop="16dp"
+                    app:columnCount="2">
 
                     <!-- Previous GridLayout items... -->
 
@@ -564,11 +563,10 @@
                         android:layout_height="wrap_content"
                         style="@style/TextViewNormal"
                         android:paddingStart="5dp"
-                        android:layout_columnSpan="2"
                         android:layout_marginTop="10dp"
                         android:text="6. Total Land Holding of the Affected Person (in Hectare)"
                         android:textSize="15sp"
-                        />
+                        app:layout_columnSpan="2" />
 
                     <TextView
                         android:id="@+id/tvIrrigated"
@@ -583,7 +581,6 @@
                         android:id="@+id/edtIrrigated"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_columnWeight="1"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/custom_edittext"
@@ -591,7 +588,8 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
                         android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
+                        android:paddingEnd="0dp"
+                        app:layout_columnWeight="1" />
 
                     <TextView
                         android:id="@+id/tvNonIrrigated"
@@ -606,7 +604,6 @@
                         android:id="@+id/edtNonIrrigated"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_columnWeight="1"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginStart="5dp"
@@ -614,7 +611,8 @@
                         android:background="@drawable/custom_edittext"
                         android:inputType="numberDecimal"
                         android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
+                        android:paddingEnd="0dp"
+                        app:layout_columnWeight="1" />
 
                     <TextView
                         android:id="@+id/tvOtherLand"
@@ -629,7 +627,6 @@
                         android:id="@+id/edtOtherLand"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_columnWeight="1"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginStart="5dp"
@@ -637,7 +634,8 @@
                         android:background="@drawable/custom_edittext"
                         android:inputType="numberDecimal"
                         android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
+                        android:paddingEnd="0dp"
+                        app:layout_columnWeight="1" />
 
                     <TextView
                         android:id="@+id/tvTotal"
@@ -652,7 +650,6 @@
                         android:id="@+id/edtTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_columnWeight="1"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginStart="5dp"
@@ -660,9 +657,10 @@
                         android:background="@drawable/custom_edittext"
                         android:inputType="numberDecimal"
                         android:paddingStart="10dp"
-                        android:paddingEnd="0dp" />
+                        android:paddingEnd="0dp"
+                        app:layout_columnWeight="1" />
 
-                </GridLayout>
+                </androidx.gridlayout.widget.GridLayout>
                 <View
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
@@ -686,7 +684,7 @@
                         android:text="7. Status of Ownership" />
 
                     <com.tsfapps.myapplication.customviews.GridRadioGroup
-                        android:id="@+id/ownership_status_radio_group"
+                        android:id="@+id/rgOwnershipStatus"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:columnCount="2">
@@ -816,8 +814,6 @@
                         </RadioGroup>
 
                     </LinearLayout>
-
-
 
                 </LinearLayout>
 
@@ -986,7 +982,6 @@
                     android:background="@drawable/custom_edittext"
                     android:inputType="text" />
 
-
                 <EditText
                     android:id="@+id/edtAccountNo"
                     android:layout_width="match_parent"
@@ -1010,9 +1005,6 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/custom_edittext"
                     android:inputType="text" />
-
-
-
 
                 <View
                     android:layout_marginTop="10dp"
@@ -1062,12 +1054,12 @@
 
 
 
-                <GridLayout
+                <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
                     android:padding="@dimen/padding_grid"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:columnCount="2">
 
 
                     <TextView
@@ -1085,9 +1077,10 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_columnWeight="1"
                         android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        app:layout_columnWeight="1"
+                        android:autofillHints="" />
 
                     <TextView
                         android:id="@+id/tvRevenueRate"
@@ -1104,11 +1097,11 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_columnWeight="1"
                         android:background="@drawable/custom_edittext"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        app:layout_columnWeight="1" />
 
-                </GridLayout>
+                </androidx.gridlayout.widget.GridLayout>
                 <View
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
@@ -1145,7 +1138,7 @@
                             android:text="a. Agricultural Laborer" />
 
                         <RadioGroup
-                            android:id="@+id/agricultural_laborer_radio_group"
+                            android:id="@+id/rgAgriculturalLaborer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1153,14 +1146,14 @@
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/rdAgriculturalLaborerYes"
+                                android:id="@+id/rgAgriculturalLaborerYes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Yes" />
 
                             <RadioButton
-                                android:id="@+id/rdAgriculturalLaborerNo"
+                                android:id="@+id/rgAgriculturalLaborerNo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -1220,7 +1213,7 @@
                             android:text="b. Tenant/Lessee" />
 
                         <RadioGroup
-                            android:id="@+id/tenant_lessee_radio_group"
+                            android:id="@+id/rgTenantLessee"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1229,7 +1222,7 @@
 
 
                             <RadioButton
-                                android:id="@+id/rdTenantLesseeYes"
+                                android:id="@+id/rbTenantLesseeYes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="5dp"
@@ -1237,7 +1230,7 @@
                                 android:text="Yes" />
 
                             <RadioButton
-                                android:id="@+id/rdTenantLesseeNo"
+                                android:id="@+id/rbTenantLesseeNo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

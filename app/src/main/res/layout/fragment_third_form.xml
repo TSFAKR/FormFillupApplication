@@ -53,7 +53,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:paddingStart="15dp"
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_22_social_category_of_ap" />
 
             <RadioGroup
@@ -62,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingStart="15dp">
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp">
 
                 <com.tsfapps.myapplication.customviews.GridRadioGroup
                     android:id="@+id/RadioGroupStyle"
@@ -117,14 +119,16 @@
 
                     <EditText
                         android:id="@+id/etOtherStructure"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="150dp"
                         android:layout_marginEnd="15dp"
                         android:layout_weight="1"
                         android:background="@drawable/custom_edittext"
                         android:hint="@string/specify_other"
-                        android:paddingStart="10dp" />
+                        android:paddingStart="@dimen/_10dp"
+                        android:paddingEnd="@dimen/_10dp"
+                        android:autofillHints="" />
 
                 </LinearLayout>
 
@@ -137,7 +141,8 @@
                 android:id="@+id/tvReligiousCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="15dp"
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 style="@style/TextViewNormal"
                 android:text="@string/_23_religious_category" />
 
@@ -217,7 +222,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/custom_edittext"
                     android:hint="@string/specify_other"
-                    android:paddingStart="10dp" />
+                    android:paddingStart="@dimen/_10dp"
+                    android:paddingEnd="@dimen/_10dp"
+                    android:autofillHints=""
+                    android:inputType="text" />
 
             </LinearLayout>
 
@@ -228,7 +236,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:paddingStart="15dp"
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_24_number_of_family_members_with_the_following_criteria" />
 
             <EditText
@@ -242,8 +251,9 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/unmarried_son_brother_18_years"
                 android:inputType="number"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp" />
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
+                />
 
             <EditText
                 android:id="@+id/etUnmarriedDaughterSister"
@@ -256,8 +266,9 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/unmarried_daughter_sister_18_years"
                 android:inputType="number"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp" />
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/etDivorceeWidow"
@@ -270,8 +281,9 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/divorcee_widow"
                 android:inputType="number"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp" />
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/etMinorOrphan"
@@ -284,8 +296,9 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/minor_orphan"
                 android:inputType="number"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp" />
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
+                android:autofillHints="" />
 
             <View style="@style/DividerStyle" />
 
@@ -296,7 +309,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:paddingStart="15dp"
+                android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_25_annual_income_of_the_family_rs" />
 
             <EditText
@@ -310,7 +324,8 @@
                 android:inputType="numberDecimal"
                 style="@style/CustomEditTextStyle"
                 android:background="@drawable/custom_edittext"
-                android:hint="@string/enter_annual_income" />
+                android:hint="@string/enter_annual_income"
+                android:autofillHints="" />
 
             <View style="@style/DividerStyle" />
 
@@ -320,7 +335,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:paddingStart="15dp"
+                android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_26_if_displaced_do_you_have_additional_land_to_shift" />
 
             <RadioGroup
@@ -357,7 +373,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:paddingStart="15dp"
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:text="@string/resettlement_relocation_option" />
 
             <RadioGroup
@@ -393,7 +410,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:paddingStart="15dp"
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:text="28. Compensation Options for Structure loser" />
 
             <RadioGroup
@@ -476,8 +494,8 @@
                         android:layout_weight="1"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="15dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
+                        android:paddingStart="@dimen/_15dp"
+                        android:paddingEnd="@dimen/_15dp"
                         android:background="@drawable/custom_edittext"
                         android:hint="Specify Other Assistance" />
 
@@ -501,8 +519,8 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="15dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
+                 android:paddingStart="@dimen/_15dp"
+                android:paddingEnd="@dimen/_15dp"
                 android:background="@drawable/custom_edittext"
                 android:inputType="number"
                 android:hint="Enter number" />
@@ -1095,7 +1113,8 @@
                 android:hint="@string/name_of_scheme"
                 android:padding="10dp"
                 android:background="@drawable/custom_edittext"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:autofillHints="" />
 
             <!-- Training -->
             <TextView
