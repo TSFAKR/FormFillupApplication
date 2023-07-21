@@ -11,6 +11,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.RadioButton
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -20,20 +22,24 @@ import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentFirstFormBinding
+import com.tsfapps.myapplication.db.Converters.fromCheckBoxList
 import com.tsfapps.myapplication.db.dao.GeneralDao
 import com.tsfapps.myapplication.db.database.AppDatabase
 import com.tsfapps.myapplication.db.entity.GeneralEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.File
 import java.util.*
+
 
 class FirstFormFragment : Fragment() {
 
+    private var isNavigate: Boolean = false
     val REQUEST_PERMISSION = 1001
 
     private var _binding: FragmentFirstFormBinding? = null
     private val binding get() = _binding!!
+    private var typeOfLand = arrayOf<CheckBox>()
+    private var typeOfLandChecked = mutableListOf<String>()
 
     private var strQuestionnaireNo: String = ""
     private var strVillageName: String = ""
@@ -77,12 +83,33 @@ class FirstFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnUploadPhoto.setOnClickListener {
-            captureImage()
+            captureImage(pic_id)
+        }
+        binding.btnUploadOwnerPhoto.setOnClickListener {
+            captureImage(ownerPhotoId)
+        }
+        binding.btnUploadIdentityProof.setOnClickListener {
+            captureImage(identityProofId)
         }
 
         binding.btnNextFirst.setOnClickListener {
             val selectedId: Int? = binding.rgOwnerShip.selectedRadioButtonId
             val radioButton = selectedId?.let { view.findViewById<RadioButton>(it) }
+
+            typeOfLand =
+                arrayOf(binding.checkIrrigated, binding.checkNonIrrigated, binding.checkBarren,
+                    binding.checkForest, binding.checkResidential, binding.checkCommercial,
+                    binding.checkPond)
+
+
+            for (i in typeOfLand.indices) {
+                if (typeOfLand[i].isChecked) {
+                   typeOfLandChecked.add(typeOfLand[i].text.toString())
+                }
+            }
+
+
+           val arrTypeOfLand = fromCheckBoxList(typeOfLandChecked)
             strQuestionnaireNo = binding.edtQuestionnaireNo.text.toString()
             strVillageName = binding.edtVillageName.text.toString()
             strBlockName = binding.edtBlockName.text.toString()
@@ -93,13 +120,15 @@ class FirstFormFragment : Fragment() {
             if (strOwnerShipLand == "Other"){
                 if (binding.etOtherSpecifyAffectedLand.text.isEmpty()){
                     binding.etOtherSpecifyAffectedLand.error = "Please specify the Ownership"
+                    isNavigate = false
                 }else{
                     strOwnerShipLand = binding.etOtherSpecifyAffectedLand.text.toString()
-                    findNavController().navigate(R.id.frag_second_form)
+                    isNavigate = true
+
                 }
             }
             else{
-                findNavController().navigate(R.id.frag_second_form)
+               isNavigate = true
             }
             strAffectedLand = binding.edtAffectedLand.text.toString()
             strTotalLand = binding.edtTotalLand.text.toString()
@@ -124,12 +153,15 @@ class FirstFormFragment : Fragment() {
             strSharecropperName2 = binding.edtSharecropperName2.text.toString()
 
             generalDB(strQuestionnaireNo, strVillageName,
-                strBlockName, strDistrictName, strThanaNo, strPlotNo, strOwnerShipLand, strAffectedLand, strTotalLand,
-                strIrrigated, strNonIrrigated, strOtherLand, strTotal, strOwnershipSpecify,
-                strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo, strIfscCode,
-                strFatherName, strMarketRate, strRevenueRate, strAgriculturalLaborerName1,
+                strBlockName, strDistrictName, strThanaNo, strPlotNo, strOwnerShipLand, strAffectedLand,
+                arrTypeOfLand, strTotalLand, strIrrigated, strNonIrrigated, strOtherLand, strTotal,
+                strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo,
+                strIfscCode, strFatherName, strMarketRate, strRevenueRate, strAgriculturalLaborerName1,
                 strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2,
                 strSharecropperName1, strSharecropperName2)
+            if (isNavigate){
+                findNavController().navigate(R.id.frag_second_form)
+            }
 
         }
         binding.btnBackFirst.setOnClickListener {
@@ -151,6 +183,7 @@ class FirstFormFragment : Fragment() {
                           strPlotNo:String,
                           strOwnerShipLand:String,
                           strAffectedLand:String,
+                          arrTypeOfLand:String,
                           strTotalLand:String,
                           strIrrigated:String,
                           strNonIrrigated:String,
@@ -174,14 +207,14 @@ class FirstFormFragment : Fragment() {
     ){
         lifecycleScope.launch(Dispatchers.IO) {
             generalDao.insertGeneral(GeneralEntity(0, strQuestionnaireNo, strVillageName,
-                strBlockName, strDistrictName, strThanaNo, strPlotNo, strOwnerShipLand, strAffectedLand,strTotalLand, strIrrigated, strNonIrrigated,
+                strBlockName, strDistrictName, strThanaNo, strPlotNo, strOwnerShipLand, arrTypeOfLand, strAffectedLand, strTotalLand, strIrrigated, strNonIrrigated,
             strOtherLand, strTotal, strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo, strIfscCode, strFatherName, strMarketRate,
             strRevenueRate, strAgriculturalLaborerName1, strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2, strSharecropperName1, strSharecropperName2))
 
             val generalAll = generalDao.getAll()
             for (general in generalAll) {
                 Log.i("TSF_APPS","id: ${general.generalId} Questionnaire No: ${general.questionnaireNo}" +
-                        " Village Name: ${general.villageName} Ownership Land: ${general.strOwnerShipLand}")
+                        " Village Name: ${general.villageName} Ownership Land: ${general.strOwnerShipLand} Types of Land: ${general.arrTypeOfLand}")
 
             }
         }
@@ -196,7 +229,7 @@ class FirstFormFragment : Fragment() {
     }
 
     @SuppressLint("QueryPermissionsNeeded")
-    private fun captureImage() {
+    private fun captureImage(imageId: Int) {
 
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -211,27 +244,35 @@ class FirstFormFragment : Fragment() {
         } else {
             val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             // Start the activity with camera_intent, and request pic id
-            startActivityForResult(cameraIntent, pic_id)
+            startActivityForResult(cameraIntent, imageId)
         }
 
     }
-
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        // Match the request 'pic id with requestCode
+
+        when(requestCode){
+            pic_id -> { val photo = data!!.extras!!["data"] as Bitmap?
+                binding.imageViewSelectedPhoto.setImageBitmap(photo)}
+            ownerPhotoId -> { val photo = data!!.extras!!["data"] as Bitmap?
+                binding.imageViewOwnerPhoto.setImageBitmap(photo)}
+            identityProofId -> { val photo = data!!.extras!!["data"] as Bitmap?
+                binding.imageViewIdentityProof.setImageBitmap(photo)}
+
+        }
+
+
         if (requestCode == pic_id) {
-            // BitMap is data structure of image file which store the image in memory
+
             val photo = data!!.extras!!["data"] as Bitmap?
-            // Set the image in imageview for display
             binding.imageViewSelectedPhoto.setImageBitmap(photo)
         }
     }
 
     companion object {
-        // Define the pic id
         private const val pic_id = 123
+        private const val ownerPhotoId = 125
+        private const val identityProofId = 127
     }    override fun onResume() {
         super.onResume()
         checkCameraPermission()

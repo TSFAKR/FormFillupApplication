@@ -1,5 +1,6 @@
 package com.tsfapps.myapplication.db.entity
 
+import android.widget.CheckBox
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,6 +14,7 @@ data class GeneralEntity(@PrimaryKey(autoGenerate = true)
                          @ColumnInfo(name = "thanaNo") var thanaNo: String?,
                          @ColumnInfo(name = "plotNo") var plotNo: String?,
                          @ColumnInfo(name = "strOwnerShipLand") var strOwnerShipLand: String?,
+                         @ColumnInfo(name = "arrTypeOfLand") var arrTypeOfLand: String?,
                          @ColumnInfo(name = "affectedLand") var affectedLand: String?,
                          @ColumnInfo(name = "strTotalLand") var strTotalLand: String?,
                          @ColumnInfo(name = "strIrrigated") var strIrrigated: String?,
