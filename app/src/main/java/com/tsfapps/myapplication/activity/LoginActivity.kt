@@ -28,6 +28,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mySharedPreference = MySharedPreference(context = this@LoginActivity)
+
+
+        if(mySharedPreference.getSessionKey() != null){
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        }else{
+            login()
+        }
+    }
+
+    private fun login(){
         binding.btnLogin.setOnClickListener {
 
             strEtUserName = binding.edtUserName.text.toString()
@@ -40,14 +50,13 @@ class LoginActivity : AppCompatActivity() {
             }
 
             val requestData = ModelClass(strEtUserName, strEtPassword)
-
             GlobalScope.launch(Dispatchers.Main) {
                 try {
                     val response = NetworkService.api.login(requestData)
                     if (response.success) {
                         mySharedPreference.setSessionKey(response.sessionKey, strEtUserName)
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    finish()
+                        finish()
                         Log.d("TSF_APPS", "Success: ${response.sessionKey}")
 
                     }else
@@ -60,6 +69,8 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
+
         }
+
     }
 }

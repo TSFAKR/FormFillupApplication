@@ -13,6 +13,8 @@ import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentSecondFormBinding
 import com.tsfapps.myapplication.db.Converters
 import com.tsfapps.myapplication.db.dao.GeneralDao
+import com.tsfapps.myapplication.utils.Constant.TAG
+import org.json.JSONObject
 
 
 class SecondFormFragment : Fragment() {
@@ -235,18 +237,24 @@ class SecondFormFragment : Fragment() {
                     "$strRgResidentialStructure,"
             val logMessage2 = "Use of Structure: $arrResidentialCategory,$arrCommercialCategory," +
                     "$arrMixedCategory,$arrCommunityType,$arrReligiousStructure,$arrGovernmentStructure,$arrOtherStructure,"
+            val rootObject= JSONObject()
+            rootObject.put("RadioButtons",logMessage1)
+            rootObject.put("Market Value",strMarketValue)
+            rootObject.put("Type of Business",strTypeOfBusiness)
+
+            Log.d(TAG, "Data: $rootObject")
 
             Log.i("RadioButtons", logMessage1)
             Log.i("Checkboxes", logMessage2)
-            Log.i("EditText", "Market Value: $strMarketValue")
-            Log.i("EditText", "Type of Business: $strTypeOfBusiness")
-            Log.i("EditText", "Tenant Name 1: $strTenantName1")
-            Log.i("EditText", "Tenant Name 2: $strTenantName2")
-            Log.i("EditText", "Tenant Name 3: $strTenantName3")
-            Log.i("EditText", "Tenant Name 4: $strTenantName4")
-            Log.i("EditText", "Commercial Employee Name 1: $strCommercialEmployeeName1")
-            Log.i("EditText", "Commercial Employee Name 2: $strCommercialEmployeeName2")
-            Log.i("EditText", "Commercial Employee Name 3: $strCommercialEmployeeName3")
+            Log.i(TAG, "Market Value: $strMarketValue")
+            Log.i(TAG, "Type of Business: $strTypeOfBusiness")
+            Log.i(TAG, "Tenant Name 1: $strTenantName1")
+            Log.i(TAG, "Tenant Name 2: $strTenantName2")
+            Log.i(TAG, "Tenant Name 3: $strTenantName3")
+            Log.i(TAG, "Tenant Name 4: $strTenantName4")
+            Log.i(TAG, "Commercial Employee Name 1: $strCommercialEmployeeName1")
+            Log.i(TAG, "Commercial Employee Name 2: $strCommercialEmployeeName2")
+            Log.i(TAG, "Commercial Employee Name 3: $strCommercialEmployeeName3")
             Log.i("EditText", "Commercial Employee Name 4: $strCommercialEmployeeName4")
             Log.i("EditText", "Residential Employee Name 1: $strResidentialEmployeeName1")
             Log.i("EditText", "Residential Employee Name 2: $strResidentialEmployeeName2")
