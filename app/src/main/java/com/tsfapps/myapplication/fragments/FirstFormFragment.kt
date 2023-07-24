@@ -104,13 +104,13 @@ class FirstFormFragment : Fragment() {
             val radioGroupDocumentType: Int? = binding.radioGroupDocumentType.selectedRadioButtonId
             val rbDocumentType = radioGroupDocumentType?.let { view.findViewById<RadioButton>(it) }
 
-            val rgOwnershipStatus: Int? = binding.rgOwnershipStatus.selectedRadioButtonId
+            val rgOwnershipStatus: Int? = binding.ownershipStatusRadioGroup.selectedRadioButtonId
             val rbOwnershipStatus = rgOwnershipStatus?.let { view.findViewById<RadioButton>(it) }
 
-            val rgAgriculturalLaborer: Int = binding.rgAgriculturalLaborer.checkedRadioButtonId
+            val rgAgriculturalLaborer: Int = binding.agriculturalLaborerRadioGroup.checkedRadioButtonId
             val rbAgriculturalLaborer = rgAgriculturalLaborer.let { view.findViewById<RadioButton>(it) }
 
-            val rgTenantLessee: Int = binding.rgTenantLessee.checkedRadioButtonId
+            val rgTenantLessee: Int = binding.tenantLesseeRadioGroup.checkedRadioButtonId
             val rbTenantLessee = rgTenantLessee.let { view.findViewById<RadioButton>(it) }
 
             typeOfLand =

@@ -179,7 +179,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="5dp"
                     android:layout_gravity="top"
-                    android:text="@string/_15_permanent_with_rcc_single_double_storey_building" />
+                    android:text="15.Type of Structure" />
 
                 <RadioGroup
                     android:id="@+id/type_of_construction_radio_group"
@@ -500,7 +500,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
-                    android:text="18. Residential-cum-Commercial Structure" />
+                    android:text="Residential-cum-Commercial Structure" />
 
             </LinearLayout>
 
@@ -826,8 +826,6 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:text="Squatter" />
-
-
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rdEncroacher"

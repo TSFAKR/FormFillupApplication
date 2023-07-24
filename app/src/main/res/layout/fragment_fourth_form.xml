@@ -131,77 +131,71 @@
                 android:paddingStart="15dp"
                 android:text="@string/_6_social_category_of_ap" />
 
-            <RadioGroup
-                android:id="@+id/other_structure_radio_group"
-                style="@style/RadioGroupStyle"
+            <com.tsfapps.myapplication.customviews.GridRadioGroup
+                android:id="@+id/rgSocialCategory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="2">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdSc"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/sc" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdSt"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/st" />
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdObc"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/obc" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdOtherInSocialCategory"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/other" />
+
+            </com.tsfapps.myapplication.customviews.GridRadioGroup>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingStart="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rdSc"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/sc" />
-
-                    <RadioButton
-                        android:id="@+id/rdSt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/st" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rdObc"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/obc" />
-
-                    <RadioButton
-                        android:id="@+id/rdOtherStructure"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/other" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                android:orientation="horizontal">
 
 
-                    <EditText
-                        android:id="@+id/etOtherStructure"
-                        android:layout_width="0dp"
-                        android:layout_height="40sp"
-                        android:layout_marginStart="150dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/custom_edittext"
-                        android:hint="@string/specify_other"
-                        android:paddingStart="10dp" />
+                <EditText
+                    android:id="@+id/etOtherInSocialCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="@string/specify_other"
+                    android:paddingStart="@dimen/_10dp"
+                    android:paddingEnd="@dimen/_10dp"
+                    android:autofillHints="" />
 
-                </LinearLayout>
-
-            </RadioGroup>
+            </LinearLayout>
 
             <View style="@style/DividerStyle" />
 
@@ -213,102 +207,88 @@
                 style="@style/TextViewNormal"
                 android:text="@string/_7_religious_category" />
 
-            <RadioGroup
-                android:id="@+id/religious_category_radio_group"
+            <com.tsfapps.myapplication.customviews.GridRadioGroup
+                android:id="@+id/rgReligiousCategory"
                 style="@style/RadioGroupStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="2">
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdHindu"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/hindu" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdMuslim"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/muslim" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdChristian"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/christian" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdBuddhist"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/buddhist" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdJain"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/jain" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdOtherReligious"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/other" />
+            </com.tsfapps.myapplication.customviews.GridRadioGroup>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingStart="15dp">
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/etOtherReligious"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="@string/specify_other"
+                    android:paddingStart="@dimen/_10dp"
+                    android:paddingEnd="@dimen/_10dp"
+                    android:autofillHints=""
+                    android:inputType="text" />
 
-                    <RadioButton
-                        android:id="@+id/rdHindu"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/hindu" />
-
-                    <RadioButton
-                        android:id="@+id/rdMuslim"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/muslim" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rdChristian"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/christian" />
-
-                    <RadioButton
-                        android:id="@+id/rdBuddhist"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/buddhist" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rdJain"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/jain" />
-
-                    <RadioButton
-                        android:id="@+id/rdOtherReligious"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/other" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/etOtherReligious"
-                        android:layout_width="0dp"
-                        android:layout_height="40sp"
-                        android:layout_marginStart="150dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/custom_edittext"
-                        android:hint="@string/specify_other"
-                        android:paddingStart="10dp" />
-
-                </LinearLayout>
-
-            </RadioGroup>
+            </LinearLayout>
 
             <View style="@style/DividerStyle" />
 
@@ -412,7 +392,7 @@
                 android:text="@string/_9_vulnerability_status_of_the_household" />
 
             <RadioGroup
-                android:id="@+id/vulnerability_status_radio_group"
+                android:id="@+id/rgVulnerabilityStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -443,7 +423,7 @@
                     android:text="@string/other" />
 
                 <EditText
-                    android:id="@+id/etOtherVulnerabilityStatus"
+                    android:id="@+id/edOtherVulnerabilityStatus"
                     android:layout_width="match_parent"
                     android:layout_height="40sp"
                     android:layout_marginStart="10dp"
@@ -467,7 +447,7 @@
                 android:text="10. Annual income of the family in Rupees" />
 
             <EditText
-                android:id="@+id/etAnnualIncome"
+                android:id="@+id/edAnnualIncome"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
                 android:layout_marginTop="5dp"
@@ -490,7 +470,7 @@
                 android:text="11. Income Restoration Assistance" />
 
             <RadioGroup
-                android:id="@+id/income_restoration_radio_group"
+                android:id="@+id/rgIncomeRestoration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -526,7 +506,7 @@
                         android:text="@string/other" />
 
                     <EditText
-                        android:id="@+id/etOther"
+                        android:id="@+id/edOtherInIncomeRestoration"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -562,31 +542,43 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnFamilyDetailAdd"
-                    android:layout_width="120sp"
+                    android:layout_width="100sp"
                     android:layout_height="40sp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/custom_button"
-                    android:text="Add Details"
+                    android:text="Add"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintEnd_toStartOf="@+id/btnFamilyDetailUpdate"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFamilyDetailUpdate"
+                    android:layout_width="100sp"
+                    android:layout_height="40sp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Update"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnFamilyDetailDelete"
+                    app:layout_constraintStart_toEndOf="@+id/btnFamilyDetailAdd"
+                    app:layout_constraintTop_toTopOf="@+id/btnFamilyDetailAdd" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnFamilyDetailDelete"
-                    android:layout_width="120sp"
+                    android:layout_width="100sp"
                     android:layout_height="40sp"
-                    android:layout_marginEnd="10dp"
                     android:background="@drawable/custom_button"
-                    android:text="Delete Details"
+                    android:text="Delete"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btnFamilyDetailUpdate"
+                    app:layout_constraintTop_toTopOf="@+id/btnFamilyDetailUpdate" />
 
             </LinearLayout>
 
@@ -617,8 +609,8 @@
         android:id="@+id/btnNextFourth"
         android:layout_width="120sp"
         android:layout_height="40sp"
-        android:background="@drawable/custom_button"
-        android:text="@string/next"
+        android:background="@drawable/custom_rgb_button"
+        android:text="Submit"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"

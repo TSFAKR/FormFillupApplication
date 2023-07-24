@@ -36,5 +36,28 @@ data class GeneralEntity(@PrimaryKey(autoGenerate = true)
                          @ColumnInfo(name = "strTenantLesseeName1") var strTenantLesseeName1: String?,
                          @ColumnInfo(name = "strTenantLesseeName2") var strTenantLesseeName2: String?,
                          @ColumnInfo(name = "strSharecropperName1") var strSharecropperName1: String?,
-                         @ColumnInfo(name = "strSharecropperName2") var strSharecropperName2: String?
+                         @ColumnInfo(name = "strSharecropperName2") var strSharecropperName2: String?,
+
+                         // Fields from the second form
+
+//                         @ColumnInfo(name = "marketValue") var marketValue: String?,
+//
+//                         @ColumnInfo(name = "typeOfBusiness") var typeOfBusiness: String?,
+//
+//                         @ColumnInfo(name = "tenantName1") var tenantName1: String?,
+//                         @ColumnInfo(name = "tenantName2") var tenantName2: String?,
+//                         @ColumnInfo(name = "tenantName3") var tenantName3: String?,
+//                         @ColumnInfo(name = "tenantName4") var tenantName4: String?,
+//
+//                         @ColumnInfo(name = "commercialEmployeeName1") var commercialEmployeeName1: String?,
+//                         @ColumnInfo(name = "commercialEmployeeName2") var commercialEmployeeName2: String?,
+//                         @ColumnInfo(name = "commercialEmployeeName3") var commercialEmployeeName3: String?,
+//                         @ColumnInfo(name = "commercialEmployeeName4") var commercialEmployeeName4: String?,
+//
+//                         @ColumnInfo(name = "residentialEmployeeName1") var residentialEmployeeName1: String?,
+//                         @ColumnInfo(name = "residentialEmployeeName2") var residentialEmployeeName2: String?,
+//
+//                         @ColumnInfo(name = "fruitBearing") var fruitBearing: String?,
+//                         @ColumnInfo(name = "nonFruitBearing") var nonFruitBearing: String?,
+
                          )

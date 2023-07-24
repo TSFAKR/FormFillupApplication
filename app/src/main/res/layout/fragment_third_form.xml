@@ -57,17 +57,9 @@
                 android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_22_social_category_of_ap" />
 
-            <RadioGroup
-                android:id="@+id/other_structure_radio_group"
-                style="@style/RadioGroupStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                 android:paddingStart="@dimen/_15dp"
-                android:paddingEnd="@dimen/_15dp">
 
                 <com.tsfapps.myapplication.customviews.GridRadioGroup
-                    android:id="@+id/RadioGroupStyle"
+                    android:id="@+id/rgSocialCategory"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     app:columnCount="2">
@@ -101,7 +93,7 @@
                         android:text="@string/obc" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/rdOtherStructure"
+                        android:id="@+id/rdOtherInSocialCategory"
                         style="@style/RadioButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,7 +110,7 @@
 
 
                     <EditText
-                        android:id="@+id/etOtherStructure"
+                        android:id="@+id/etOtherInSocialCategory"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="150dp"
@@ -131,8 +123,6 @@
                         android:autofillHints="" />
 
                 </LinearLayout>
-
-            </RadioGroup>
 
             <View style="@style/DividerStyle" />
 
@@ -147,7 +137,7 @@
                 android:text="@string/_23_religious_category" />
 
             <com.tsfapps.myapplication.customviews.GridRadioGroup
-                android:id="@+id/religious_category_radio_group"
+                android:id="@+id/rgReligiousCategory"
                 style="@style/RadioGroupStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -340,7 +330,7 @@
                 android:text="@string/_26_if_displaced_do_you_have_additional_land_to_shift" />
 
             <RadioGroup
-                android:id="@+id/additional_land_radio_group"
+                android:id="@+id/rgAdditionalLand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -378,7 +368,7 @@
                 android:text="@string/resettlement_relocation_option" />
 
             <RadioGroup
-                android:id="@+id/relocation_option_radio_group"
+                android:id="@+id/rgRelocationOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="2"
@@ -415,7 +405,7 @@
                 android:text="28. Compensation Options for Structure loser" />
 
             <RadioGroup
-                android:id="@+id/land_compensation_option_radio_group"
+                android:id="@+id/rgLandCompensationOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -452,7 +442,7 @@
                 android:text="@string/_29_income_restoration_assistance" />
 
             <RadioGroup
-                android:id="@+id/income_restoration_radio_group"
+                android:id="@+id/rgIncomeRestorationAssistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -485,10 +475,10 @@
                         android:id="@+id/rdOther"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Others" />
+                        android:text="Other" />
 
                     <EditText
-                        android:id="@+id/etOther"
+                        android:id="@+id/etIncomeRestorationAssistance"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -502,30 +492,6 @@
                 </LinearLayout>
             </RadioGroup>
 
-
-            <View style="@style/DividerStyle" />
-
-            <TextView
-                android:id="@+id/tvWomenAbove18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextViewNormal"
-                android:paddingStart="20dp"
-                android:text="@string/_30_total_number_of_women_above_18_years_of_age_in_the_family" />
-
-            <EditText
-                android:id="@+id/etWomenAbove18"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="15dp"
-                 android:paddingStart="@dimen/_15dp"
-                android:paddingEnd="@dimen/_15dp"
-                android:background="@drawable/custom_edittext"
-                android:inputType="number"
-                android:hint="Enter number" />
-
-
             <View style="@style/DividerStyle" />
 
             <TextView
@@ -534,10 +500,10 @@
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
                 android:paddingStart="20dp"
-                android:text="@string/_31_are_women_in_the_family_included_in_financial_decision_making" />
+                android:text="30. Are women in the family included in financial decision-making" />
 
             <RadioGroup
-                android:id="@+id/financial_decision_radio_group"
+                android:id="@+id/rgFinancialDecisionMaking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -568,10 +534,10 @@
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
                 android:paddingStart="20dp"
-                android:text="@string/_32_are_women_in_the_family_included_in_social_decision_making" />
+                android:text="31. Are women in the family included in social decision-making" />
 
             <RadioGroup
-                android:id="@+id/social_decision_radio_group"
+                android:id="@+id/rgSocialDecisionMaking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -603,7 +569,7 @@
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
                 android:paddingStart="20dp"
-                android:text="@string/_33_do_women_exclusively_own_any_of_the_following_assets" />
+                android:text="@string/_32_do_women_exclusively_own_any_of_the_following_assets" />
 
 
             <TextView
@@ -807,7 +773,7 @@
                 android:layout_marginStart="15dp" />
 
             <RadioGroup
-                android:id="@+id/rgAnyOther"
+                android:id="@+id/rgAnyOtherAsset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -849,7 +815,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="34. Are the women in the family have a separate bank account?"
+                android:text="33. Are the women in the family have a separate bank account?"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -884,7 +850,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="35. Any women of your family are members in SHGs?"
+                android:text="34. Any women of your family are members in SHGs?"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -919,7 +885,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="36. If yes, will the relocation affect their work?"
+                android:text="35. If yes, will the relocation affect their work?"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -952,7 +918,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="If yes in Question 37, Please explain"
+                android:text="If yes in Question 35, Please explain"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -976,7 +942,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="@string/_37_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes"
+                android:text="@string/_36_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
             <TextView
@@ -1034,7 +1000,7 @@
                 />
 
             <RadioGroup
-                android:id="@+id/rgHouseForLoan"
+                android:id="@+id/rgHouseFromLoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -1042,14 +1008,14 @@
                 android:weightSum="2">
 
                 <RadioButton
-                    android:id="@+id/rdHouseYesForLoan"
+                    android:id="@+id/rdHouseYesFromLoan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/rdHouseNoForLoan"
+                    android:id="@+id/rdHouseNoFromLoan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -1215,9 +1181,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="@string/_38_details_of_family_members_fill_appropriate_code"
+                android:text="37. Details of Family Members:"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
+            <TextView
+                android:id="@+id/tvFamilyMembersDetailsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextViewNormal"
+                android:text="Total Family Member Added:- "
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="25dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1226,34 +1200,47 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="25sp"
                 android:gravity="center">
-
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnFamilyDetailAdd"
-                    android:layout_width="120sp"
+                    android:layout_width="100sp"
                     android:layout_height="40sp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/custom_button"
-                    android:text="Add Details"
+                    android:text="Add"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintEnd_toStartOf="@+id/btnFamilyDetailUpdate"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFamilyDetailUpdate"
+                    android:layout_width="100sp"
+                    android:layout_height="40sp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Update"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnFamilyDetailDelete"
+                    app:layout_constraintStart_toEndOf="@+id/btnFamilyDetailAdd"
+                    app:layout_constraintTop_toTopOf="@+id/btnFamilyDetailAdd" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnFamilyDetailDelete"
-                    android:layout_width="120sp"
+                    android:layout_width="100sp"
                     android:layout_height="40sp"
-                    android:layout_marginEnd="10dp"
                     android:background="@drawable/custom_button"
-                    android:text="Delete Details"
+                    android:text="Delete"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnNextThird"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btnFamilyDetailUpdate"
+                    app:layout_constraintTop_toTopOf="@+id/btnFamilyDetailUpdate" />
+
+
 
             </LinearLayout>
 
@@ -1277,8 +1264,8 @@
         android:id="@+id/btnNextThird"
         android:layout_width="120sp"
         android:layout_height="40sp"
-        android:background="@drawable/custom_button"
-        android:text="@string/next"
+        android:background="@drawable/custom_rgb_button"
+        android:text="Submit"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"

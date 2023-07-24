@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">CRADLE</string>
     <string name="next">Next</string>
     <string name="dashboard_fragment">Dashboard Fragment</string>
     <string name="first_fragment">First Fragment</string>
@@ -10,7 +10,7 @@
     <string name="submit">Submit</string>
     <string name="create_new">Create New</string>
     <string name="census_questionnaire_for_paps">
-<u>Census Questionnaire for PAPs</u>
+<u>Census Questionnaire for PAF</u>
 </string>
     <string name="general">
 <u>1. General</u>
@@ -68,7 +68,6 @@
     <string name="a_temporary_buildings_with_mud_brick_wood_made_walls_thatched_tin_roof">a. Temporary (buildings with mud/brick/wood made walls, thatched/tin roof)</string>
     <string name="b_semi_permanent_buildings_with_tiled_roof_and_normal_cement_floor">b. Semi-Permanent (buildings, with tiled roof and normal cement floor</string>
     <string name="c_permanent_with_rcc_single_double_storey_building">c. Permanent (with RCC, Single/ Double storey building)</string>
-    <string name="_15_permanent_with_rcc_single_double_storey_building">15. Permanent (with RCC, Single/ Double storey building)</string>
     <string name="_16_market_value_of_the_structure_in_rs">16. Market Value of the Structure (in Rs/-)</string>
     <string name="enter_market_value">Enter Market Value</string>
     <string name="_17_use_of_the_structure_select_appropriate_code_from_below">17. Use of the Structure (select appropriate code from below)</string>
@@ -118,7 +117,7 @@
 <![CDATA[ Unmarried Daughter/Sister > 18 years ]]>
 </string>
     <string name="divorcee_widow">Divorcee/Widow</string>
-    <string name="minor_orphan">Minor Orphan</string>
+    <string name="minor_orphan">Minor/Orphan</string>
     <string name="_25_annual_income_of_the_family_rs">25. Annual income of the family in Rupees</string>
     <string name="enter_annual_income">Enter annual income in Rupees</string>
     <string name="_26_if_displaced_do_you_have_additional_land_to_shift">26. If displaced, do you have additional land to shift?</string>
@@ -133,18 +132,15 @@
     <string name="cash_for_land_loss">Cash for Land loss</string>
     <string name="land_for_land_loss">Land for land loss</string>
     <string name="if_other_please_specify">If Other, Please Specify</string>
-    <string name="_32_are_women_in_the_family_included_in_social_decision_making">32. Are women in the family included in social decision-making</string>
-    <string name="_31_are_women_in_the_family_included_in_financial_decision_making">31. Are women in the family included in financial decision-making</string>
-    <string name="_30_total_number_of_women_above_18_years_of_age_in_the_family">30. Total number of women above 18 years of age in the family</string>
     <string name="_29_income_restoration_assistance">29. Income Restoration Assistance</string>
-    <string name="_33_do_women_exclusively_own_any_of_the_following_assets">33. Do women exclusively own any of the following assets?</string>
+    <string name="_32_do_women_exclusively_own_any_of_the_following_assets">32. Do women exclusively own any of the following assets?</string>
     <string name="_23_religious_category">23. Religious Category</string>
     <string name="a_land_homestead_or_farm_land">a. Land (Homestead or Farm Land)</string>
-    <string name="_37_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes">37. Do any women members in your family have received any benefit from Government Schemes?</string>
+    <string name="_36_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes">36. Do any women members in your family have received any benefit from Government Schemes?</string>
     <string name="name_of_scheme">Name of Scheme</string>
     <string name="training">Training</string>
     <string name="house">House</string>
-    <string name="_38_details_of_family_members_fill_appropriate_code">38. Details of Family Members:</string>
+    <string name="_37_details_of_family_members_fill_appropriate_code">37. Details of Family Members:</string>
     <string name="family_member_form">
 <u>Family Member Form</u>
 </string>
