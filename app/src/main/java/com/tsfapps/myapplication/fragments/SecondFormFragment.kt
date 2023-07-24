@@ -14,6 +14,7 @@ import com.tsfapps.myapplication.databinding.FragmentSecondFormBinding
 import com.tsfapps.myapplication.db.Converters
 import com.tsfapps.myapplication.db.dao.GeneralDao
 import com.tsfapps.myapplication.utils.Constant.TAG
+import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -238,28 +239,36 @@ class SecondFormFragment : Fragment() {
             val logMessage2 = "Use of Structure: $arrResidentialCategory,$arrCommercialCategory," +
                     "$arrMixedCategory,$arrCommunityType,$arrReligiousStructure,$arrGovernmentStructure,$arrOtherStructure,"
             val rootObject= JSONObject()
-            rootObject.put("RadioButtons",logMessage1)
-            rootObject.put("Market Value",strMarketValue)
-            rootObject.put("Type of Business",strTypeOfBusiness)
-
+            rootObject.put("Market Value", strMarketValue)
+            rootObject.put("Structure In The Affected Land", strRgStructureInTheAffectedLand)
+            rootObject.put("Scale Of Impact", strRgScaleOfImpact)
+            rootObject.put("Type Of Construction", strRgTypeOfConstruction)
+            rootObject.put("Residential Category", JSONArray(residentialCategoryChecked))
+            rootObject.put("Commercial Category", JSONArray(commercialCategoryChecked))
+            rootObject.put("Mixed Category", JSONArray(mixedCategoryChecked))
+            rootObject.put("Community Type", JSONArray(communityTypeChecked))
+            rootObject.put("Religious Structure", JSONArray(religiousStructureChecked))
+            rootObject.put("Government Structure", JSONArray(governmentStructureChecked))
+            rootObject.put("Other Structure", JSONArray(otherStructureChecked))
+            rootObject.put("Type Of Business", strTypeOfBusiness)
+            rootObject.put("Structure Status", strRgStructureStatus)
+            rootObject.put("Tenant In Structure", strRgTenantInStructure)
+            rootObject.put("Tenant Name 1", strTenantName1)
+            rootObject.put("Tenant Name 2", strTenantName2)
+            rootObject.put("Tenant Name 3", strTenantName3)
+            rootObject.put("Tenant Name 4", strTenantName4)
+            rootObject.put("Commercial Structure", strRgCommercialStructure)
+            rootObject.put("Commercial Employee Name 1", strCommercialEmployeeName1)
+            rootObject.put("Commercial Employee Name 2", strCommercialEmployeeName2)
+            rootObject.put("Commercial Employee Name 3", strCommercialEmployeeName3)
+            rootObject.put("Commercial Employee Name 4", strCommercialEmployeeName4)
+            rootObject.put("Residential Structure", strRgResidentialStructure)
+            rootObject.put("Residential Employee Name 1", strResidentialEmployeeName1)
+            rootObject.put("Residential Employee Name 2", strResidentialEmployeeName2)
+            rootObject.put("Fruit Bearing", strFruitBearing)
+            rootObject.put("Non-Fruit Bearing", strNonFruitBearing)
             Log.d(TAG, "Data: $rootObject")
 
-            Log.i("RadioButtons", logMessage1)
-            Log.i("Checkboxes", logMessage2)
-            Log.i(TAG, "Market Value: $strMarketValue")
-            Log.i(TAG, "Type of Business: $strTypeOfBusiness")
-            Log.i(TAG, "Tenant Name 1: $strTenantName1")
-            Log.i(TAG, "Tenant Name 2: $strTenantName2")
-            Log.i(TAG, "Tenant Name 3: $strTenantName3")
-            Log.i(TAG, "Tenant Name 4: $strTenantName4")
-            Log.i(TAG, "Commercial Employee Name 1: $strCommercialEmployeeName1")
-            Log.i(TAG, "Commercial Employee Name 2: $strCommercialEmployeeName2")
-            Log.i(TAG, "Commercial Employee Name 3: $strCommercialEmployeeName3")
-            Log.i("EditText", "Commercial Employee Name 4: $strCommercialEmployeeName4")
-            Log.i("EditText", "Residential Employee Name 1: $strResidentialEmployeeName1")
-            Log.i("EditText", "Residential Employee Name 2: $strResidentialEmployeeName2")
-            Log.i("EditText", "Fruit Bearing: $strFruitBearing")
-            Log.i("EditText", "Non-Fruit Bearing: $strNonFruitBearing")
         }
         binding.btnBackSecond.setOnClickListener {
             findNavController().navigateUp()

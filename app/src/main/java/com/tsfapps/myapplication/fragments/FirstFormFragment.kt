@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -26,8 +27,13 @@ import com.tsfapps.myapplication.db.Converters.fromCheckBoxList
 import com.tsfapps.myapplication.db.dao.GeneralDao
 import com.tsfapps.myapplication.db.database.AppDatabase
 import com.tsfapps.myapplication.db.entity.GeneralEntity
+import com.tsfapps.myapplication.utils.ImageConverter.bitMapToString
+import com.tsfapps.myapplication.utils.ImageConverter.convertImageViewToBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 
@@ -38,6 +44,12 @@ class FirstFormFragment : Fragment() {
 
     private var _binding: FragmentFirstFormBinding? = null
     private val binding get() = _binding!!
+
+    private  var strSelectedPhoto : String = ""
+    private  var strOwnerPhoto : String = ""
+    private  var strIdentityProofPhoto : String = ""
+
+
     private var typeOfLand = arrayOf<CheckBox>()
     private var typeOfLandChecked = mutableListOf<String>()
     private var useOfLand = arrayOf<CheckBox>()
@@ -52,7 +64,10 @@ class FirstFormFragment : Fragment() {
     private var strRbOwnerShipLand: String = ""
     private var strRbDocumentType: String = ""
     private var strRbOwnershipStatus: String = ""
+    private var strRbPrivateOwnership: String = ""
     private var strRbAgriculturalLaborer: String = ""
+    private var strRbTenantLessee: String = ""
+    private var strRbShareCopper: String = ""
     private var strAffectedLand: String = ""
     private var strTotalLand: String = ""
     private var strIrrigated: String = ""
@@ -87,6 +102,7 @@ class FirstFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.btnUploadPhoto.setOnClickListener {
             captureImage(pic_id)
         }
@@ -96,10 +112,18 @@ class FirstFormFragment : Fragment() {
         binding.btnUploadIdentityProof.setOnClickListener {
             captureImage(identityProofId)
         }
+        val strSelectedPhotoBitmap = convertImageViewToBitmap(binding.imageViewSelectedPhoto)
+        val strOwnerPhotoBitmap = convertImageViewToBitmap(binding.imageViewOwnerPhoto)
+        val strIdentityProofBitmap = convertImageViewToBitmap(binding.imageViewIdentityProof)
+
 
         binding.btnNextFirst.setOnClickListener {
-            val selectedId: Int? = binding.rgOwnerShip.selectedRadioButtonId
-            val radioButton = selectedId?.let { view.findViewById<RadioButton>(it) }
+            strSelectedPhoto = bitMapToString(strSelectedPhotoBitmap)
+            strOwnerPhoto = bitMapToString(strOwnerPhotoBitmap)
+            strIdentityProofPhoto = bitMapToString(strIdentityProofBitmap)
+
+            val rgOwnershipLand: Int? = binding.rgOwnerShip.selectedRadioButtonId
+            val rbOwnershipLand = rgOwnershipLand?.let { view.findViewById<RadioButton>(it) }
 
             val radioGroupDocumentType: Int? = binding.radioGroupDocumentType.selectedRadioButtonId
             val rbDocumentType = radioGroupDocumentType?.let { view.findViewById<RadioButton>(it) }
@@ -107,11 +131,18 @@ class FirstFormFragment : Fragment() {
             val rgOwnershipStatus: Int? = binding.ownershipStatusRadioGroup.selectedRadioButtonId
             val rbOwnershipStatus = rgOwnershipStatus?.let { view.findViewById<RadioButton>(it) }
 
+            val rgPrivateOwnership: Int? = binding.privateOwnershipRadioGroup.checkedRadioButtonId
+            val rbPrivateOwnership = rgPrivateOwnership?.let { view.findViewById<RadioButton>(it) }
+
             val rgAgriculturalLaborer: Int = binding.agriculturalLaborerRadioGroup.checkedRadioButtonId
             val rbAgriculturalLaborer = rgAgriculturalLaborer.let { view.findViewById<RadioButton>(it) }
 
             val rgTenantLessee: Int = binding.tenantLesseeRadioGroup.checkedRadioButtonId
             val rbTenantLessee = rgTenantLessee.let { view.findViewById<RadioButton>(it) }
+
+            val rgSharecropper: Int = binding.sharecropperRadioGroup.checkedRadioButtonId
+            val rbSharecropper = rgSharecropper.let { view.findViewById<RadioButton>(it) }
+
 
             typeOfLand =
                 arrayOf(binding.checkIrrigated, binding.checkNonIrrigated, binding.checkBarren,
@@ -121,10 +152,10 @@ class FirstFormFragment : Fragment() {
 
             for (i in typeOfLand.indices) {
                 if (typeOfLand[i].isChecked) {
-                   typeOfLandChecked.add(typeOfLand[i].text.toString())
+                    typeOfLandChecked.add(typeOfLand[i].text.toString())
                 }
             }
-           val arrTypeOfLand = fromCheckBoxList(typeOfLandChecked)
+            val arrTypeOfLand = fromCheckBoxList(typeOfLandChecked)
 
             useOfLand =
                 arrayOf(binding.checkCultivation, binding.checkOrchard, binding.checkResidential1,
@@ -133,10 +164,10 @@ class FirstFormFragment : Fragment() {
 
             for (i in useOfLand.indices) {
                 if (useOfLand[i].isChecked) {
-                   useOfLandChecked.add(useOfLand[i].text.toString())
+                    useOfLandChecked.add(useOfLand[i].text.toString())
                 }
             }
-           val arrUseOfLand = fromCheckBoxList(useOfLandChecked)
+            val arrUseOfLand = fromCheckBoxList(useOfLandChecked)
 
             strQuestionnaireNo = binding.edtQuestionnaireNo.text.toString()
             strVillageName = binding.edtVillageName.text.toString()
@@ -144,7 +175,7 @@ class FirstFormFragment : Fragment() {
             strDistrictName = binding.edtDistrictName.text.toString()
             strThanaNo = binding.edtThanaNo.text.toString()
             strPlotNo = binding.edtPlotNo.text.toString()
-            strRbOwnerShipLand = radioButton?.text.toString()
+            strRbOwnerShipLand = rbOwnershipLand?.text.toString()
             if (strRbOwnerShipLand == "Other"){
                 if (binding.etOtherSpecifyAffectedLand.text.isEmpty()){
                     binding.etOtherSpecifyAffectedLand.error = "Please specify the Ownership"
@@ -156,7 +187,7 @@ class FirstFormFragment : Fragment() {
                 }
             }
             else{
-               isNavigate = true
+                isNavigate = true
             }
             strRbDocumentType = rbDocumentType?.text.toString()
             if (strRbDocumentType == "Other"){
@@ -170,7 +201,7 @@ class FirstFormFragment : Fragment() {
                 }
             }
             else{
-               isNavigate = true
+                isNavigate = true
             }
             strRbOwnershipStatus = rbOwnershipStatus?.text.toString()
             if (strRbOwnershipStatus == "Other"){
@@ -184,11 +215,13 @@ class FirstFormFragment : Fragment() {
                 }
             }
             else{
-               isNavigate = true
+                isNavigate = true
             }
+            strRbPrivateOwnership = rbPrivateOwnership?.text.toString()
+
             //12 a
             strRbAgriculturalLaborer = rbAgriculturalLaborer?.text.toString()
-            if (strRbOwnershipStatus == "Yes"){
+            if (strRbAgriculturalLaborer == "Yes"){
                 if (binding.edtAgriculturalLaborerName1.text.isEmpty()){
                     binding.edtAgriculturalLaborerName1.error = "Please enter the Name"
                     isNavigate = false
@@ -197,12 +230,12 @@ class FirstFormFragment : Fragment() {
                 }
             }
             else{
-               isNavigate = true
+                isNavigate = true
             }
 
             //12 b
-           strRbAgriculturalLaborer = rbTenantLessee?.text.toString()
-            if (strRbOwnershipStatus == "Yes"){
+            strRbTenantLessee = rbTenantLessee?.text.toString()
+            if (strRbTenantLessee == "Yes"){
                 if (binding.edtTenantLesseeName1.text.isEmpty()){
                     binding.edtTenantLesseeName1.error = "Please enter the Name"
                     isNavigate = false
@@ -211,8 +244,22 @@ class FirstFormFragment : Fragment() {
                 }
             }
             else{
-               isNavigate = true
+                isNavigate = true
             }
+            //12 c
+            strRbShareCopper = rbSharecropper?.text.toString()
+            if (strRbShareCopper == "Yes"){
+                if (binding.edtSharecropperName1.text.isEmpty()){
+                    binding.edtSharecropperName1.error = "Please enter the Name"
+                    isNavigate = false
+                }else{
+                    isNavigate = true
+                }
+            }
+            else{
+                isNavigate = true
+            }
+
             strAffectedLand = binding.edtAffectedLand.text.toString()
             strTotalLand = binding.edtTotalLand.text.toString()
             strIrrigated = binding.edtNonIrrigated.text.toString()
@@ -234,6 +281,50 @@ class FirstFormFragment : Fragment() {
             strTenantLesseeName2 = binding.edtTenantLesseeName2.text.toString()
             strSharecropperName1 = binding.edtSharecropperName1.text.toString()
             strSharecropperName2 = binding.edtSharecropperName2.text.toString()
+
+            val rootObject = JSONObject()
+
+            rootObject.put("Type Of Land Checked", JSONArray(typeOfLandChecked))
+            rootObject.put("Use Of Land Checked", JSONArray(useOfLandChecked))
+            rootObject.put("Questionnaire No", strQuestionnaireNo)
+            rootObject.put("Village Name", strVillageName)
+            rootObject.put("Block Name", strBlockName)
+            rootObject.put("District Name", strDistrictName)
+            rootObject.put("Thana No", strThanaNo)
+            rootObject.put("Plot No", strPlotNo)
+            rootObject.put("Ownership Land", strRbOwnerShipLand)
+            rootObject.put("Document Type", strRbDocumentType)
+            rootObject.put("Ownership Status", strRbOwnershipStatus)
+            rootObject.put("Private Ownership", strRbPrivateOwnership)
+            rootObject.put("Agricultural Laborer", strRbAgriculturalLaborer)
+            rootObject.put("Tenant Lessee", strRbTenantLessee)
+            rootObject.put("Share Copper", strRbShareCopper)
+            rootObject.put("Affected Land", strAffectedLand)
+            rootObject.put("Total Land", strTotalLand)
+            rootObject.put("Irrigated", strIrrigated)
+            rootObject.put("Non-Irrigated", strNonIrrigated)
+            rootObject.put("Other Land", strOtherLand)
+            rootObject.put("Total", strTotal)
+            rootObject.put("Ownership Specify", strOwnershipSpecify)
+            rootObject.put("Owner Name", strOwnerName)
+            rootObject.put("Proof Of Identity", strProofOfIdentity)
+            rootObject.put("Name Of Bank", strNameOfBank)
+            rootObject.put("Account No", strAccountNo)
+            rootObject.put("IFSC Code", strIfscCode)
+            rootObject.put("Father Name", strFatherName)
+            rootObject.put("Market Rate", strMarketRate)
+            rootObject.put("Revenue Rate", strRevenueRate)
+            rootObject.put("Agricultural Laborer Name 1", strAgriculturalLaborerName1)
+            rootObject.put("Agricultural Laborer Name 2", strAgriculturalLaborerName2)
+            rootObject.put("Tenant Lessee Name 1", strTenantLesseeName1)
+            rootObject.put("Tenant Lessee Name 2", strTenantLesseeName2)
+            rootObject.put("Sharecropper Name 1", strSharecropperName1)
+            rootObject.put("Sharecropper Name 2", strSharecropperName2)
+            rootObject.put("Selected Photo", strSelectedPhoto)
+            rootObject.put("Owner Photo", strOwnerPhoto)
+            rootObject.put("Identity Proof Photo", strIdentityProofPhoto)
+
+
 
             generalDB(strQuestionnaireNo, strVillageName,
                 strBlockName, strDistrictName, strThanaNo, strPlotNo, strRbOwnerShipLand, strAffectedLand,
@@ -292,8 +383,8 @@ class FirstFormFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             generalDao.insertGeneral(GeneralEntity(0, strQuestionnaireNo, strVillageName,
                 strBlockName, strDistrictName, strThanaNo, strPlotNo, strRbOwnerShipLand, arrTypeOfLand, arrUseOfLand, strAffectedLand, strTotalLand, strIrrigated, strNonIrrigated,
-            strOtherLand, strTotal, strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo, strIfscCode, strFatherName, strMarketRate,
-            strRevenueRate, strAgriculturalLaborerName1, strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2, strSharecropperName1, strSharecropperName2))
+                strOtherLand, strTotal, strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo, strIfscCode, strFatherName, strMarketRate,
+                strRevenueRate, strAgriculturalLaborerName1, strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2, strSharecropperName1, strSharecropperName2))
 
             val generalAll = generalDao.getAll()
             for (general in generalAll) {
@@ -365,4 +456,6 @@ class FirstFormFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
