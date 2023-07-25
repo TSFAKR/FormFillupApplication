@@ -9,5 +9,7 @@ object Constant {
     const val CREATE_RECORD_ID = "CREATE_RECORD_ID"
     const val FIRST_FRAGMENT_DATA = "FIRST_FRAGMENT_DATA"
     const val SECOND_FRAGMENT_DATA = "SECOND_FRAGMENT_DATA"
+    const val FAMILY_FRAGMENT_DATA = "FAMILY_FRAGMENT_DATA"
+    const val IS_FAMILY_ADDED = "IS_FAMILY_ADDED"
     const val TAG = "TSF_APPS"
 }

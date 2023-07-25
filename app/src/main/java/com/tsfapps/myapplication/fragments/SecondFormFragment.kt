@@ -15,6 +15,7 @@ import com.tsfapps.myapplication.db.Converters
 import com.tsfapps.myapplication.utils.Constant.FIRST_FRAGMENT_DATA
 import com.tsfapps.myapplication.utils.Constant.SECOND_FRAGMENT_DATA
 import com.tsfapps.myapplication.utils.Constant.TAG
+import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -269,29 +270,23 @@ class SecondFormFragment : Fragment() {
             rootObject.put("Fruit Bearing", strFruitBearing)
             rootObject.put("Non-Fruit Bearing", strNonFruitBearing)
             Log.d(TAG, "Data: $rootObject")
-            if (isNavigate){
-
+            if (isNavigate) {
                 Log.d(TAG, "Data of first at 2nd: $jsonString")
-                val rootObject2= JSONObject(jsonString)
+                val rootObject2 = JSONObject(jsonString)
 
-                val merged = JSONObject()
-                val objs = arrayOf(rootObject, rootObject2)
-                for (obj in objs) {
-                    val it: Iterator<*> = obj.keys()
-                    while (it.hasNext()) {
-                        val key = it.next() as String
-                        merged.put(key, obj.get(key))
-                    }
-                }
+                val merged = mergeJsonObjects(rootObject, rootObject2)
                 Log.d(TAG, "Merged at 2nd: $merged")
+
                 val bundle = Bundle().apply {
-                    putString(SECOND_FRAGMENT_DATA, rootObject.toString())
+                    putString(SECOND_FRAGMENT_DATA, merged.toString())
+                    Log.i(TAG, "mergedObj for 3rd: $merged")
                 }
 
                 findNavController().navigate(R.id.frag_third_form, bundle)
             }
-
         }
+
+
         binding.btnBackSecond.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -299,5 +294,6 @@ class SecondFormFragment : Fragment() {
 
 
     }
+
 
 }

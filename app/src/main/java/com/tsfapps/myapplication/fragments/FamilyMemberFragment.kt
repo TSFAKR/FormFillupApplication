@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentFamilyMemberBinding
+import com.tsfapps.myapplication.db.preference.MySharedPreference
+import com.tsfapps.myapplication.utils.Constant
+import com.tsfapps.myapplication.utils.Constant.TAG
 import org.json.JSONObject
 
 
@@ -31,6 +34,8 @@ class FamilyMemberFragment : Fragment() {
     private var strSpinnerMaritalStatus: String = ""
     private var strSpinnerEducation: String = ""
     private var strSpinnerOccupation: String = ""
+    private lateinit var mySharedPreference: MySharedPreference
+
 
 
     override fun onCreateView(
@@ -44,7 +49,7 @@ class FamilyMemberFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mySharedPreference = MySharedPreference(requireContext())
         val maritalStatus = arrayOf("Select Marital Status", "Single", "Married", "Divorced", "Widowed", "Separated")
         val spinnerMaritalStatus = binding.spinnerMaritalStatus
         if (spinnerMaritalStatus != null) {
@@ -152,7 +157,6 @@ class FamilyMemberFragment : Fragment() {
 
             strEdRelationship = binding.edRelationship.text.toString()
 
-
             val rootObject = JSONObject()
             rootObject.put("Family Name", strEdFamilyName)
             rootObject.put("Age", strEdAge)
@@ -163,8 +167,12 @@ class FamilyMemberFragment : Fragment() {
             rootObject.put("Occupation", strSpinnerOccupation)
 
             val jsonString = rootObject.toString()
-            Log.i("JSONLog", jsonString)
-
+            Log.i(TAG, jsonString)
+            val bundle = Bundle().apply {
+                putString(Constant.FAMILY_FRAGMENT_DATA, jsonString)
+            }
+            mySharedPreference.setFamilyMemberAdded(true)
+            findNavController().navigate(R.id.frag_third_form, bundle)
             Toast.makeText(requireContext(), "1 Family member added.", Toast.LENGTH_SHORT).show()
         }
     }

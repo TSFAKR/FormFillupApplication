@@ -11,7 +11,7 @@ object ImageConverter {
     }
      fun bitMapToString(bitmap: Bitmap?): String {
         val bos = ByteArrayOutputStream()
-        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, bos)
+        bitmap?.compress(Bitmap.CompressFormat.PNG, 30, bos)
         val b = bos.toByteArray()
         return java.util.Base64.getEncoder().encodeToString(b)
     }

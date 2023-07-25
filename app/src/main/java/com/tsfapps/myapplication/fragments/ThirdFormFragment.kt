@@ -1,6 +1,7 @@
 package com.tsfapps.myapplication.fragments
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,8 @@ import com.tsfapps.myapplication.network.SendData
 import com.tsfapps.myapplication.utils.Constant
 import com.tsfapps.myapplication.utils.Constant.TAG
 import com.tsfapps.myapplication.utils.GetTimeStamps.getCurrentDateTime
+import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects
+import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects3
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,7 +32,6 @@ import java.util.Date
 
 
 class ThirdFormFragment : Fragment() {
-    private lateinit var mySharedPreference: MySharedPreference
     private var isNavigate: Boolean = false
 
     private var _binding: FragmentThirdFormBinding? = null
@@ -79,7 +81,9 @@ class ThirdFormFragment : Fragment() {
     private var strTrainingExplanation: String = ""
     private var strRgOtherGovernmentScheme: String = ""
     private var strOtherGovernmentSchemeExplanation: String = ""
+    private lateinit var mySharedPreference: MySharedPreference
     private var jsonString: String = ""
+    private var jsonFamily: String = ""
 
 
 
@@ -95,6 +99,12 @@ class ThirdFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mySharedPreference = MySharedPreference(requireContext())
         jsonString = arguments?.getString(Constant.SECOND_FRAGMENT_DATA).toString()
+
+        if (mySharedPreference.getFamilyMemberAdded()) {
+            jsonFamily = arguments?.getString(Constant.FAMILY_FRAGMENT_DATA).toString()
+            Log.d(TAG, "Family Details: $jsonFamily")
+            mySharedPreference.setFamilyMemberAdded(false)
+        }
 
         binding.btnNextThird.setOnClickListener {
             strSocialCategoryOther = binding.etOtherInSocialCategory.text.toString()
@@ -366,33 +376,27 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
 
-
             val jsonObject = JSONObject(jsonString)
-            val merged = JSONObject()
-            val objs = arrayOf(rootObject, jsonObject)
-            for (obj in objs) {
-                val it: Iterator<*> = obj?.keys()!!
-                while (it.hasNext()) {
-                    val key = it.next() as String
-                    merged.put(key, obj.get(key))
-                }
-            }
-            Log.i(TAG, "mergedObj: $merged")
-            if (isNavigate){
+            val jsonFamilyObject = JSONObject(jsonFamily)
+            val merged = mergeJsonObjects3(rootObject, jsonObject, jsonFamilyObject)
 
+            if (isNavigate) {
                 sendData(merged)
+                Log.i(TAG, "Final mergedObj: $merged")
+
             }
-
-
         }
+
 
             binding.btnBackThird.setOnClickListener {
                 findNavController().navigateUp()
             }
             binding.btnFamilyDetailAdd.setOnClickListener {
                 findNavController().navigate(R.id.frag_family_member_form)
+                mySharedPreference.setFamilyMemberAdded(true)
             }
         }
+
 
     private fun sendData(rootObject: JSONObject){
         val recordId = mySharedPreference.getRecordId().toString()
@@ -409,11 +413,18 @@ class ThirdFormFragment : Fragment() {
                     findNavController().navigate(R.id.frag_dashboard)
                     mySharedPreference.setSyncId(response.syncRecordID)
 
-                    Toast.makeText(requireContext(), "Data Successfully inserted...", Toast.LENGTH_LONG).show()
+                    val alertDialogBuilder = AlertDialog.Builder(requireContext())
+                    alertDialogBuilder.setTitle("Data Successfully Inserted")
+                    alertDialogBuilder.setMessage("Sync Record ID: ${response.syncRecordID}")
+                    alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    val alertDialog = alertDialogBuilder.create()
+                    alertDialog.show()
+
                     Log.d("TSF_APPS", "Success: ${response.syncRecordID}")
 
-                }else
-                {
+                } else {
                     Log.d("TSF_APPS", "Success Fail: ${response.errorMessage}")
 
                 }
@@ -421,6 +432,7 @@ class ThirdFormFragment : Fragment() {
                 Log.i("TSF_APPS", "Error ${e.message}")
             }
         }
+
     }
 
 
