@@ -373,25 +373,11 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
 
-            val jsonFamilyObject = JSONObject(jsonFamily)
             val jsonObject = JSONObject(jsonString)
             val jsonFamilyObject = JSONObject(jsonFamily)
             val merged = mergeJsonObjects3(rootObject, jsonObject, jsonFamilyObject)
 
             if (isNavigate) {
-
-            val merged = JSONObject()
-            val objs = arrayOf(rootObject, jsonObject, jsonFamilyObject)
-            for (obj in objs) {
-                val it: Iterator<*> = obj.keys()
-                while (it.hasNext()) {
-                    val key = it.next() as String
-                    merged.put(key, obj.get(key))
-                }
-            }
-            Log.i(TAG, "mergedObj: $merged")
-            if (isNavigate){
-
                 sendData(merged)
                 Log.i(TAG, "Final mergedObj: $merged")
 
@@ -425,18 +411,11 @@ class ThirdFormFragment : Fragment() {
                     findNavController().navigate(R.id.frag_dashboard)
                     mySharedPreference.setSyncId(response.syncRecordID)
 
-                    val alertDialogBuilder = AlertDialog.Builder(requireContext())
-                    alertDialogBuilder.setTitle("Data Successfully Inserted")
-                    alertDialogBuilder.setMessage("Sync Record ID: ${response.syncRecordID}")
-                    alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    val alertDialog = alertDialogBuilder.create()
-                    alertDialog.show()
-
+                    Toast.makeText(requireContext(), "Data Successfully inserted...", Toast.LENGTH_LONG).show()
                     Log.d("TSF_APPS", "Success: ${response.syncRecordID}")
 
-                } else {
+                }else
+                {
                     Log.d("TSF_APPS", "Success Fail: ${response.errorMessage}")
 
                 }
@@ -444,7 +423,6 @@ class ThirdFormFragment : Fragment() {
                 Log.i("TSF_APPS", "Error ${e.message}")
             }
         }
-
     }
 
 
