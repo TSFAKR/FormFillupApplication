@@ -79,6 +79,7 @@ class ThirdFormFragment : Fragment() {
     private var strTrainingExplanation: String = ""
     private var strRgOtherGovernmentScheme: String = ""
     private var strOtherGovernmentSchemeExplanation: String = ""
+    private var jsonString: String = ""
 
 
 
@@ -93,6 +94,8 @@ class ThirdFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mySharedPreference = MySharedPreference(requireContext())
+        jsonString = arguments?.getString(Constant.SECOND_FRAGMENT_DATA).toString()
+
         binding.btnNextThird.setOnClickListener {
             strSocialCategoryOther = binding.etOtherInSocialCategory.text.toString()
             strReligiousCategoryOther = binding.etOtherReligious.text.toString()
@@ -362,26 +365,22 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Training Explanation", strTrainingExplanation)
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
-            val jsonString = arguments?.getString(Constant.SECOND_FRAGMENT_DATA)
-            val jsonObject = jsonString?.let { it1 -> JSONObject(it1) }
 
-            val mergedObj = JSONObject()
 
-            val i1: Iterator<*> = rootObject.keys()
-            val i2: Iterator<*> = jsonObject?.keys()!!
-            var tmp_key: String?
-            while (i1.hasNext()) {
-                tmp_key = i1.next() as String?
-                mergedObj.put(tmp_key, rootObject.get(tmp_key))
+            val jsonObject = JSONObject(jsonString)
+            val merged = JSONObject()
+            val objs = arrayOf(rootObject, jsonObject)
+            for (obj in objs) {
+                val it: Iterator<*> = obj?.keys()!!
+                while (it.hasNext()) {
+                    val key = it.next() as String
+                    merged.put(key, obj.get(key))
+                }
             }
-            while (i2.hasNext()) {
-                tmp_key = i2.next() as String?
-                mergedObj.put(tmp_key, jsonObject.get(tmp_key))
-            }
-            Log.i(TAG, "mergedObj: $mergedObj")
+            Log.i(TAG, "mergedObj: $merged")
             if (isNavigate){
 
-                sendData(mergedObj)
+                sendData(merged)
             }
 
 

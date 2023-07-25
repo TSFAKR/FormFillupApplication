@@ -338,12 +338,9 @@ class FirstFormFragment : Fragment() {
 
             generalDB(listSendData)
             if (isNavigate){
-                findNavController().navigate(R.id.frag_second_form)
-                val fragment = FirstFormFragment()
-                val bundle = Bundle().apply {
-                    putString(FIRST_FRAGMENT_DATA, rootObject.toString())
-                }
-                fragment.arguments = bundle
+                val bundle = Bundle()
+                bundle.putString(FIRST_FRAGMENT_DATA, rootObject.toString())
+                findNavController().navigate(R.id.frag_second_form, bundle)
             }
 
         }

@@ -69,6 +69,7 @@ class SecondFormFragment : Fragment() {
 
     private var strFruitBearing: String=""
     private var strNonFruitBearing: String=""
+    private var jsonString: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,7 +84,7 @@ class SecondFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        jsonString = arguments?.getString(FIRST_FRAGMENT_DATA).toString()
         binding.btnNextSecond.setOnClickListener {
 
             val rgStructure: Int = binding.structureRadioGroup.checkedRadioButtonId
@@ -269,28 +270,25 @@ class SecondFormFragment : Fragment() {
             rootObject.put("Non-Fruit Bearing", strNonFruitBearing)
             Log.d(TAG, "Data: $rootObject")
             if (isNavigate){
-                val jsonString = arguments?.getString(FIRST_FRAGMENT_DATA)
-                val jsonObject = jsonString?.let { it1 -> JSONObject(it1) }
 
-                val mergedObj = JSONObject()
+                Log.d(TAG, "Data of first at 2nd: $jsonString")
+                val rootObject2= JSONObject(jsonString)
 
-                val i1: Iterator<*> = rootObject.keys()
-                val i2: Iterator<*> = jsonObject?.keys()!!
-                var tmp_key: String?
-                while (i1.hasNext()) {
-                    tmp_key = i1.next() as String?
-                    mergedObj.put(tmp_key, rootObject.get(tmp_key))
+                val merged = JSONObject()
+                val objs = arrayOf(rootObject, rootObject2)
+                for (obj in objs) {
+                    val it: Iterator<*> = obj.keys()
+                    while (it.hasNext()) {
+                        val key = it.next() as String
+                        merged.put(key, obj.get(key))
+                    }
                 }
-                while (i2.hasNext()) {
-                    tmp_key = i2.next() as String?
-                    mergedObj.put(tmp_key, jsonObject.get(tmp_key))
-                }
-                val fragment = FirstFormFragment()
+                Log.d(TAG, "Merged at 2nd: $merged")
                 val bundle = Bundle().apply {
-                    putString(SECOND_FRAGMENT_DATA, mergedObj.toString())
+                    putString(SECOND_FRAGMENT_DATA, rootObject.toString())
                 }
-                fragment.arguments = bundle
-                findNavController().navigate(R.id.frag_third_form)
+
+                findNavController().navigate(R.id.frag_third_form, bundle)
             }
 
         }
