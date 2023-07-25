@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.tsfapps.myapplication.MainActivity
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentThirdFormBinding
 import com.tsfapps.myapplication.db.preference.MySharedPreference
@@ -27,11 +26,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.Date
 
 
 class ThirdFormFragment : Fragment() {
+    private lateinit var mySharedPreference: MySharedPreference
     private var isNavigate: Boolean = false
 
     private var _binding: FragmentThirdFormBinding? = null
@@ -81,7 +79,6 @@ class ThirdFormFragment : Fragment() {
     private var strTrainingExplanation: String = ""
     private var strRgOtherGovernmentScheme: String = ""
     private var strOtherGovernmentSchemeExplanation: String = ""
-    private lateinit var mySharedPreference: MySharedPreference
     private var jsonString: String = ""
     private var jsonFamily: String = ""
 
@@ -376,11 +373,25 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
 
+            val jsonFamilyObject = JSONObject(jsonFamily)
             val jsonObject = JSONObject(jsonString)
             val jsonFamilyObject = JSONObject(jsonFamily)
             val merged = mergeJsonObjects3(rootObject, jsonObject, jsonFamilyObject)
 
             if (isNavigate) {
+
+            val merged = JSONObject()
+            val objs = arrayOf(rootObject, jsonObject, jsonFamilyObject)
+            for (obj in objs) {
+                val it: Iterator<*> = obj.keys()
+                while (it.hasNext()) {
+                    val key = it.next() as String
+                    merged.put(key, obj.get(key))
+                }
+            }
+            Log.i(TAG, "mergedObj: $merged")
+            if (isNavigate){
+
                 sendData(merged)
                 Log.i(TAG, "Final mergedObj: $merged")
 
@@ -392,6 +403,7 @@ class ThirdFormFragment : Fragment() {
                 findNavController().navigateUp()
             }
             binding.btnFamilyDetailAdd.setOnClickListener {
+                mySharedPreference.setFamilyMemberAdded(true)
                 findNavController().navigate(R.id.frag_family_member_form)
                 mySharedPreference.setFamilyMemberAdded(true)
             }

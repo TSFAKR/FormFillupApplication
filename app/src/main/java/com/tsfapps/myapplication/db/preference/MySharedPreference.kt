@@ -3,6 +3,7 @@ package com.tsfapps.myapplication.db.preference
 import android.content.Context
 import android.content.SharedPreferences
 import com.tsfapps.myapplication.utils.Constant.CREATE_RECORD_ID
+import com.tsfapps.myapplication.utils.Constant.FAMILY_FRAGMENT_DATA
 import com.tsfapps.myapplication.utils.Constant.IS_FAMILY_ADDED
 import com.tsfapps.myapplication.utils.Constant.RECORD_ID
 import com.tsfapps.myapplication.utils.Constant.SESSION_KEY
@@ -54,8 +55,7 @@ class MySharedPreference(context: Context) {
     fun getRecordId(): String? {
         return sharedPrefs.getString(RECORD_ID, null)
     }
-
-    fun setFamilyMemberAdded(isAdded: Boolean){
+fun setFamilyMemberAdded(isAdded: Boolean){
         val editor = sharedPrefs.edit()
         editor.putBoolean(IS_FAMILY_ADDED, isAdded)
         editor.apply()
