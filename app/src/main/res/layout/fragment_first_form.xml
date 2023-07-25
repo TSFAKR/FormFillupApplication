@@ -62,8 +62,8 @@
                     style="@style/TextViewNormal"
                     android:text="@string/questionnaire_no" />
 
-                <EditText
-                    android:id="@+id/edtQuestionnaireNo"
+                <TextView
+                    android:id="@+id/tvQuestionnaireNoRecordId"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     app:layout_columnWeight="1"

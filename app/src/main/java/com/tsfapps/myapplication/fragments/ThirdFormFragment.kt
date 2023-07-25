@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.MainActivity
 import com.tsfapps.myapplication.R
@@ -16,6 +17,7 @@ import com.tsfapps.myapplication.databinding.FragmentThirdFormBinding
 import com.tsfapps.myapplication.db.preference.MySharedPreference
 import com.tsfapps.myapplication.network.NetworkService
 import com.tsfapps.myapplication.network.SendData
+import com.tsfapps.myapplication.utils.Constant
 import com.tsfapps.myapplication.utils.Constant.TAG
 import com.tsfapps.myapplication.utils.GetTimeStamps.getCurrentDateTime
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +30,6 @@ import java.util.Date
 
 class ThirdFormFragment : Fragment() {
     private lateinit var mySharedPreference: MySharedPreference
-    private var createRecordId: Int = 0
     private var isNavigate: Boolean = false
 
     private var _binding: FragmentThirdFormBinding? = null
@@ -361,9 +362,26 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Training Explanation", strTrainingExplanation)
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
-            Log.i(TAG, "rootObject: $rootObject")
+            val jsonString = arguments?.getString(Constant.SECOND_FRAGMENT_DATA)
+            val jsonObject = jsonString?.let { it1 -> JSONObject(it1) }
+
+            val mergedObj = JSONObject()
+
+            val i1: Iterator<*> = rootObject.keys()
+            val i2: Iterator<*> = jsonObject?.keys()!!
+            var tmp_key: String?
+            while (i1.hasNext()) {
+                tmp_key = i1.next() as String?
+                mergedObj.put(tmp_key, rootObject.get(tmp_key))
+            }
+            while (i2.hasNext()) {
+                tmp_key = i2.next() as String?
+                mergedObj.put(tmp_key, jsonObject.get(tmp_key))
+            }
+            Log.i(TAG, "mergedObj: $mergedObj")
             if (isNavigate){
-                sendData(rootObject)
+
+                sendData(mergedObj)
             }
 
 
@@ -378,8 +396,7 @@ class ThirdFormFragment : Fragment() {
         }
 
     private fun sendData(rootObject: JSONObject){
-        createRecordId += 1
-        val recordId = "${mySharedPreference.getUserId()} _$createRecordId"
+        val recordId = mySharedPreference.getRecordId().toString()
         val sessionKey = mySharedPreference.getSessionKey().toString()
         val userId = mySharedPreference.getUserId().toString()
         val date = getCurrentDateTime()
@@ -393,6 +410,7 @@ class ThirdFormFragment : Fragment() {
                     findNavController().navigate(R.id.frag_dashboard)
                     mySharedPreference.setSyncId(response.syncRecordID)
 
+                    Toast.makeText(requireContext(), "Data Successfully inserted...", Toast.LENGTH_LONG).show()
                     Log.d("TSF_APPS", "Success: ${response.syncRecordID}")
 
                 }else

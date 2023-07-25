@@ -24,9 +24,11 @@ import androidx.room.Room
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentFirstFormBinding
 import com.tsfapps.myapplication.db.Converters.fromCheckBoxList
-import com.tsfapps.myapplication.db.dao.GeneralDao
-import com.tsfapps.myapplication.db.database.AppDatabase
-import com.tsfapps.myapplication.db.entity.GeneralEntity
+import com.tsfapps.myapplication.db.dao.SendDataDao
+import com.tsfapps.myapplication.db.database.SendDataDataBase
+import com.tsfapps.myapplication.db.entity.SendData
+import com.tsfapps.myapplication.db.preference.MySharedPreference
+import com.tsfapps.myapplication.utils.Constant.FIRST_FRAGMENT_DATA
 import com.tsfapps.myapplication.utils.ImageConverter.bitMapToString
 import com.tsfapps.myapplication.utils.ImageConverter.convertImageViewToBitmap
 import kotlinx.coroutines.Dispatchers
@@ -38,9 +40,10 @@ import java.util.*
 
 
 class FirstFormFragment : Fragment() {
-
+    private lateinit var mySharedPreference: MySharedPreference
     private var isNavigate: Boolean = false
     val REQUEST_PERMISSION = 1001
+    private var createRecordId: Int = 0
 
     private var _binding: FragmentFirstFormBinding? = null
     private val binding get() = _binding!!
@@ -55,7 +58,7 @@ class FirstFormFragment : Fragment() {
     private var useOfLand = arrayOf<CheckBox>()
     private var useOfLandChecked = mutableListOf<String>()
 
-    private var strQuestionnaireNo: String = ""
+    private var recordId: String = ""
     private var strVillageName: String = ""
     private var strBlockName: String = ""
     private var strDistrictName: String = ""
@@ -97,12 +100,14 @@ class FirstFormFragment : Fragment() {
         return binding.root
     }
 
-    private lateinit var generalDao: GeneralDao
+    private lateinit var sendDataDao: SendDataDao
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        mySharedPreference = MySharedPreference(requireContext())
+        createRecordId = mySharedPreference.getCreateRecordId()!!
+        createRecordId += 1
         binding.btnUploadPhoto.setOnClickListener {
             captureImage(pic_id)
         }
@@ -131,8 +136,8 @@ class FirstFormFragment : Fragment() {
             val rgOwnershipStatus: Int? = binding.ownershipStatusRadioGroup.selectedRadioButtonId
             val rbOwnershipStatus = rgOwnershipStatus?.let { view.findViewById<RadioButton>(it) }
 
-            val rgPrivateOwnership: Int? = binding.privateOwnershipRadioGroup.checkedRadioButtonId
-            val rbPrivateOwnership = rgPrivateOwnership?.let { view.findViewById<RadioButton>(it) }
+            val rgPrivateOwnership: Int = binding.privateOwnershipRadioGroup.checkedRadioButtonId
+            val rbPrivateOwnership = rgPrivateOwnership.let { view.findViewById<RadioButton>(it) }
 
             val rgAgriculturalLaborer: Int = binding.agriculturalLaborerRadioGroup.checkedRadioButtonId
             val rbAgriculturalLaborer = rgAgriculturalLaborer.let { view.findViewById<RadioButton>(it) }
@@ -169,8 +174,13 @@ class FirstFormFragment : Fragment() {
             }
             val arrUseOfLand = fromCheckBoxList(useOfLandChecked)
 
-            strQuestionnaireNo = binding.edtQuestionnaireNo.text.toString()
+            recordId = "${mySharedPreference.getUserId()} _$createRecordId"
+            mySharedPreference.setCreateRecordId(createRecordId)
+            mySharedPreference.setRecordId(recordId)
+            binding.tvQuestionnaireNoRecordId.text = recordId
             strVillageName = binding.edtVillageName.text.toString()
+            isNavigate = strVillageName != ""
+
             strBlockName = binding.edtBlockName.text.toString()
             strDistrictName = binding.edtDistrictName.text.toString()
             strThanaNo = binding.edtThanaNo.text.toString()
@@ -286,7 +296,6 @@ class FirstFormFragment : Fragment() {
 
             rootObject.put("Type Of Land Checked", JSONArray(typeOfLandChecked))
             rootObject.put("Use Of Land Checked", JSONArray(useOfLandChecked))
-            rootObject.put("Questionnaire No", strQuestionnaireNo)
             rootObject.put("Village Name", strVillageName)
             rootObject.put("Block Name", strBlockName)
             rootObject.put("District Name", strDistrictName)
@@ -324,17 +333,17 @@ class FirstFormFragment : Fragment() {
             rootObject.put("Owner Photo", strOwnerPhoto)
             rootObject.put("Identity Proof Photo", strIdentityProofPhoto)
 
+         //   val sendData = SendData("")
+            val listSendData = mutableListOf<SendData>()
 
-
-            generalDB(strQuestionnaireNo, strVillageName,
-                strBlockName, strDistrictName, strThanaNo, strPlotNo, strRbOwnerShipLand, strAffectedLand,
-                arrTypeOfLand, arrUseOfLand, strTotalLand, strIrrigated, strNonIrrigated, strOtherLand, strTotal,
-                strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo,
-                strIfscCode, strFatherName, strMarketRate, strRevenueRate, strAgriculturalLaborerName1,
-                strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2,
-                strSharecropperName1, strSharecropperName2)
+            generalDB(listSendData)
             if (isNavigate){
                 findNavController().navigate(R.id.frag_second_form)
+                val fragment = FirstFormFragment()
+                val bundle = Bundle().apply {
+                    putString(FIRST_FRAGMENT_DATA, rootObject.toString())
+                }
+                fragment.arguments = bundle
             }
 
         }
@@ -342,56 +351,22 @@ class FirstFormFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        val db = Room.databaseBuilder(
+        val dbSendData = Room.databaseBuilder(
             requireContext(),
-            AppDatabase::class.java, "form_database"
+            SendDataDataBase::class.java, "send_data_database"
         ).build()
-        generalDao = db.generalDao()
+        sendDataDao = dbSendData.sendDataDao()
 
     }
-    private fun generalDB(strQuestionnaireNo:String,
-                          strVillageName:String,
-                          strBlockName:String,
-                          strDistrictName:String,
-                          strThanaNo:String,
-                          strPlotNo:String,
-                          strRbOwnerShipLand:String,
-                          strAffectedLand:String,
-                          arrTypeOfLand:String,
-                          arrUseOfLand:String,
-                          strTotalLand:String,
-                          strIrrigated:String,
-                          strNonIrrigated:String,
-                          strOtherLand:String,
-                          strTotal:String,
-                          strOwnershipSpecify:String,
-                          strOwnerName:String,
-                          strProofOfIdentity:String,
-                          strNameOfBank:String,
-                          strAccountNo:String,
-                          strIfscCode:String,
-                          strFatherName:String,
-                          strMarketRate:String,
-                          strRevenueRate:String,
-                          strAgriculturalLaborerName1:String,
-                          strAgriculturalLaborerName2:String,
-                          strTenantLesseeName1:String,
-                          strTenantLesseeName2:String,
-                          strSharecropperName1:String,
-                          strSharecropperName2:String
-    ){
+    private fun generalDB(listSendData: List<SendData>){
         lifecycleScope.launch(Dispatchers.IO) {
-            generalDao.insertGeneral(GeneralEntity(0, strQuestionnaireNo, strVillageName,
-                strBlockName, strDistrictName, strThanaNo, strPlotNo, strRbOwnerShipLand, arrTypeOfLand, arrUseOfLand, strAffectedLand, strTotalLand, strIrrigated, strNonIrrigated,
-                strOtherLand, strTotal, strOwnershipSpecify, strOwnerName, strProofOfIdentity, strNameOfBank, strAccountNo, strIfscCode, strFatherName, strMarketRate,
-                strRevenueRate, strAgriculturalLaborerName1, strAgriculturalLaborerName2, strTenantLesseeName1, strTenantLesseeName2, strSharecropperName1, strSharecropperName2))
+          //  sendDataDao.insertSendData(SendDataEntity(0, recordId, "", "", "", listSendData ))
 
-            val generalAll = generalDao.getAll()
-            for (general in generalAll) {
-                Log.i("TSF_APPS","id: ${general.generalId} Questionnaire No: ${general.questionnaireNo}" +
-                        " Village Name: ${general.villageName} Ownership Land: ${general.strRbOwnerShipLand} Types of Land: ${general.arrTypeOfLand}")
-
-            }
+//            val generalAll = sendDataDao.getAllSendData()
+//            for (general in generalAll) {
+//                Log.i("TSF_APPS","Send Data: $generalAll")
+//
+//            }
         }
     }
     private fun checkCameraPermission() {

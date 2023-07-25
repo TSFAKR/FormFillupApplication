@@ -12,7 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentSecondFormBinding
 import com.tsfapps.myapplication.db.Converters
-import com.tsfapps.myapplication.db.dao.GeneralDao
+import com.tsfapps.myapplication.utils.Constant.FIRST_FRAGMENT_DATA
+import com.tsfapps.myapplication.utils.Constant.SECOND_FRAGMENT_DATA
 import com.tsfapps.myapplication.utils.Constant.TAG
 import org.json.JSONArray
 import org.json.JSONObject
@@ -268,6 +269,27 @@ class SecondFormFragment : Fragment() {
             rootObject.put("Non-Fruit Bearing", strNonFruitBearing)
             Log.d(TAG, "Data: $rootObject")
             if (isNavigate){
+                val jsonString = arguments?.getString(FIRST_FRAGMENT_DATA)
+                val jsonObject = jsonString?.let { it1 -> JSONObject(it1) }
+
+                val mergedObj = JSONObject()
+
+                val i1: Iterator<*> = rootObject.keys()
+                val i2: Iterator<*> = jsonObject?.keys()!!
+                var tmp_key: String?
+                while (i1.hasNext()) {
+                    tmp_key = i1.next() as String?
+                    mergedObj.put(tmp_key, rootObject.get(tmp_key))
+                }
+                while (i2.hasNext()) {
+                    tmp_key = i2.next() as String?
+                    mergedObj.put(tmp_key, jsonObject.get(tmp_key))
+                }
+                val fragment = FirstFormFragment()
+                val bundle = Bundle().apply {
+                    putString(SECOND_FRAGMENT_DATA, mergedObj.toString())
+                }
+                fragment.arguments = bundle
                 findNavController().navigate(R.id.frag_third_form)
             }
 
