@@ -28,4 +28,18 @@ object MergeJsonObject {
         }
         return merged
     }
+
+
+    fun mergeJsonObjects(vararg jsonObjects: JSONObject): JSONObject {
+        val mergedObject = JSONObject()
+        for (jsonObject in jsonObjects) {
+            val iterator = jsonObject.keys()
+            while (iterator.hasNext()) {
+                val key = iterator.next()
+                val value = jsonObject.get(key)
+                mergedObject.put(key, value)
+            }
+        }
+        return mergedObject
+    }
 }

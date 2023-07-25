@@ -22,6 +22,7 @@ import com.tsfapps.myapplication.network.SendData
 import com.tsfapps.myapplication.utils.Constant
 import com.tsfapps.myapplication.utils.Constant.TAG
 import com.tsfapps.myapplication.utils.GetTimeStamps.getCurrentDateTime
+import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects
 import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects3
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -378,9 +379,10 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
 
-            val jsonObject = JSONObject(jsonString)
+            val jsonObject = JSONObject( jsonFamily)
             val jsonFamilyObject = JSONObject(jsonFamily)
-            val merged = mergeJsonObjects3(rootObject, jsonObject, jsonFamilyObject)
+            Log.d(TAG, "Family Member Added: $jsonFamilyObject")
+            val merged = mergeJsonObjects(jsonFamilyObject, rootObject, jsonObject)
 
             if (isNavigate) {
                 sendData(merged)
@@ -472,22 +474,18 @@ class ThirdFormFragment : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerOccupation.adapter = adapter
 
-            // Set a listener to handle the selected item in the spinner
             spinnerOccupation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    // Handle the selected item here
                     val selectedOccupation = occupation[position]
                     if (selectedOccupation != "Select Occupation") {
                         strSpinnerOccupation = selectedOccupation
                         Log.i("SpinnerLog", "Selected Occupation: $strSpinnerOccupation")
                     } else {
-                        // Handle the case when the hint item is selected
                         Log.i("SpinnerLog", "No occupation selected.")
                     }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    // Handle nothing selected, if needed
                 }
             }
 
@@ -513,7 +511,6 @@ class ThirdFormFragment : Fragment() {
 
                 jsonFamily = rootObject.toString()
                 Log.i(TAG, jsonFamily)
-                mySharedPreference.setFamilyMemberAdded(true)
                 binding.llFamilyMember.visibility = GONE
                 Toast.makeText(requireContext(), "1 Family member added.", Toast.LENGTH_SHORT).show()
             }
