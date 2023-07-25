@@ -1,14 +1,16 @@
 package com.tsfapps.myapplication.fragments
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
+import android.view.View.GONE
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -20,7 +22,6 @@ import com.tsfapps.myapplication.network.SendData
 import com.tsfapps.myapplication.utils.Constant
 import com.tsfapps.myapplication.utils.Constant.TAG
 import com.tsfapps.myapplication.utils.GetTimeStamps.getCurrentDateTime
-import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects
 import com.tsfapps.myapplication.utils.MergeJsonObject.mergeJsonObjects3
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -81,6 +82,16 @@ class ThirdFormFragment : Fragment() {
     private var strOtherGovernmentSchemeExplanation: String = ""
     private var jsonString: String = ""
     private var jsonFamily: String = ""
+    private var jsonFamilyString: String = ""
+
+
+    private var strEdFamilyName: String = ""
+    private var strEdAge: String = ""
+    private var strRgSex: String = ""
+    private var strEdRelationship: String = ""
+    private var strSpinnerMaritalStatus: String = ""
+    private var strSpinnerEducation: String = ""
+    private var strSpinnerOccupation: String = ""
 
 
 
@@ -96,12 +107,6 @@ class ThirdFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mySharedPreference = MySharedPreference(requireContext())
         jsonString = arguments?.getString(Constant.SECOND_FRAGMENT_DATA).toString()
-
-        if (mySharedPreference.getFamilyMemberAdded()) {
-            jsonFamily = arguments?.getString(Constant.FAMILY_FRAGMENT_DATA).toString()
-            Log.d(TAG, "Family Details: $jsonFamily")
-            mySharedPreference.setFamilyMemberAdded(false)
-        }
 
         binding.btnNextThird.setOnClickListener {
             strSocialCategoryOther = binding.etOtherInSocialCategory.text.toString()
@@ -125,7 +130,7 @@ class ThirdFormFragment : Fragment() {
 
             val rgReligiousCategory: Int? = binding.rgReligiousCategory.selectedRadioButtonId
             val rbReligiousCategory =
-                rgReligiousCategory?.let { view.findViewById<RadioButton>(it) }
+                    rgReligiousCategory?.let { view.findViewById<RadioButton>(it) }
 
             val rgAdditionalLand: Int = binding.rgAdditionalLand.checkedRadioButtonId
             val rbAdditionalLand = rgAdditionalLand.let { view.findViewById<RadioButton>(it) }
@@ -196,7 +201,7 @@ class ThirdFormFragment : Fragment() {
             if (strRgSocialCategory == "Other") {
                 if (binding.etOtherInSocialCategory.text.isEmpty()) {
                     binding.etOtherInSocialCategory.error =
-                        "Please Specify Other in Social Category"
+                            "Please Specify Other in Social Category"
                     isNavigate = false
                 } else {
                     isNavigate = true
@@ -209,7 +214,7 @@ class ThirdFormFragment : Fragment() {
             if (strRgReligiousCategory == "Other") {
                 if (binding.etOtherInSocialCategory.text.isEmpty()) {
                     binding.etOtherInSocialCategory.error =
-                        "Please Specify Other in Religious Category"
+                            "Please Specify Other in Religious Category"
                     isNavigate = false
                 } else {
                     isNavigate = true
@@ -226,7 +231,7 @@ class ThirdFormFragment : Fragment() {
             if (strRgIncomeRestorationAssistance == "Other") {
                 if (binding.etIncomeRestorationAssistance.text.isEmpty()) {
                     binding.etIncomeRestorationAssistance.error =
-                        "Please Specify Other in Restoration Assistance"
+                            "Please Specify Other in Restoration Assistance"
                     isNavigate = false
                 } else {
                     isNavigate = true
@@ -248,7 +253,7 @@ class ThirdFormFragment : Fragment() {
             if (strRgAnyOtherAsset == "Any Other") {
                 if (binding.etAnyOtherDescription.text.isEmpty()) {
                     binding.etAnyOtherDescription.error =
-                        "Please Specify any Other Asset"
+                            "Please Specify any Other Asset"
                     isNavigate = false
                 } else {
                     isNavigate = true
@@ -264,7 +269,7 @@ class ThirdFormFragment : Fragment() {
             if (strRgAnyOtherAsset == "Yes") {
                 if (binding.etRelocationAffectExplanation.text.isEmpty()) {
                     binding.etRelocationAffectExplanation.error =
-                        "Please Explain"
+                            "Please Explain"
                     isNavigate = false
                 } else {
                     isNavigate = true
@@ -385,16 +390,135 @@ class ThirdFormFragment : Fragment() {
         }
 
 
-            binding.btnBackThird.setOnClickListener {
-                findNavController().navigateUp()
-            }
-            binding.btnFamilyDetailAdd.setOnClickListener {
-                mySharedPreference.setFamilyMemberAdded(true)
-                findNavController().navigate(R.id.frag_family_member_form)
-                mySharedPreference.setFamilyMemberAdded(true)
-            }
+        binding.btnBackThird.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.btnFamilyDetailAdd.setOnClickListener {
+            binding.llFamilyMember.visibility = VISIBLE
         }
 
+
+        val maritalStatus = arrayOf("Select Marital Status", "Single", "Married", "Divorced", "Widowed", "Separated")
+        val spinnerMaritalStatus = binding.spinnerMaritalStatus
+        if (spinnerMaritalStatus != null) {
+            val adapter =
+                    ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, maritalStatus)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerMaritalStatus.adapter = adapter
+
+            spinnerMaritalStatus.onItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                                parent: AdapterView<*>?,
+                                view: View?,
+                                position: Int,
+                                id: Long
+                        ) {
+                            val selectedMaritalStatus = maritalStatus[position]
+                            strSpinnerMaritalStatus = selectedMaritalStatus
+                            Log.i("SpinnerLog", "Selected Marital Status: $strSpinnerMaritalStatus")
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                            // Handle nothing selected, if needed
+                        }
+                    }
+        }
+
+        val education = arrayOf("Select Education", "Illiterate", "Literate", "Up to middle", "Below metric",
+                "Metric", "Graduate", "Above Graduate")
+        val spinnerEducation = binding.spinnerEducation
+        if (spinnerEducation != null) {
+            val adapter =
+                    ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, education)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerEducation.adapter = adapter
+
+            spinnerEducation.onItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                                parent: AdapterView<*>?,
+                                view: View?,
+                                position: Int,
+                                id: Long
+                        ) {
+                            val selectedEducation = education[position]
+                            strSpinnerEducation = selectedEducation
+                            Log.i("SpinnerLog", "Selected Marital Status: $selectedEducation")
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                            // Handle nothing selected, if needed
+                        }
+                    }
+        }
+
+        val occupation = arrayOf(
+                "Select Occupation",
+                "Service",
+                "Business",
+                "Agriculture",
+                "Study",
+                "Retired",
+                "Labour",
+                "Unemployed",
+                "Below 6 years",
+                "Old/Inactive",
+        )
+
+        val spinnerOccupation = binding.spinnerOccupation
+        if (spinnerOccupation != null) {
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, occupation)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerOccupation.adapter = adapter
+
+            // Set a listener to handle the selected item in the spinner
+            spinnerOccupation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    // Handle the selected item here
+                    val selectedOccupation = occupation[position]
+                    if (selectedOccupation != "Select Occupation") {
+                        strSpinnerOccupation = selectedOccupation
+                        Log.i("SpinnerLog", "Selected Occupation: $strSpinnerOccupation")
+                    } else {
+                        // Handle the case when the hint item is selected
+                        Log.i("SpinnerLog", "No occupation selected.")
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Handle nothing selected, if needed
+                }
+            }
+
+            binding.btnAddFamily.setOnClickListener {
+
+                strEdFamilyName = binding.edFamilyName.text.toString()
+                strEdAge = binding.edAge.text.toString()
+
+                val rgSex: Int = binding.rgSex.checkedRadioButtonId
+                val rbSex = rgSex.let { view.findViewById<RadioButton>(it) }
+                strRgSex = rbSex?.text.toString()
+
+                strEdRelationship = binding.edRelationship.text.toString()
+
+                val rootObject = JSONObject()
+                rootObject.put("Family Name", strEdFamilyName)
+                rootObject.put("Age", strEdAge)
+                rootObject.put("Sex", strRgSex)
+                rootObject.put("Relationship", strEdRelationship)
+                rootObject.put("Marital Status", strSpinnerMaritalStatus)
+                rootObject.put("Education", strSpinnerEducation)
+                rootObject.put("Occupation", strSpinnerOccupation)
+
+                jsonFamily = rootObject.toString()
+                Log.i(TAG, jsonFamily)
+                mySharedPreference.setFamilyMemberAdded(true)
+                binding.llFamilyMember.visibility = GONE
+                Toast.makeText(requireContext(), "1 Family member added.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     private fun sendData(rootObject: JSONObject){
         val recordId = mySharedPreference.getRecordId().toString()

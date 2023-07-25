@@ -53,76 +53,76 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_22_social_category_of_ap" />
 
 
-                <com.tsfapps.myapplication.customviews.GridRadioGroup
-                    android:id="@+id/rgSocialCategory"
-                    android:layout_width="fill_parent"
+            <com.tsfapps.myapplication.customviews.GridRadioGroup
+                android:id="@+id/rgSocialCategory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="2">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdSc"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:columnCount="2">
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/sc" />
 
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/rdSc"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:text="@string/sc" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/rdSt"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:text="@string/st" />
-
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/rdObc"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:text="@string/obc" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/rdOtherInSocialCategory"
-                        style="@style/RadioButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:text="@string/other" />
-
-                </com.tsfapps.myapplication.customviews.GridRadioGroup>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdSt"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/st" />
 
 
-                    <EditText
-                        android:id="@+id/etOtherInSocialCategory"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="150dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/custom_edittext"
-                        android:hint="@string/specify_other"
-                        android:paddingStart="@dimen/_10dp"
-                        android:paddingEnd="@dimen/_10dp"
-                        android:autofillHints="" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdObc"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/obc" />
 
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rdOtherInSocialCategory"
+                    style="@style/RadioButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:text="@string/other" />
+
+            </com.tsfapps.myapplication.customviews.GridRadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/etOtherInSocialCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="@string/specify_other"
+                    android:paddingStart="@dimen/_10dp"
+                    android:paddingEnd="@dimen/_10dp"
+                    android:autofillHints="" />
+
+            </LinearLayout>
 
             <View style="@style/DividerStyle" />
 
@@ -131,7 +131,7 @@
                 android:id="@+id/tvReligiousCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 style="@style/TextViewNormal"
                 android:text="@string/_23_religious_category" />
@@ -226,7 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:text="@string/_24_number_of_family_members_with_the_following_criteria" />
 
@@ -241,7 +241,7 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/unmarried_son_brother_18_years"
                 android:inputType="number"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 />
 
@@ -256,7 +256,7 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/unmarried_daughter_sister_18_years"
                 android:inputType="number"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:autofillHints="" />
 
@@ -271,7 +271,7 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/divorcee_widow"
                 android:inputType="number"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:autofillHints="" />
 
@@ -286,7 +286,7 @@
                 android:background="@drawable/custom_edittext"
                 android:hint="@string/minor_orphan"
                 android:inputType="number"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:autofillHints="" />
 
@@ -363,7 +363,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:text="@string/resettlement_relocation_option" />
 
@@ -400,7 +400,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                 android:paddingStart="@dimen/_15dp"
+                android:paddingStart="@dimen/_15dp"
                 android:paddingEnd="@dimen/_15dp"
                 android:text="28. Compensation Options for Structure loser" />
 
@@ -561,13 +561,12 @@
 
             </RadioGroup>
 
-            <View style="@style/DividerStyle" />
-
             <TextView
                 android:id="@+id/tvWomenAsset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
+                android:visibility="gone"
                 android:paddingStart="20dp"
                 android:text="@string/_32_do_women_exclusively_own_any_of_the_following_assets" />
 
@@ -576,6 +575,7 @@
                 android:id="@+id/tvLandLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="@string/a_land_homestead_or_farm_land"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -585,6 +585,7 @@
                 android:id="@+id/rgHomesteadOrFarmLand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:weightSum="2"
                 android:orientation="horizontal">
@@ -593,6 +594,7 @@
                     android:id="@+id/rdHomesteadOrFarmLandYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -600,6 +602,7 @@
                     android:id="@+id/rdHomesteadOrFarmLandNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -609,6 +612,7 @@
                 android:id="@+id/tvHouseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="b. House"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -618,6 +622,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:visibility="gone"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
@@ -625,6 +630,7 @@
                     android:id="@+id/rdHouseYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -632,6 +638,7 @@
                     android:id="@+id/rdHouseNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -641,6 +648,7 @@
                 android:id="@+id/tvFourWheelerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="c. Four Wheeler (Car/tractor etc.)"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -650,6 +658,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:visibility="gone"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
@@ -657,6 +666,7 @@
                     android:id="@+id/rdFourWheelerYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -664,6 +674,7 @@
                     android:id="@+id/rdFourWheelerNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -673,6 +684,7 @@
                 android:id="@+id/tvTwoWheelerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="d. Two Wheeler (Scooter/Cycle etc.)"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -682,6 +694,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:visibility="gone"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
@@ -689,6 +702,7 @@
                     android:id="@+id/rdTwoWheelerYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -696,6 +710,7 @@
                     android:id="@+id/rdTwoWheelerNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -705,6 +720,7 @@
                 android:id="@+id/tvCellPhoneLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="e. Cell Phone"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -713,6 +729,7 @@
                 android:id="@+id/rgCellPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:weightSum="2"
                 android:orientation="horizontal">
@@ -721,6 +738,7 @@
                     android:id="@+id/rdCellPhoneYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -728,6 +746,7 @@
                     android:id="@+id/rdCellPhoneNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -737,6 +756,7 @@
                 android:id="@+id/tvPersonalComputerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="f. Personal Computer"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -745,6 +765,7 @@
                 android:id="@+id/rgPersonalComputer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:weightSum="2"
                 android:orientation="horizontal">
@@ -753,6 +774,7 @@
                     android:id="@+id/rdPersonalComputerYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -760,6 +782,7 @@
                     android:id="@+id/rdPersonalComputerNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -768,6 +791,7 @@
                 android:id="@+id/tvAnyOtherLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="g. Any Other"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp" />
@@ -776,6 +800,7 @@
                 android:id="@+id/rgAnyOtherAsset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:weightSum="2"
                 android:orientation="horizontal">
@@ -784,6 +809,7 @@
                     android:id="@+id/rdAnyOtherYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -791,6 +817,7 @@
                     android:id="@+id/rdAnyOtherNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -804,6 +831,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
                 android:hint="Please specify"
+                android:visibility="gone"
                 android:padding="10dp"
                 android:background="@drawable/custom_edittext"
                 android:inputType="text" />
@@ -815,7 +843,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="33. Are the women in the family have a separate bank account?"
+                android:text="32. Are the women in the family have a separate bank account?"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -850,7 +878,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="34. Any women of your family are members in SHGs?"
+                android:text="33. Any women of your family are members in SHGs?"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -885,7 +913,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="35. If yes, will the relocation affect their work?"
+                android:text="34. If yes, will the relocation affect their work?"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -918,7 +946,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="If yes in Question 35, Please explain"
+                android:text="If yes in Question 34, Please explain"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
 
@@ -942,6 +970,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
+                android:visibility="gone"
                 android:text="@string/_36_do_any_women_members_in_your_family_have_received_any_benefit_from_government_schemes"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
@@ -950,6 +979,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loan"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 />
@@ -958,6 +988,7 @@
                 android:id="@+id/rgLoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -966,6 +997,7 @@
                     android:id="@+id/rdLoanYes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -973,6 +1005,7 @@
                     android:id="@+id/rdLoanNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -982,6 +1015,7 @@
                 android:id="@+id/etLoanExplanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
@@ -994,6 +1028,7 @@
                 android:id="@+id/tvHouse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="@string/house"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -1003,6 +1038,7 @@
                 android:id="@+id/rgHouseFromLoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -1011,6 +1047,7 @@
                     android:id="@+id/rdHouseYesFromLoan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -1018,6 +1055,7 @@
                     android:id="@+id/rdHouseNoFromLoan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -1030,6 +1068,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 android:hint="Name of Scheme"
                 android:padding="10dp"
                 android:background="@drawable/custom_edittext"
@@ -1040,6 +1079,7 @@
                 android:id="@+id/tvEmployment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="Employment"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -1049,6 +1089,7 @@
                 android:id="@+id/rgEmployment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -1057,6 +1098,7 @@
                     android:id="@+id/rdEmploymentYes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -1064,6 +1106,7 @@
                     android:id="@+id/rdEmploymentNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -1073,6 +1116,7 @@
                 android:id="@+id/etEmploymentExplanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
@@ -1087,6 +1131,7 @@
                 android:id="@+id/tvTraining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="@string/training"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -1096,6 +1141,7 @@
                 android:id="@+id/rgTraining"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -1104,6 +1150,7 @@
                     android:id="@+id/rdTrainingYes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -1111,6 +1158,7 @@
                     android:id="@+id/rdTrainingNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -1123,6 +1171,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 android:hint="@string/name_of_scheme"
                 android:padding="10dp"
                 android:background="@drawable/custom_edittext"
@@ -1133,6 +1182,7 @@
                 android:id="@+id/tvAnyOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="Any Other"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -1142,6 +1192,7 @@
                 android:id="@+id/rgAnyOtherForScheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -1150,6 +1201,7 @@
                     android:id="@+id/rdAnyOtherYesForScheme"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/yes" />
 
@@ -1157,6 +1209,7 @@
                     android:id="@+id/rdAnyOtherNoForScheme"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:text="@string/no" />
 
@@ -1166,6 +1219,7 @@
                 android:id="@+id/etAnyOtherExplanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="5dp"
@@ -1174,14 +1228,12 @@
                 android:background="@drawable/custom_edittext"
                 android:inputType="textMultiLine" />
 
-            <View style="@style/DividerStyle" />
-
             <TextView
                 android:id="@+id/tvFamilyMembersDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextViewNormal"
-                android:text="37. Details of Family Members:"
+                android:text="35. Details of Family Members:"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp" />
             <TextView
@@ -1240,10 +1292,231 @@
                     app:layout_constraintStart_toEndOf="@+id/btnFamilyDetailUpdate"
                     app:layout_constraintTop_toTopOf="@+id/btnFamilyDetailUpdate" />
 
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/llFamilyMember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:background="@drawable/custom_background">
+
+                <TextView
+                    android:id="@+id/tvFamilyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    style = "@style/TextViewNormal"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/_1_name_of_the_family_member" />
+
+                <EditText
+                    android:id="@+id/edFamilyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35sp"
+                    android:layout_marginStart="20dp"
+                    style = "@style/CustomEditTextStyle"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/enter_family_member_name" />
+
+                <View style="@style/DividerStyle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        style = "@style/TextViewNormal"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/_2_age" />
+
+                    <EditText
+                        android:id="@+id/edAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35sp"
+                        android:layout_marginStart="20dp"
+                        android:inputType="number"
+                        style = "@style/CustomEditTextStyle"
+                        android:layout_marginTop="15dp"
+                        android:hint="Enter in Years" />
+
+                </LinearLayout>
+
+                <View style="@style/DividerStyle" />
+                <TextView
+                    android:id="@+id/tvAdditionalLand1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    style="@style/TextViewNormal"
+                    android:text="3. Sex" />
+
+                <RadioGroup
+                    android:id="@+id/rgSex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:weightSum="3"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/rdMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/male" />
+
+                    <RadioButton
+                        android:id="@+id/rdFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/female" />
+
+                    <RadioButton
+                        android:id="@+id/rdother"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/other2" />
+
+
+                </RadioGroup>
+
+                <View style="@style/DividerStyle" />
+
+                <TextView
+                    android:id="@+id/tvRelationship"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    style = "@style/TextViewNormal"
+                    android:layout_marginTop="15dp"
+                    android:text="4. Relationship with the Owner/Occupier" />
+
+                <EditText
+                    android:id="@+id/edRelationship"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35sp"
+                    android:layout_marginStart="20dp"
+                    style = "@style/CustomEditTextStyle"
+                    android:layout_marginTop="15dp"
+                    android:hint="Enter Relationship" />
+
+                <View style="@style/DividerStyle" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginBottom="5dp"
+                    style="@style/TextViewNormal"
+                    android:text="5. Marital Status" />
+
+                <Spinner
+                    android:id="@+id/spinnerMaritalStatus"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginEnd="15sp"
+                    android:hint="Select Marital Status "
+                    android:background="@drawable/custom_spinner"
+                    android:paddingStart="10sp"
+                    android:spinnerMode="dropdown" />
+
+                <View style="@style/DividerStyle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginBottom="5dp"
+                    style="@style/TextViewNormal"
+                    android:text="6. Education" />
+
+                <Spinner
+                    android:id="@+id/spinnerEducation"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginEnd="15sp"
+                    android:hint="Select Education"
+                    android:background="@drawable/custom_spinner"
+                    android:paddingStart="10sp"
+                    android:spinnerMode="dropdown" />
+
+                <View style="@style/DividerStyle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginBottom="5dp"
+                    style="@style/TextViewNormal"
+                    android:text="7.Occupation" />
+
+                <Spinner
+                    android:id="@+id/spinnerOccupation"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginEnd="15sp"
+                    android:hint="Select Occupation"
+                    android:background="@drawable/custom_spinner"
+                    android:paddingStart="10sp"
+                    android:layout_marginBottom="20dp"
+                    android:spinnerMode="dropdown" />
 
             </LinearLayout>
 
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddFamily"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/custom_button"
+        android:text="Add"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnClearFamily"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnClearFamily"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/custom_button"
+        android:text="Clear"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnAddFamily"
+        android:layout_marginStart="10dp" />
+
+</LinearLayout>
         </LinearLayout>
     </ScrollView>
     <androidx.appcompat.widget.AppCompatButton
