@@ -84,7 +84,6 @@ class SecondFormFragment : Fragment() {
 
 
         binding.btnNextSecond.setOnClickListener {
-            findNavController().navigate(R.id.frag_third_form)
 
             val rgStructure: Int = binding.structureRadioGroup.checkedRadioButtonId
             val rbStructure = rgStructure.let { view.findViewById<RadioButton>(it) }
@@ -268,6 +267,9 @@ class SecondFormFragment : Fragment() {
             rootObject.put("Fruit Bearing", strFruitBearing)
             rootObject.put("Non-Fruit Bearing", strNonFruitBearing)
             Log.d(TAG, "Data: $rootObject")
+            if (isNavigate){
+                findNavController().navigate(R.id.frag_third_form)
+            }
 
         }
         binding.btnBackSecond.setOnClickListener {

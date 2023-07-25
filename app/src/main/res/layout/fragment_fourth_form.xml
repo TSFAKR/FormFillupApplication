@@ -118,7 +118,7 @@
                 android:layout_marginStart="15sp"
                 android:layout_marginEnd="15sp"
                 android:background="@drawable/custom_spinner"
-                android:paddingStart="20sp"
+                android:paddingStart="10sp"
                 android:spinnerMode="dropdown" />
 
             <View style="@style/DividerStyle" />

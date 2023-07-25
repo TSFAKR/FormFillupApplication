@@ -26,9 +26,15 @@ class DashBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnNextDashboard.setOnClickListener {
             findNavController().navigate(R.id.frag_first_form)
         }
+
+        binding.btnNextSupplementary.setOnClickListener {
+            findNavController().navigate(R.id.frag_fourth_form)
+        }
+
 
     }
 

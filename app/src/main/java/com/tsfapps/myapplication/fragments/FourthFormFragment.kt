@@ -1,14 +1,18 @@
 package com.tsfapps.myapplication.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentFourthFormBinding
+import org.json.JSONObject
 
 
 class FourthFormFragment : Fragment() {
@@ -52,6 +56,39 @@ class FourthFormFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val statusOfOccupier = arrayOf(
+            "Select Status of Occupier",
+            "Agricultural Laborer",
+            "Agricultural Tenant/Lessee",
+            "Sharecropper",
+            "Tenant in structure",
+            "Employee/ wage earner in Residential/Commercial Structure",
+        )
+
+        val spinnerStatusOfOccupier = binding.spinnerStatusOfOccupier
+        if (spinnerStatusOfOccupier != null) {
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, statusOfOccupier)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerStatusOfOccupier.adapter = adapter
+
+            // Set a listener to handle the selected item in the spinner
+            spinnerStatusOfOccupier.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    // Handle the selected item here
+                    val selectedStatusOfOccupier = statusOfOccupier[position]
+                    strSpinnerStatusOfOccupier = selectedStatusOfOccupier
+                    Log.i("SpinnerLog", "Selected Status of Occupier: $strSpinnerStatusOfOccupier")
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Handle nothing selected, if needed
+                }
+            }
+        }
+
+
+
         binding.btnNextFourth.setOnClickListener {
 
             findNavController().navigate(R.id.frag_dashboard)
@@ -135,6 +172,29 @@ class FourthFormFragment : Fragment() {
             } else {
                 isNavigate = true
             }
+
+            val rootObject = JSONObject()
+            rootObject.put("Census Questionnaire", strEdCensusQuestionnaire)
+            rootObject.put("Owner Name", strEdOwnerName)
+            rootObject.put("Occupier Name", strEdOccupierName)
+            rootObject.put("Occupier Father Name", strOccupierFatherName)
+            rootObject.put("Status of Occupier", strSpinnerStatusOfOccupier)
+            rootObject.put("Social Category", strRgSocialCategory)
+            rootObject.put("Social Category Other", strSocialCategoryOther)
+            rootObject.put("Religious Category", strRgReligiousCategory)
+            rootObject.put("Religious Category Other", strReligiousCategoryOther)
+            rootObject.put("Male", strEdMale)
+            rootObject.put("Female", strEdFemale)
+            rootObject.put("Total", strEdTotal)
+            rootObject.put("Vulnerability Status", strRgVulnerabilityStatus)
+            rootObject.put("Other Vulnerability Status", strEdOtherVulnerabilityStatus)
+            rootObject.put("Annual Income", strEdAnnualIncome)
+            rootObject.put("Income Restoration", strRgIncomeRestoration)
+            rootObject.put("Other in Income Restoration", strEdOtherInIncomeRestoration)
+
+            val jsonString = rootObject.toString()
+            Log.i("JSONLog", jsonString)
+
 
 
 

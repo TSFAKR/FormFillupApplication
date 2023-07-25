@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.tsfapps.myapplication.utils.Constant.SESSION_KEY
 import com.tsfapps.myapplication.utils.Constant.SHARED_PREFS_NAME
+import com.tsfapps.myapplication.utils.Constant.SYNC_ID
 import com.tsfapps.myapplication.utils.Constant.USER_ID
 
 class MySharedPreference(context: Context) {
@@ -21,5 +22,17 @@ class MySharedPreference(context: Context) {
     fun getUserId(): String? {
         return sharedPrefs.getString(USER_ID, null)
     }
+
+
+    fun setSyncId(syncId: String){
+        val editor = sharedPrefs.edit()
+        editor.putString(SYNC_ID, syncId)
+        editor.apply()
+    }
+
+    fun getSyncId(): String? {
+        return sharedPrefs.getString(SYNC_ID, null)
+    }
+
 }
 

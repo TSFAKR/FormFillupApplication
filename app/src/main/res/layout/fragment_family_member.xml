@@ -161,8 +161,9 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="25sp"
                 android:layout_marginEnd="15sp"
+                android:hint="Select Marital Status "
                 android:background="@drawable/custom_spinner"
-                android:paddingStart="20sp"
+                android:paddingStart="10sp"
                 android:spinnerMode="dropdown" />
 
             <View style="@style/DividerStyle" />
@@ -182,8 +183,9 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="25sp"
                 android:layout_marginEnd="15sp"
+                android:hint="Select Education"
                 android:background="@drawable/custom_spinner"
-                android:paddingStart="20sp"
+                android:paddingStart="10sp"
                 android:spinnerMode="dropdown" />
 
             <View style="@style/DividerStyle" />
@@ -203,8 +205,9 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="25sp"
                 android:layout_marginEnd="15sp"
+                android:hint="Select Occupation"
                 android:background="@drawable/custom_spinner"
-                android:paddingStart="20sp"
+                android:paddingStart="10sp"
                 android:layout_marginBottom="20dp"
                 android:spinnerMode="dropdown" />
 

@@ -4,13 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import com.tsfapps.myapplication.MainActivity
-import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.ActivityLoginBinding
 import com.tsfapps.myapplication.db.preference.MySharedPreference
-import com.tsfapps.myapplication.network.ModelClass
+import com.tsfapps.myapplication.network.RequestLogin
 import com.tsfapps.myapplication.network.NetworkService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -49,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val requestData = ModelClass(strEtUserName, strEtPassword)
+            val requestData = RequestLogin(strEtUserName, strEtPassword)
             GlobalScope.launch(Dispatchers.Main) {
                 try {
                     val response = NetworkService.api.login(requestData)

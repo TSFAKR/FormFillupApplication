@@ -9,37 +9,61 @@
     tools:context=".fragments.FirstFormFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvFragmentDashboard"
+        android:id="@+id/tvDashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dashboard_fragment"
+        android:text="Cradle Dashboard"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTotalEntries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sohail Testing"
-        android:textStyle="bold"
-
-        app:layout_constraintBottom_toTopOf="@+id/tvFragmentDashboard"
+        android:layout_marginBottom="528dp"
+        android:text="Total number of Entries:- "
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNextDashboard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTotalServerEntries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="484dp"
+        android:text="Total number of Entries in Server:- "
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNextDashboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNextDashboard"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:background="@drawable/custom_button"
-        android:textColor="#FFFFFF"
         android:text="@string/create_new"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNextSupplementary"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNextSupplementary"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_button"
+        android:text="Supplementary"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/btnNextDashboard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

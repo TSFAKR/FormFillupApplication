@@ -1,5 +1,7 @@
 package com.tsfapps.myapplication.fragments
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,14 +10,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
+import com.tsfapps.myapplication.MainActivity
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentThirdFormBinding
+import com.tsfapps.myapplication.db.preference.MySharedPreference
+import com.tsfapps.myapplication.network.NetworkService
+import com.tsfapps.myapplication.network.SendData
 import com.tsfapps.myapplication.utils.Constant.TAG
+import com.tsfapps.myapplication.utils.GetTimeStamps.getCurrentDateTime
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class ThirdFormFragment : Fragment() {
-
+    private lateinit var mySharedPreference: MySharedPreference
+    private var createRecordId: Int = 0
     private var isNavigate: Boolean = false
 
     private var _binding: FragmentThirdFormBinding? = null
@@ -75,11 +88,11 @@ class ThirdFormFragment : Fragment() {
         _binding = FragmentThirdFormBinding.inflate(inflater, container, false)
         return binding.root
     }
+    @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mySharedPreference = MySharedPreference(requireContext())
         binding.btnNextThird.setOnClickListener {
-            findNavController().navigate(R.id.frag_fourth_form)
-
             strSocialCategoryOther = binding.etOtherInSocialCategory.text.toString()
             strReligiousCategoryOther = binding.etOtherReligious.text.toString()
             strUnmarriedSonBrother = binding.etUnmarriedSonBrother.text.toString()
@@ -349,10 +362,12 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
             Log.i(TAG, "rootObject: $rootObject")
+            if (isNavigate){
+                sendData(rootObject)
+            }
 
 
         }
-
 
             binding.btnBackThird.setOnClickListener {
                 findNavController().navigateUp()
@@ -361,6 +376,35 @@ class ThirdFormFragment : Fragment() {
                 findNavController().navigate(R.id.frag_family_member_form)
             }
         }
+
+    private fun sendData(rootObject: JSONObject){
+        createRecordId += 1
+        val recordId = "${mySharedPreference.getUserId()} _$createRecordId"
+        val sessionKey = mySharedPreference.getSessionKey().toString()
+        val userId = mySharedPreference.getUserId().toString()
+        val date = getCurrentDateTime()
+        val dateTimeStamp = date.toString()
+        val requestData = SendData(recordId, dateTimeStamp, sessionKey,userId,rootObject)
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response = NetworkService.api.sendData(requestData)
+                if (response.success) {
+
+                    findNavController().navigate(R.id.frag_dashboard)
+                    mySharedPreference.setSyncId(response.syncRecordID)
+
+                    Log.d("TSF_APPS", "Success: ${response.syncRecordID}")
+
+                }else
+                {
+                    Log.d("TSF_APPS", "Success Fail: ${response.errorMessage}")
+
+                }
+            } catch (e: Exception) {
+                Log.i("TSF_APPS", "Error ${e.message}")
+            }
+        }
+    }
 
 
 
