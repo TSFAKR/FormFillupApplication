@@ -12,6 +12,10 @@ import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentFourthFormBinding
+import com.tsfapps.myapplication.db.preference.MySharedPreference
+import com.tsfapps.myapplication.utils.Constant
+import com.tsfapps.myapplication.utils.Constant.IS_FAMILY_ADDED
+import com.tsfapps.myapplication.utils.Constant.TAG
 import org.json.JSONObject
 
 
@@ -42,6 +46,7 @@ class FourthFormFragment : Fragment() {
     private var strEdAnnualIncome: String = ""
     private var strRgIncomeRestoration: String = ""
     private var strEdOtherInIncomeRestoration: String = ""
+    private lateinit var mySharedPreference: MySharedPreference
 
 
 
@@ -56,7 +61,7 @@ class FourthFormFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mySharedPreference = MySharedPreference(requireContext())
         val statusOfOccupier = arrayOf(
             "Select Status of Occupier",
             "Agricultural Laborer",
@@ -91,7 +96,6 @@ class FourthFormFragment : Fragment() {
 
         binding.btnNextFourth.setOnClickListener {
 
-            findNavController().navigate(R.id.frag_dashboard)
 
             strEdCensusQuestionnaire = binding.edCensusQuestionnaire.text.toString()
             strEdOwnerName = binding.edOwnerName.text.toString()
@@ -193,7 +197,14 @@ class FourthFormFragment : Fragment() {
             rootObject.put("Other in Income Restoration", strEdOtherInIncomeRestoration)
 
             val jsonString = rootObject.toString()
-            Log.i("JSONLog", jsonString)
+            Log.i(TAG, jsonString)
+            val bundle = Bundle().apply {
+                putString(Constant.FAMILY_FRAGMENT_DATA, jsonString)
+            }
+            findNavController().navigate(R.id.frag_third_form, bundle)
+            mySharedPreference.setFamilyMemberAdded(true)
+
+
 
 
 

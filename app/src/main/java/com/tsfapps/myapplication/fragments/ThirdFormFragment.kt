@@ -1,7 +1,6 @@
 package com.tsfapps.myapplication.fragments
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.tsfapps.myapplication.MainActivity
 import com.tsfapps.myapplication.R
 import com.tsfapps.myapplication.databinding.FragmentThirdFormBinding
 import com.tsfapps.myapplication.db.preference.MySharedPreference
@@ -24,8 +22,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.Date
 
 
 class ThirdFormFragment : Fragment() {
@@ -80,6 +76,7 @@ class ThirdFormFragment : Fragment() {
     private var strRgOtherGovernmentScheme: String = ""
     private var strOtherGovernmentSchemeExplanation: String = ""
     private var jsonString: String = ""
+    private var jsonFamily: String = ""
 
 
 
@@ -95,7 +92,11 @@ class ThirdFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mySharedPreference = MySharedPreference(requireContext())
         jsonString = arguments?.getString(Constant.SECOND_FRAGMENT_DATA).toString()
-
+       if (mySharedPreference.getFamilyMemberAdded()) {
+           jsonFamily = arguments?.getString(Constant.FAMILY_FRAGMENT_DATA).toString()
+           Log.d(TAG, "Family Details: $jsonFamily")
+           mySharedPreference.setFamilyMemberAdded(false)
+       }
         binding.btnNextThird.setOnClickListener {
             strSocialCategoryOther = binding.etOtherInSocialCategory.text.toString()
             strReligiousCategoryOther = binding.etOtherReligious.text.toString()
@@ -366,12 +367,13 @@ class ThirdFormFragment : Fragment() {
             rootObject.put("Other Government Scheme", strRgOtherGovernmentScheme)
             rootObject.put("Other Government Scheme Explanation", strOtherGovernmentSchemeExplanation)
 
-
+            val jsonFamilyObject = JSONObject(jsonFamily)
             val jsonObject = JSONObject(jsonString)
+
             val merged = JSONObject()
-            val objs = arrayOf(rootObject, jsonObject)
+            val objs = arrayOf(rootObject, jsonObject, jsonFamilyObject)
             for (obj in objs) {
-                val it: Iterator<*> = obj?.keys()!!
+                val it: Iterator<*> = obj.keys()
                 while (it.hasNext()) {
                     val key = it.next() as String
                     merged.put(key, obj.get(key))
@@ -390,6 +392,7 @@ class ThirdFormFragment : Fragment() {
                 findNavController().navigateUp()
             }
             binding.btnFamilyDetailAdd.setOnClickListener {
+                mySharedPreference.setFamilyMemberAdded(true)
                 findNavController().navigate(R.id.frag_family_member_form)
             }
         }
